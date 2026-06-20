@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>초저온 기술 | KQSF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="KQSF의 초저온 기술은 LNG 냉열 기반 인프라, Quick Super Freeze 공정, QSF 품질 시스템을 통해 식품 유통의 시간을 다시 설계합니다.">
+
+  <link rel="icon" th:href="@{/favicon.ico}">
+  <link rel="icon" type="image/png" sizes="16x16" th:href="@{/favicon-16x16.png}">
+  <link rel="icon" type="image/png" sizes="32x32" th:href="@{/favicon-32x32.png}">
+  <link rel="apple-touch-icon" sizes="180x180" th:href="@{/apple-touch-icon.png}">
+  <link rel="manifest" th:href="@{/site.webmanifest}">
+
+  <link rel="stylesheet" th:href="@{/site/css/layout.css}">
+  <link rel="stylesheet" th:href="@{/site/css/technology.css}">
+</head>
+<body>
+
+<header class="site-header">
+  <a th:href="@{/}" class="site-logo site-logo-image" aria-label="KQSF 홈">
+    <img th:src="@{/site/images/logo/logo.png}" alt="KQSF">
+  </a>
+
+  <button class="mobile-menu-button"
+          type="button"
+          aria-label="메뉴 열기"
+          data-menu-button>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="site-nav" data-site-nav>
+    <a th:href="@{/products}">제품</a>
+    <a th:href="@{/technology}" class="active">초저온 기술</a>
+    <a th:href="@{/vision}">비전</a>
+    <a th:href="@{/contact}" class="nav-cta">B2B 문의</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tech-hero">
+    <div class="tech-hero-bg"></div>
+
+    <div class="tech-hero-inner">
+      <p class="eyebrow">Technology</p>
+
+      <h1>
+        초저온은<br>
+        식품 유통의 시간을<br>
+        다시 설계합니다.
+      </h1>
+
+      <p class="tech-hero-description">
+        KQSF는 LNG 냉열 기반 초저온 인프라와 Quick Super Freeze 공정,
+        QSF 품질 시스템을 통해 좋은 원물이 가장 좋은 순간의 품질을
+        유지한 채 필요한 곳으로 공급될 수 있도록 합니다.
+      </p>
+
+      <div class="tech-hero-actions">
+        <a th:href="@{/technology/lng-infrastructure}" class="button primary">
+          LNG 기반 인프라 보기
+        </a>
+        <a th:href="@{/technology/qsf-system}" class="button secondary">
+          QSF 품질 시스템
+        </a>
+      </div>
+
+      <div class="tech-hero-metrics">
+        <article>
+          <strong>–60°C</strong>
+          <span>초저온 동결·보관 기준</span>
+        </article>
+        <article>
+          <strong>LNG</strong>
+          <span>냉열 기반 초저온 인프라</span>
+        </article>
+        <article>
+          <strong>QSF</strong>
+          <span>Quick Super Freeze 품질 시스템</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tech-intro-section">
+    <div class="section-inner two-column">
+      <div class="section-copy">
+        <p class="section-label">Why Ultra Freezing</p>
+        <h2>
+          단순히 얼리는 것이 아니라,<br>
+          가장 좋은 순간을 고정합니다.
+        </h2>
+        <p>
+          일반 냉장·냉동 유통은 시간이 지날수록 품질 저하와 폐기 리스크가 커집니다.
+          KQSF는 원물이 가진 신선도와 식감, 색감, 드립 안정성을 초저온으로 관리하여
+          유통 가능한 시간을 새롭게 확장합니다.
+        </p>
+        <p>
+          초저온은 좋은 식품을 더 먼 곳으로, 더 안정적으로, 더 합리적인 가격 구조로
+          공급하기 위한 식품 유통 인프라입니다.
+        </p>
+      </div>
+
+      <div class="temperature-card">
+        <span>Ultra Freezing</span>
+        <strong>–60°C</strong>
+        <p>
+          식품의 품질 변화를 늦추고, 원물의 가치를 안정적으로 유지하기 위한
+          KQSF의 초저온 기준입니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section lng-section">
+    <div class="section-inner two-column reverse">
+      <div class="lng-panel">
+        <p>LNG Cold Energy</p>
+        <h2>Energy<br>Based<br>Food Infra</h2>
+      </div>
+
+      <div class="section-copy">
+        <p class="section-label">LNG Infrastructure</p>
+        <h2>
+          KQSF의 차별점은<br>
+          LNG 냉열 기반 초저온 인프라입니다.
+        </h2>
+        <p>
+          LNG는 기화 과정에서 매우 낮은 온도의 냉열을 발생시킵니다.
+          KQSF는 이 냉열을 초저온 동결, 보관, 콜드체인 운영에 연결하여
+          식품 유통을 에너지 인프라 관점에서 다시 설계합니다.
+        </p>
+        <p>
+          대량 동결과 장기 보관, 프리미엄 콜드체인 운영에서 LNG 기반 초저온은
+          전기식 냉동 중심 구조와 다른 확장성과 운영 경쟁력을 가질 수 있습니다.
+        </p>
+
+        <div class="inline-actions">
+          <a th:href="@{/technology/lng-infrastructure}" class="text-link">
+            LNG 기반 초저온 인프라
+          </a>
+          <a th:href="@{/technology/cold-chain}" class="text-link muted">
+            유통 구조의 한계 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section qsf-section">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-label">QSF System</p>
+        <h2>
+          Quick Super Freeze는<br>
+          기술이자 품질 시스템입니다.
+        </h2>
+        <p>
+          QSF는 원물 선별부터 급속동결, 초저온 보관, 출고, Batch 기록,
+          Traceability까지 이어지는 초저온 공급망 기준입니다.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <article>
+          <span>01</span>
+          <h3>원물 선별</h3>
+          <p>
+            어획·수확된 원물 중 초저온 상품화에 적합한 원물을 선별합니다.
+          </p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Quick Super Freeze</h3>
+          <p>
+            원물이 가장 좋은 순간에 도달했을 때 빠르게 초저온으로 품질을 고정합니다.
+          </p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>초저온 보관</h3>
+          <p>
+            –60°C 기준의 초저온 환경에서 품질 변화를 최소화하도록 관리합니다.
+          </p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3>출고·추적관리</h3>
+          <p>
+            Batch 기록과 LOT 추적을 통해 B2B 공급망에서 확인 가능한 품질 기준을 제공합니다.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tech-map-section">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-label">Technology Map</p>
+        <h2>
+          KQSF 초저온 기술을<br>
+          더 자세히 확인하세요.
+        </h2>
+        <p>
+          각 기술 페이지에서는 초저온의 원리, 기존 유통 구조의 한계,
+          LNG 기반 인프라, QSF 품질 시스템과 적용 분야를 나누어 설명합니다.
+        </p>
+      </div>
+
+      <div class="tech-link-grid">
+        <a th:href="@{/technology/ultra-freezing}" class="tech-link-card">
+          <span>01</span>
+          <h3>–60°C 초저온이란</h3>
+          <p>
+            일반 냉동과 초저온 동결의 차이, 식품 품질 보존의 의미를 설명합니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/cold-chain}" class="tech-link-card">
+          <span>02</span>
+          <h3>기존 냉장/냉동 유통의 한계</h3>
+          <p>
+            짧은 보관 기간, 폐기 리스크, 중간 유통 비용이 식품 가격에 미치는 영향을 다룹니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/lng-infrastructure}" class="tech-link-card emphasized">
+          <span>03</span>
+          <h3>LNG 기반 초저온 인프라</h3>
+          <p>
+            LNG 냉열을 활용한 초저온 동결·보관·콜드체인 인프라의 차별성을 설명합니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/quick-super-freeze}" class="tech-link-card">
+          <span>04</span>
+          <h3>Quick Super Freeze 기술</h3>
+          <p>
+            원물의 가장 좋은 순간을 초저온으로 고정하는 KQSF의 핵심 공정을 소개합니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/qsf-system}" class="tech-link-card">
+          <span>05</span>
+          <h3>QSF 품질 시스템</h3>
+          <p>
+            QSF SELECT™, QSF CERTIFIED™, 원물 선별, 출고 기준, 추적관리 체계를 설명합니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/quality-standard}" class="tech-link-card">
+          <span>06</span>
+          <h3>품질 기준</h3>
+          <p>
+            Drip Loss, 냉동곡선, Batch 기록, HACCP, Traceability 등 확인 가능한 기준을 다룹니다.
+          </p>
+        </a>
+
+        <a th:href="@{/technology/applications}" class="tech-link-card">
+          <span>07</span>
+          <h3>적용 분야</h3>
+          <p>
+            수산물, 축산물, 농산물, HMR, OEM/PB로 확장되는 초저온 적용 영역입니다.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section application-preview">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="section-label">Applications</p>
+        <h2>참치에서 시작해 다양한 식품군으로 확장합니다.</h2>
+      </div>
+
+      <div class="application-grid">
+        <article>
+          <h3>수산물</h3>
+          <p>참치, 굴, 전복, 어류 등 신선도와 식감이 중요한 원물</p>
+        </article>
+
+        <article>
+          <h3>축산물</h3>
+          <p>소고기, 돈육, 가금류 등 프리미엄 육류 원물</p>
+        </article>
+
+        <article>
+          <h3>농산물</h3>
+          <p>수확 직후 품질과 향, 식감을 유지해야 하는 농산 원물</p>
+        </article>
+
+        <article>
+          <h3>HMR / OEM / PB</h3>
+          <p>가공식품, 밀키트, 브랜드 맞춤형 초저온 제품</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-cta">
+    <div class="section-inner cta-inner">
+      <div>
+        <p class="section-label">B2B Contact</p>
+        <h2>초저온 기반 공급망이 필요하신가요?</h2>
+        <p>
+          제품 공급, 샘플 요청, OEM/PB, 유통 제휴까지
+          KQSF의 초저온 인프라를 기반으로 함께 검토합니다.
+        </p>
+      </div>
+
+      <a th:href="@{/contact}" class="button primary">
+        B2B 문의하기
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <a th:href="@{/}" class="footer-logo footer-logo-image" aria-label="KQSF 홈">
+        <img th:src="@{/site/images/logo/logo.png}" alt="KQSF">
+      </a>
+      <p>
+        Kyungnam Quick Super Freeze<br>
+        좋은 식품을 더 많은 사람에게.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <a th:href="@{/products}">제품</a>
+      <a th:href="@{/technology}">초저온 기술</a>
+      <a th:href="@{/vision}">비전</a>
+      <a th:href="@{/contact}">B2B 문의</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 KQSF. Kyungnam Quick Super Freeze. All rights reserved.
+  </div>
+</footer>
+
+<script th:src="@{/site/js/site.js}"></script>
+</body>
+</html>
