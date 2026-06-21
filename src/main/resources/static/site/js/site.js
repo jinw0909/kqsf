@@ -1,35 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const menuButton = document.querySelector("[data-menu-button]");
-    const siteNav = document.querySelector("[data-site-nav]");
+    const header = document.getElementById("siteHeader");
+    const menuButton = document.getElementById("siteMenuButton");
+    const siteNav = document.getElementById("siteNav");
+
+    const handleHeaderScroll = () => {
+        if (!header) return;
+
+        if (window.scrollY > 12) {
+            header.classList.add("is-scrolled");
+        } else {
+            header.classList.remove("is-scrolled");
+        }
+    };
+
+    handleHeaderScroll();
+    window.addEventListener("scroll", handleHeaderScroll, { passive: true });
 
     if (menuButton && siteNav) {
         menuButton.addEventListener("click", () => {
             siteNav.classList.toggle("is-open");
-
-            const isOpen = siteNav.classList.contains("is-open");
-            menuButton.setAttribute("aria-label", isOpen ? "메뉴 닫기" : "메뉴 열기");
+            menuButton.classList.toggle("is-open");
         });
 
         siteNav.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", () => {
                 siteNav.classList.remove("is-open");
-                menuButton.setAttribute("aria-label", "메뉴 열기");
+                menuButton.classList.remove("is-open");
             });
         });
     }
 
-    const header = document.querySelector(".site-header");
+    const revealTargets = document.querySelectorAll(
+        ".metric-card, .pillar-card, .split-section, .product-main-card, .qsf-step, .contact-cta"
+    );
 
-    if (header) {
-        const updateHeader = () => {
-            if (window.scrollY > 16) {
-                header.classList.add("is-scrolled");
-            } else {
-                header.classList.remove("is-scrolled");
-            }
-        };
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.14
+        });
 
-        updateHeader();
-        window.addEventListener("scroll", updateHeader, { passive: true });
+        revealTargets.forEach((target) => {
+            target.classList.add("reveal");
+            observer.observe(target);
+        });
     }
 });

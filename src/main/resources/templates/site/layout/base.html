@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, pageCss)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}">KQSF</title>
+
+  <meta name="description" content="KQSF는 -162°C LNG 냉열 기반 초저온 기술과 QSF 인증 시스템으로 식품 유통의 새로운 기준을 만듭니다.">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/site/css/layout.css">
+
+  <!-- Swiper: 당장 안 써도, 필요한 페이지에서만 pageCss나 별도 fragment로 추가 가능 -->
+  <!--
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  -->
+
+  <link rel="stylesheet" th:if="${pageCss != null}" th:href="@{${pageCss}}">
+</head>
+
+<body>
+<header th:fragment="header" class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a href="/" class="site-logo" aria-label="KQSF 홈">
+      <img src="/site/images/logo/logo.png" alt="KQSF">
+<!--      <span class="site-logo__text">-->
+<!--            <strong>KQSF</strong>-->
+<!--            <small>Kyungnam Quick Super Freeze</small>-->
+<!--      </span>-->
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="주요 메뉴">
+      <a href="/products" class="site-nav__link">제품</a>
+      <a href="/infrastructure" class="site-nav__link">초저온 기술</a>
+      <a href="/qsf" class="site-nav__link">QSF</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="/contact" class="site-header__cta">B2B 문의</a>
+
+      <button class="site-menu-button" id="siteMenuButton" type="button" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<footer th:fragment="footer" class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>KQSF</strong>
+      <p>Korea Quick Super Freeze</p>
+      <p>-162°C LNG 냉열 기반 초저온 식품 기술</p>
+    </div>
+
+    <div class="site-footer__links">
+      <a href="/products">제품</a>
+      <a href="/infrastructure">초저온 기술</a>
+      <a href="/qsf">QSF</a>
+      <a href="/contact">B2B 문의</a>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>© KQSF. All rights reserved.</p>
+  </div>
+</footer>
+
+<th:block th:fragment="scripts">
+  <script src="/site/js/site.js"></script>
+
+  <!-- Swiper 필요 페이지에서만 활성화 추천 -->
+  <!--
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  -->
+</th:block>
+</body>
+</html>
