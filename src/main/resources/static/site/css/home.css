@@ -344,7 +344,7 @@
 /* 얼음/냉기 오버레이 */
 .fixed-bg-wrap::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
@@ -362,7 +362,7 @@
 /* 서리 낀 듯한 하얀 베일 */
 .fixed-bg-wrap::after {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 2;
     pointer-events: none;
