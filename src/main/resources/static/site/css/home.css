@@ -292,6 +292,29 @@
 
 /* Split Infra */
 
+.home-infra {
+    position: relative;
+}
+
+.home-infra::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url("/site/images/home/tank.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.home-infra .container {
+    position: relative;
+    z-index: 2;
+}
+
 .split-section {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
@@ -312,9 +335,17 @@
     font-size: 18px;
     line-height: 1.78;
     color: var(--color-muted);
+    color: white;
+}
+
+.split-section__content .section-description {
+    color: black;
+    font-weight: bold;
+
 }
 
 .split-section__visual {
+    display: none;
     min-height: 420px;
     border-radius: 34px;
     padding: 34px;
@@ -322,6 +353,9 @@
             radial-gradient(circle at 84% 18%, rgba(112, 200, 255, 0.42), transparent 30%),
             linear-gradient(135deg, #061b33, #0d3e70);
     box-shadow: var(--shadow-card);
+    background-image: url("/site/images/home/tank.png");
+    background-size: cover;
+    background-position: center;
 }
 
 .infra-diagram {
@@ -367,6 +401,10 @@
 
 /* Products */
 
+.home-products {
+
+}
+
 .product-preview {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 330px;
@@ -391,6 +429,9 @@
     background:
             radial-gradient(circle at 75% 20%, rgba(112, 200, 255, 0.5), transparent 34%),
             linear-gradient(135deg, #eef8ff, #ffffff);
+    background-image: url("/site/images/home/product/loin.png");
+    background-size: cover;
+    background-position: center;
 }
 
 .product-main-card__media span {
@@ -436,11 +477,56 @@
     font-weight: 900;
     color: var(--color-navy);
     box-shadow: 0 10px 28px rgba(15, 35, 60, 0.06);
+    position: relative;
+    overflow: hidden;
 }
 
 .product-category-list a::after {
     content: "→";
     color: var(--color-blue);
+    z-index: 3;
+}
+
+.product-category-list a span {
+    z-index: 3;
+}
+
+
+/*.product-category-list a:nth-child(1)::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    opacity: 0.18;*/
+/*    z-index: 0;*/
+/*    background-image: url("/site/images/home/product/seafood.png");*/
+/*}*/
+
+.product-category-list a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: 0;
+}
+
+.product-category-list a:nth-child(1)::before {
+    background-image: url("/site/images/home/product/seafood.png");
+}
+
+.product-category-list a:nth-child(2)::before {
+    background-image: url("/site/images/home/product/meat.png");
+}
+
+.product-category-list a:nth-child(3)::before {
+    background-image: url("/site/images/home/product/agricultural.png");
+}
+
+.product-category-list a:nth-child(4)::before {
+    background-image: url("/site/images/home/product/hmr.png");
 }
 
 /* QSF */
