@@ -333,7 +333,7 @@
     left: 0;
     right: 0;
     /*aspect-ratio: 16/9;*/
-    height: 100svh;
+    height: 120svh;
     z-index: 0;
     background-image: url("/site/images/home/tank.png");
     background-size: cover;
