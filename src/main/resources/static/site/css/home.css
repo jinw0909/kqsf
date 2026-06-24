@@ -331,7 +331,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    aspect-ratio: 16/9;
+    right: 0;
+    /*aspect-ratio: 16/9;*/
     height: 100svh;
     z-index: 0;
     background-image: url("/site/images/home/tank.png");
