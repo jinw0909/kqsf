@@ -71,7 +71,7 @@
       <div class="product-preview">
         <article class="product-main-card">
           <div class="product-main-card__media">
-            <span>이미지 영역</span>
+<!--            <span>이미지 영역</span>-->
           </div>
           <div class="product-main-card__body">
             <p class="card-eyebrow">First Product</p>
@@ -86,9 +86,9 @@
 
         <div class="product-category-list">
           <a href="/products/seafood"><span>수산물</span></a>
-          <a href="/products/meat">축산물</a>
-          <a href="/products/agriculture">농산물</a>
-          <a href="/products/oem-pb">OEM / PB</a>
+          <a href="/products/meat"><span>축산물</span></a>
+          <a href="/products/agriculture"><span>농산물</span></a>
+          <a href="/products/oem-pb"><span>OEM / PB</span></a>
         </div>
       </div>
     </div>
@@ -147,6 +147,9 @@
 
   <!-- Infrastructure Focus -->
   <section class="home-infra section section--ice">
+    <div class="fixed-bg-wrap">
+      <div class="fixed-bg"></div>
+    </div>
     <div class="container">
       <div class="split-section">
         <div class="split-section__content">
@@ -265,7 +268,6 @@
   </section>
 
 </main>
-
 <footer th:replace="~{site/layout/base :: footer}"></footer>
 <th:block th:replace="~{site/layout/base :: scripts}"></th:block>
 </body>
