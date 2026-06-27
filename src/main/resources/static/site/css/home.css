@@ -95,12 +95,23 @@
     z-index: 1;
 }
 
-.hero-visual-card:nth-child(1)::after {
+.hero-visual-card--main::after {
     background: linear-gradient(
             135deg,
             rgba(6, 27, 51, 0.86),
             rgba(13, 62, 112, 0.54)
     );
+}
+
+.hero-visual-card:nth-child(2)::after {
+    background:
+            radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.48), transparent 34%),
+            linear-gradient(
+                    335deg,
+                    rgba(255, 255, 255, 0.34) 0%,
+                    rgba(210, 226, 236, 0.22) 42%,
+                    rgba(6, 27, 51, 0.15) 100%
+            );
 }
 
 .hero-visual-card > * {
