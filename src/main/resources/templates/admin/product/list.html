@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>상품 관리</title>
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
-    <link rel="stylesheet" th:href="@{/css/product/product.css}">
+    <link rel="stylesheet" th:href="@{/admin/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/product/product.css}">
 </head>
 <body>
 <div class="admin-shell">
 
     <header class="admin-topbar py-3">
         <div class="admin-container py-0 d-flex justify-content-between align-items-center">
-            <a th:href="@{/}" class="fw-bold">KQSF Admin</a>
+            <a th:href="@{/admin}" class="fw-bold">KQSF Admin</a>
             <nav class="d-flex gap-3">
-                <a th:href="@{/products}">상품 관리</a>
-                <a th:href="@{/products/categories}">분류 관리</a>
-                <form th:action="@{/logout}" method="post" class="m-0">
+                <a th:href="@{/admin/products}">상품 관리</a>
+                <a th:href="@{/admin/products/categories}">분류 관리</a>
+                <form th:action="@{/admin/logout}" method="post" class="m-0">
                     <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                     <button type="submit" class="btn btn-sm btn-outline-light">로그아웃</button>
                 </form>
@@ -30,14 +30,14 @@
                 <p class="admin-page-subtitle">상품, 카테고리, 가공 형태 옵션을 관리합니다.</p>
             </div>
             <div class="admin-actions">
-                <a th:href="@{/products/categories}" class="btn btn-outline-secondary">분류 관리</a>
-                <a th:href="@{/products/new}" class="btn btn-primary">상품 등록</a>
+                <a th:href="@{/admin/products/categories}" class="btn btn-outline-secondary">분류 관리</a>
+                <a th:href="@{/admin/products/new}" class="btn btn-primary">상품 등록</a>
             </div>
         </div>
 
         <div class="admin-card mb-4">
             <div class="admin-card-body">
-                <form th:action="@{/products}" method="get" class="row g-3 align-items-end">
+                <form th:action="@{/admin/products}" method="get" class="row g-3 align-items-end">
                     <div class="col-md-4">
                         <label class="form-label">카테고리 필터</label>
                         <select name="categoryId" class="form-select">
@@ -53,7 +53,7 @@
 
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-dark">적용</button>
-                        <a th:href="@{/products}" class="btn btn-outline-secondary">초기화</a>
+                        <a th:href="@{/admin/products}" class="btn btn-outline-secondary">초기화</a>
                     </div>
                 </form>
             </div>
@@ -107,8 +107,8 @@
                         <td th:text="${product.sortOrder}">1</td>
                         <td>
                             <div class="admin-actions">
-                                <a th:href="@{/products/{id}(id=${product.id})}" class="btn btn-sm btn-outline-dark">조회</a>
-                                <a th:href="@{/products/{id}/edit(id=${product.id})}" class="btn btn-sm btn-outline-primary">수정</a>
+                                <a th:href="@{/admin/products/{id}(id=${product.id})}" class="btn btn-sm btn-outline-dark">조회</a>
+                                <a th:href="@{/admin/products/{id}/edit(id=${product.id})}" class="btn btn-sm btn-outline-primary">수정</a>
                             </div>
                         </td>
                     </tr>
@@ -125,7 +125,7 @@
                     <ul class="pagination">
                         <li class="page-item" th:classappend="${products.first} ? 'disabled'">
                             <a class="page-link"
-                               th:href="@{/products(page=${products.number - 1}, size=${products.size}, categoryId=${selectedCategoryId})}">
+                               th:href="@{/admin/products(page=${products.number - 1}, size=${products.size}, categoryId=${selectedCategoryId})}">
                                 이전
                             </a>
                         </li>
@@ -134,13 +134,13 @@
                             th:each="pageNo : ${#numbers.sequence(0, products.totalPages - 1)}"
                             th:classappend="${pageNo == products.number} ? 'active'">
                             <a class="page-link"
-                               th:href="@{/products(page=${pageNo}, size=${products.size}, categoryId=${selectedCategoryId})}"
+                               th:href="@{/admin/products(page=${pageNo}, size=${products.size}, categoryId=${selectedCategoryId})}"
                                th:text="${pageNo + 1}">1</a>
                         </li>
 
                         <li class="page-item" th:classappend="${products.last} ? 'disabled'">
                             <a class="page-link"
-                               th:href="@{/products(page=${products.number + 1}, size=${products.size}, categoryId=${selectedCategoryId})}">
+                               th:href="@{/admin/products(page=${products.number + 1}, size=${products.size}, categoryId=${selectedCategoryId})}">
                                 다음
                             </a>
                         </li>
@@ -151,6 +151,6 @@
     </main>
 </div>
 
-<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/admin/bootstrap/js/bootstrap.js}"></script>
 </body>
 </html>
