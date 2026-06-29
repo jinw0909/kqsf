@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="_csrf" th:content="${_csrf != null ? _csrf.token : ''}">
+  <meta name="_csrf_header" th:content="${_csrf != null ? _csrf.headerName : ''}">
+  <title>상품 등록</title>
+  <link rel="stylesheet" th:href="@{/admin/bootstrap/css/bootstrap.css}">
+  <link rel="stylesheet" th:href="@{/admin/css/product/product.css}">
+</head>
+<body>
+<div class="admin-shell">
+
+  <header class="admin-topbar py-3">
+    <div class="admin-container py-0 d-flex justify-content-between align-items-center">
+      <a th:href="@{/admin}" class="fw-bold">KQSF Admin</a>
+      <nav class="d-flex gap-3">
+        <a th:href="@{/admin/products}">상품 관리</a>
+        <a th:href="@{/admin/products/categories}">분류 관리</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <div class="mb-4">
+      <h1 class="admin-page-title">상품 등록</h1>
+      <p class="admin-page-subtitle">상품 기본 정보와 가공 형태 옵션을 등록합니다.</p>
+    </div>
+
+    <form th:object="${form}" th:action="@{/admin/products}" method="post">
+      <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+      <div class="admin-card mb-4">
+        <div class="admin-card-header">
+          <strong>기본 정보</strong>
+        </div>
+        <div class="admin-card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">카테고리</label>
+              <select th:field="*{categoryId}" class="form-select">
+                <option value="">선택</option>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                  수산물
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">정렬 순서</label>
+              <input type="number" th:field="*{sortOrder}" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">상품 코드</label>
+              <input type="text" th:field="*{code}" class="form-control" placeholder="east-sea-bluefin-tuna">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">상품명</label>
+              <input type="text" th:field="*{name}" class="form-control" placeholder="동해 연안 참다랑어">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">영문 상품명</label>
+              <input type="text" th:field="*{nameEn}" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">썸네일 이미지</label>
+
+              <div class="image-uploader"
+                   data-upload-dir="products/thumbnail"
+                   data-input-id="thumbnailUrl"
+                   data-file-id="thumbnailFile"
+                   data-preview-id="thumbnailPreview"
+                   data-placeholder-id="thumbnailPlaceholder"
+                   data-reset-id="thumbnailReset">
+
+                <input type="hidden"
+                       th:field="*{thumbnailUrl}"
+                       id="thumbnailUrl"
+                       th:attr="data-original-value=*{thumbnailUrl}">
+
+                <input type="file"
+                       id="thumbnailFile"
+                       class="image-uploader__file"
+                       accept="image/*">
+
+                <div class="image-uploader__dropzone">
+                  <img id="thumbnailPreview"
+                       class="image-uploader__preview"
+                       th:if="*{thumbnailUrl != null and !#strings.isEmpty(thumbnailUrl)}"
+                       th:src="*{thumbnailUrl}"
+                       alt="thumbnail preview">
+
+                  <img id="thumbnailPreview"
+                       class="image-uploader__preview d-none"
+                       th:unless="*{thumbnailUrl != null and !#strings.isEmpty(thumbnailUrl)}"
+                       alt="thumbnail preview">
+
+                  <div id="thumbnailPlaceholder"
+                       class="image-uploader__placeholder"
+                       th:classappend="*{thumbnailUrl != null and !#strings.isEmpty(thumbnailUrl)} ? ' d-none'">
+                    <div class="image-uploader__icon">＋</div>
+                    <div class="image-uploader__text">이미지를 클릭하거나 드래그해서 업로드</div>
+                    <div class="image-uploader__hint">JPG, PNG, WEBP / 최대 20MB</div>
+                  </div>
+
+                  <div class="image-uploader__loading d-none">
+                    업로드 중...
+                  </div>
+                </div>
+
+                <div class="image-uploader__actions">
+                  <button type="button"
+                          class="btn btn-sm btn-outline-secondary image-uploader__reset"
+                          id="thumbnailReset">
+                    리셋
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">메인 이미지</label>
+
+              <div class="image-uploader"
+                   data-upload-dir="products/main"
+                   data-input-id="mainImageUrl"
+                   data-file-id="mainImageFile"
+                   data-preview-id="mainImagePreview"
+                   data-placeholder-id="mainImagePlaceholder"
+                   data-reset-id="mainImageReset">
+
+                <input type="hidden"
+                       th:field="*{mainImageUrl}"
+                       id="mainImageUrl"
+                       th:attr="data-original-value=*{mainImageUrl}">
+
+                <input type="file"
+                       id="mainImageFile"
+                       class="image-uploader__file"
+                       accept="image/*">
+
+                <div class="image-uploader__dropzone">
+                  <img id="mainImagePreview"
+                       class="image-uploader__preview"
+                       th:if="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)}"
+                       th:src="*{mainImageUrl}"
+                       alt="main image preview">
+
+                  <img id="mainImagePreview"
+                       class="image-uploader__preview d-none"
+                       th:unless="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)}"
+                       alt="main image preview">
+
+                  <div id="mainImagePlaceholder"
+                       class="image-uploader__placeholder"
+                       th:classappend="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)} ? ' d-none'">
+                    <div class="image-uploader__icon">＋</div>
+                    <div class="image-uploader__text">이미지를 클릭하거나 드래그해서 업로드</div>
+                    <div class="image-uploader__hint">JPG, PNG, WEBP / 최대 20MB</div>
+                  </div>
+
+                  <div class="image-uploader__loading d-none">
+                    업로드 중...
+                  </div>
+                </div>
+
+                <div class="image-uploader__actions">
+                  <button type="button"
+                          class="btn btn-sm btn-outline-secondary image-uploader__reset"
+                          id="mainImageReset">
+                    리셋
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">짧은 설명</label>
+              <textarea th:field="*{shortDescription}" class="form-control"></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">영문 짧은 설명</label>
+              <textarea th:field="*{shortDescriptionEn}" class="form-control"></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">상세 설명</label>
+              <textarea th:field="*{description}" class="form-control"></textarea>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">영문 상세 설명</label>
+              <textarea th:field="*{descriptionEn}" class="form-control"></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-check">
+                <input type="checkbox" th:field="*{active}" class="form-check-input">
+                <label class="form-check-label">사이트 노출</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-check">
+                <input type="checkbox" th:field="*{inquiryEnabled}" class="form-check-input">
+                <label class="form-check-label">문의하기 노출</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">상품 등록</button>
+        <a th:href="@{/admin/products}" class="btn btn-outline-secondary">취소</a>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script th:src="@{/admin/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/admin/js/upload.js}"></script>
+</body>
+</html>

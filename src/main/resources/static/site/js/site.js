@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const setStableViewportHeight = () => {
+        const vh = window.innerHeight;
+        document.documentElement.style.setProperty("--stable-vh", `${vh}px`);
+    };
+
+    setStableViewportHeight();
+
     const header = document.getElementById("siteHeader");
     const menuButton = document.getElementById("siteMenuButton");
     const siteNav = document.getElementById("siteNav");

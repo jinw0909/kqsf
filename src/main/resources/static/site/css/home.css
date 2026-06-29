@@ -374,19 +374,38 @@
     overflow: hidden;
 }
 
+/*.fixed-bg {*/
+/*    position: fixed;*/
+/*    !*top: calc(var(--stable-vh, 100vh) * -0.12);*!*/
+/*    bottom: calc(var(--stable-vh, 100vh) * -0.3);*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    !*height: 120lvh;*!*/
+/*    height: calc(var(--stable-vh, 100vh) * 1.35);*/
+
+/*    z-index: 0;*/
+/*    background-image: url("/site/images/home/tank.png");*/
+/*    background-size: cover;*/
+/*    background-position: center center;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+
 .fixed-bg {
     position: fixed;
-    top: 0;
+    bottom: calc(var(--stable-vh, 100vh) * -0.3);
     left: 0;
     right: 0;
-    /*aspect-ratio: 16/9;*/
-    height: 120svh;
+    height: calc(var(--stable-vh, 100vh) * 1.4);
+
     z-index: 0;
     background-image: url("/site/images/home/tank.png");
     background-size: cover;
-    background-position: center;
+    background-position: center 70%;
     background-repeat: no-repeat;
 }
+
+
+
 
 /* 얼음/냉기 오버레이 */
 .fixed-bg-wrap::before {

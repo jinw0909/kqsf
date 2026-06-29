@@ -1,0 +1,268 @@
+body {
+    background: #f5f6f8;
+    color: #1f2937;
+}
+
+.admin-shell {
+    min-height: 100vh;
+}
+
+.admin-topbar {
+    background: #111827;
+    color: #fff;
+}
+
+.admin-topbar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.admin-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+}
+
+.admin-page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.admin-page-subtitle {
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+.admin-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.admin-card-header {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-card-body {
+    padding: 22px;
+}
+
+.admin-table {
+    margin-bottom: 0;
+}
+
+.admin-table th {
+    white-space: nowrap;
+    color: #4b5563;
+    font-size: 14px;
+    background: #f9fafb;
+}
+
+.admin-table td {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #3730a3;
+    margin: 2px 4px 2px 0;
+}
+
+.admin-badge-muted {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.admin-badge-off {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.admin-form-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.admin-form-help {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.admin-option-box {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 18px;
+    background: #fbfdff;
+    margin-bottom: 16px;
+}
+
+.admin-option-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.admin-image-preview {
+    max-width: 220px;
+    max-height: 140px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    object-fit: cover;
+    background: #f3f4f6;
+}
+
+.admin-empty {
+    padding: 36px 16px;
+    text-align: center;
+    color: #6b7280;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pagination {
+    margin-bottom: 0;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #374151;
+}
+
+textarea.form-control {
+    min-height: 96px;
+}
+
+
+.image-uploader {
+    width: 100%;
+}
+
+.image-uploader__file {
+    display: none;
+}
+
+.image-uploader__dropzone {
+    position: relative;
+    min-height: 220px;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 16px;
+    background: #f8fafc;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition:
+            border-color 0.18s ease,
+            background 0.18s ease,
+            box-shadow 0.18s ease,
+            transform 0.18s ease;
+}
+
+.image-uploader__dropzone:hover {
+    border-color: #64748b;
+    background: #f1f5f9;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.image-uploader.is-dragover .image-uploader__dropzone {
+    border-color: #2563eb;
+    background: #eff6ff;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.16);
+    transform: translateY(-1px);
+}
+
+.image-uploader__preview {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-uploader__placeholder {
+    text-align: center;
+    color: #64748b;
+    padding: 24px;
+}
+
+.image-uploader__icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 12px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    color: #334155;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+.image-uploader__text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.image-uploader__hint {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.image-uploader__loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.48);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(2px);
+}
+
+.image-uploader__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.image-uploader.is-uploaded .image-uploader__dropzone {
+    border-style: solid;
+    border-color: #e5e7eb;
+    background: #fff;
+}
+
+.image-uploader.is-error .image-uploader__dropzone {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.d-none {
+    display: none !important;
+}
