@@ -107,7 +107,18 @@
     background:
             radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.48), transparent 34%),
             linear-gradient(
-                    335deg,
+                    135deg,
+                    rgba(255, 255, 255, 0.34) 0%,
+                    rgba(210, 226, 236, 0.22) 42%,
+                    rgba(6, 27, 51, 0.15) 100%
+            );
+}
+
+.hero-visual-card:nth-child(3)::after {
+    background:
+            radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.48), transparent 34%),
+            linear-gradient(
+                    135deg,
                     rgba(255, 255, 255, 0.34) 0%,
                     rgba(210, 226, 236, 0.22) 42%,
                     rgba(6, 27, 51, 0.15) 100%
@@ -354,8 +365,29 @@
     overflow: hidden;
 }
 
+/*.fixed-bg {*/
+/*    position: fixed;*/
+/*    bottom: calc(var(--stable-vh, 100vh) * -0.3);*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: calc(var(--stable-vh, 100vh) * 1.4);*/
 
+/*    z-index: 0;*/
+/*    background-image: url("/site/images/home/tank.png");*/
+/*    background-size: cover;*/
+/*    background-position: center 70%;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
 
+/*html.is-kakao-inapp .fixed-bg {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    bottom: auto;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: 100%;*/
+/*    background-position: center 70%;*/
+/*}*/
 .fixed-bg {
     position: fixed;
     bottom: calc(var(--stable-vh, 100vh) * -0.3);
@@ -370,16 +402,26 @@
     background-repeat: no-repeat;
 }
 
-html.is-kakao-inapp .fixed-bg {
+html.is-mobile-chrome .fixed-bg {
+    position: fixed;
+    top: auto;
+    bottom: calc(var(--stable-vh, 100vh) * -0.3);
+    height: calc(var(--stable-vh, 100vh) * 1.4);
+}
+
+html.is-mobile-safari .fixed-bg {
+    position: fixed;
+    top: 0;
+    bottom: auto;
+    height: calc(var(--stable-vh, 100vh) * 1.4);
+}
+
+html.is-mobile-absolute-bg .fixed-bg {
     position: absolute;
     top: 0;
     bottom: auto;
-    left: 0;
-    right: 0;
     height: 100%;
-    background-position: center 70%;
 }
-
 
 /* 얼음/냉기 오버레이 */
 .fixed-bg-wrap::before {
@@ -606,6 +648,10 @@ html.is-kakao-inapp .fixed-bg {
             radial-gradient(circle at 12% 12%, rgba(112, 200, 255, 0.14), transparent 30%),
             radial-gradient(circle at 88% 72%, rgba(6, 27, 51, 0.06), transparent 34%),
             linear-gradient(180deg, #ffffff 0%, #f7fbff 48%, #ffffff 100%);
+}
+
+.all-product-btn {
+    margin-top: 1rem;
 }
 
 .product-preview {

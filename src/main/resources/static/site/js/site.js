@@ -60,12 +60,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // const ua = navigator.userAgent;
+    // const isKakaoInApp = /KAKAOTALK/i.test(ua);
+    //
+    // if (isKakaoInApp) {
+    //     document.documentElement.classList.add("is-kakao-inapp");
+    // }
+
     const ua = navigator.userAgent;
-    const isKakaoInApp = /KAKAOTALK/i.test(ua);
 
-    if (isKakaoInApp) {
-        document.documentElement.classList.add("is-kakao-inapp");
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+
+    // iOS Safari
+    const isMobileSafari =
+        /iPhone|iPad|iPod/i.test(ua) &&
+        /Safari/i.test(ua) &&
+        !/CriOS|FxiOS|EdgiOS|Whale|KAKAOTALK/i.test(ua);
+
+    // Android Chrome 또는 iOS Chrome
+    const isMobileChrome =
+        isMobile &&
+        (
+            /Chrome/i.test(ua) ||
+            /CriOS/i.test(ua)
+        ) &&
+        !/SamsungBrowser|Whale|EdgA|EdgiOS|KAKAOTALK/i.test(ua);
+
+    // 모바일인데 Chrome/Safari가 아니면 absolute
+    const isOtherMobile = isMobile && !isMobileChrome && !isMobileSafari;
+
+    if (isMobileSafari) {
+        document.documentElement.classList.add("is-mobile-safari");
+    } else if (isMobileChrome) {
+        document.documentElement.classList.add("is-mobile-chrome");
+    } else if (isOtherMobile) {
+        document.documentElement.classList.add("is-mobile-absolute-bg");
     }
-
 
 });
