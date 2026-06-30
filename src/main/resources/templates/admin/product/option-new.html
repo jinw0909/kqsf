@@ -2,6 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="_csrf" th:content="${_csrf != null ? _csrf.token : ''}">
+  <meta name="_csrf_header" th:content="${_csrf != null ? _csrf.headerName : ''}">
   <title>상품 옵션 추가</title>
   <link rel="stylesheet" th:href="@{/admin/bootstrap/css/bootstrap.css}">
   <link rel="stylesheet" th:href="@{/admin/css/product/product.css}">
@@ -150,5 +152,7 @@
     </div>
   </main>
 </div>
+<script th:src="@{/admin/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/admin/js/upload.js}"></script>
 </body>
 </html>

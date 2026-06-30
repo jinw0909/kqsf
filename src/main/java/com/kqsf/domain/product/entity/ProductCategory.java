@@ -26,7 +26,7 @@ public class ProductCategory {
 
     private String descriptionEn;
 
-    private String thumbnailUrl;
+    private String bannerUrl;
 
     private Integer sortOrder;
 
@@ -48,7 +48,7 @@ public class ProductCategory {
         this.nameEn = nameEn;
         this.description = description;
         this.descriptionEn = descriptionEn;
-        this.thumbnailUrl = thumbnailUrl;
+        this.bannerUrl = thumbnailUrl;
         this.sortOrder = sortOrder;
         this.active = active;
     }

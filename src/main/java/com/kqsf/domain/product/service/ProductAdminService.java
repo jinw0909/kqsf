@@ -49,7 +49,7 @@ public class ProductAdminService {
                 form.getNameEn(),
                 form.getDescription(),
                 form.getDescriptionEn(),
-                form.getThumbnailUrl(),
+                form.getBannerUrl(),
                 form.getSortOrder(),
                 Boolean.TRUE.equals(form.getActive())
         );
@@ -68,7 +68,7 @@ public class ProductAdminService {
                 form.getNameEn(),
                 form.getDescription(),
                 form.getDescriptionEn(),
-                form.getThumbnailUrl(),
+                form.getBannerUrl(),
                 form.getSortOrder(),
                 Boolean.TRUE.equals(form.getActive())
         );

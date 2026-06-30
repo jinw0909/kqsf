@@ -20,7 +20,7 @@ public record ProductCategoryResponse(
                 category.getNameEn(),
                 category.getDescription(),
                 category.getDescriptionEn(),
-                category.getThumbnailUrl(),
+                category.getBannerUrl(),
                 category.getSortOrder(),
                 category.getActive()
         );

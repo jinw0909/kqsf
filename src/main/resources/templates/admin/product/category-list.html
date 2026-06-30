@@ -64,12 +64,12 @@
               <span th:unless="${category.active}" class="badge text-bg-secondary">숨김</span>
             </td>
             <td>
-              <img th:if="${category.thumbnailUrl != null and !#strings.isEmpty(category.thumbnailUrl)}"
-                   th:src="${category.thumbnailUrl}"
+              <img th:if="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"
+                   th:src="${category.bannerUrl}"
                    class="admin-image-preview"
                    style="max-width: 80px; max-height: 48px;"
                    alt="thumbnail">
-              <span th:unless="${category.thumbnailUrl != null and !#strings.isEmpty(category.thumbnailUrl)}"
+              <span th:unless="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"
                     class="text-muted">없음</span>
             </td>
             <td>

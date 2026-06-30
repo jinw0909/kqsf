@@ -13,7 +13,7 @@ public class ProductCategoryForm {
     private String nameEn;
     private String description;
     private String descriptionEn;
-    private String thumbnailUrl;
+    private String bannerUrl;
     private Integer sortOrder;
     private Boolean active = true;
 
@@ -24,7 +24,7 @@ public class ProductCategoryForm {
         form.setNameEn(category.getNameEn());
         form.setDescription(category.getDescription());
         form.setDescriptionEn(category.getDescriptionEn());
-        form.setThumbnailUrl(category.getThumbnailUrl());
+        form.setBannerUrl(category.getBannerUrl());
         form.setSortOrder(category.getSortOrder());
         form.setActive(category.getActive());
         return form;

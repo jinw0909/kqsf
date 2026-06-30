@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>상품 관리</title>
-    <link rel="stylesheet" th:href="@{/admin/bootstrap/css/bootstrap.css}">
-    <link rel="stylesheet" th:href="@{/admin/css/product/product.css}">
-</head>
-<body>
-<div class="admin-shell">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{admin/layout/admin-layout :: layout(
+        '상품 관리',
+        'products',
+        ~{::content},
+        '/admin/css/product/product.css'
+      )}">
 
-    <header class="admin-topbar py-3">
-        <div class="admin-container py-0 d-flex justify-content-between align-items-center">
-            <a th:href="@{/admin}" class="fw-bold">KQSF Admin</a>
-            <nav class="d-flex gap-3">
-                <a th:href="@{/admin/products}">상품 관리</a>
-                <a th:href="@{/admin/products/categories}">분류 관리</a>
-                <form th:action="@{/admin/logout}" method="post" class="m-0">
-                    <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                    <button type="submit" class="btn btn-sm btn-outline-light">로그아웃</button>
-                </form>
-            </nav>
-        </div>
-    </header>
+<div th:fragment="content">
 
-    <main class="admin-container">
-        <div class="d-flex justify-content-between align-items-end mb-4">
-            <div>
-                <h1 class="admin-page-title">상품 관리</h1>
-                <p class="admin-page-subtitle">상품, 카테고리, 가공 형태 옵션을 관리합니다.</p>
-            </div>
-            <div class="admin-actions">
-                <a th:href="@{/admin/products/categories}" class="btn btn-outline-secondary">분류 관리</a>
-                <a th:href="@{/admin/products/new}" class="btn btn-primary">상품 등록</a>
-            </div>
+<!--    <main class="admin-container">-->
+    <div class="admin-page-header">
+        <div>
+            <h1 class="admin-page-title">상품 관리</h1>
+            <p class="admin-page-subtitle">상품, 카테고리, 가공 형태 옵션을 관리합니다.</p>
         </div>
 
-        <div class="admin-card mb-4">
-            <div class="admin-card-body">
-                <form th:action="@{/admin/products}" method="get" class="row g-3 align-items-end">
-                    <div class="col-md-4">
-                        <label class="form-label">카테고리 필터</label>
-                        <select name="categoryId" class="form-select">
-                            <option value="">전체 카테고리</option>
-                            <option th:each="category : ${categories}"
-                                    th:value="${category.id}"
-                                    th:selected="${selectedCategoryId != null and selectedCategoryId == category.id}"
-                                    th:text="${category.name}">
-                                수산물
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-auto">
-                        <button type="submit" class="btn btn-dark">적용</button>
-                        <a th:href="@{/admin/products}" class="btn btn-outline-secondary">초기화</a>
-                    </div>
-                </form>
-            </div>
+        <div class="admin-actions">
+            <a th:href="@{/admin/products/categories}" class="btn btn-outline-secondary">분류 관리</a>
+            <a th:href="@{/admin/products/new}" class="btn btn-primary">상품 등록</a>
         </div>
+    </div>
 
-        <div class="admin-card">
+    <section class="admin-card admin-filter-card">
+        <div class="admin-card-body">
+            <form th:action="@{/admin/products}" method="get" class="product-filter-form">
+                <div class="product-filter-field">
+                    <label class="form-label fw-bold">카테고리 필터</label>
+                    <select name="categoryId" class="form-select">
+                        <option value="">전체 카테고리</option>
+                        <option th:each="category : ${categories}"
+                                th:value="${category.id}"
+                                th:selected="${selectedCategoryId != null and selectedCategoryId == category.id}"
+                                th:text="${category.name}">
+                            수산물
+                        </option>
+                    </select>
+                </div>
+
+                <div class="admin-actions">
+                    <button type="submit" class="btn btn-dark">적용</button>
+                    <a th:href="@{/admin/products}" class="btn btn-outline-secondary">초기화</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="admin-card">
             <div class="admin-card-header d-flex justify-content-between align-items-center">
-                <strong>상품 목록</strong>
-                <span class="text-muted small">
-                    총 <span th:text="${products.totalElements}">0</span>개
+                <h2 class="admin-card-title">상품 목록</h2>
+                <span class="admin-card-meta">
+                    총 <strong th:text="${products.totalElements}">0</strong>개
                 </span>
             </div>
 
@@ -82,33 +70,59 @@
                         <th>관리</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     <tr th:each="product : ${products.content}">
                         <td th:text="${product.id}">1</td>
+
                         <td th:text="${product.categoryName}">수산물</td>
-                        <td><code th:text="${product.code}">east-sea-bluefin-tuna</code></td>
-                        <td class="fw-semibold" th:text="${product.name}">동해 연안 참다랑어</td>
+
+                        <td>
+                            <code class="product-code" th:text="${product.code}">east-sea-bluefin-tuna</code>
+                        </td>
+
+                        <td>
+                            <a th:href="@{/admin/products/{id}(id=${product.id})}"
+                               class="product-list-name"
+                               th:text="${product.name}">
+                                동해 연안 참다랑어
+                            </a>
+                        </td>
+
                         <td>
                             <span th:each="option : ${product.processingOptions}"
                                   th:class="${option.active} ? 'admin-badge' : 'admin-badge admin-badge-off'"
                                   th:text="${option.title}">
                                 참치 로인
                             </span>
-                            <span th:if="${#lists.isEmpty(product.processingOptions)}" class="text-muted">없음</span>
+                            <span th:if="${#lists.isEmpty(product.processingOptions)}"
+                                  class="product-option-empty">
+                                없음
+                            </span>
                         </td>
+
                         <td>
-                            <span th:if="${product.active}" class="badge text-bg-success">노출</span>
-                            <span th:unless="${product.active}" class="badge text-bg-secondary">숨김</span>
+                            <span th:if="${product.active}" class="admin-status is-on">노출</span>
+                            <span th:unless="${product.active}" class="admin-status is-off">숨김</span>
                         </td>
+
                         <td>
-                            <span th:if="${product.inquiryEnabled}" class="badge text-bg-primary">가능</span>
-                            <span th:unless="${product.inquiryEnabled}" class="badge text-bg-secondary">비활성</span>
+                            <span th:if="${product.inquiryEnabled}" class="admin-status is-blue">가능</span>
+                            <span th:unless="${product.inquiryEnabled}" class="admin-status is-off">비활성</span>
                         </td>
+
                         <td th:text="${product.sortOrder}">1</td>
+
                         <td>
-                            <div class="admin-actions">
-                                <a th:href="@{/admin/products/{id}(id=${product.id})}" class="btn btn-sm btn-outline-dark">조회</a>
-                                <a th:href="@{/admin/products/{id}/edit(id=${product.id})}" class="btn btn-sm btn-outline-primary">수정</a>
+                            <div class="product-table-actions">
+                                <a th:href="@{/admin/products/{id}(id=${product.id})}"
+                                   class="btn btn-sm btn-outline-dark">
+                                    조회
+                                </a>
+                                <a th:href="@{/admin/products/{id}/edit(id=${product.id})}"
+                                   class="btn btn-sm btn-outline-primary">
+                                    수정
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -122,7 +136,7 @@
 
             <div class="admin-card-body border-top" th:if="${products.totalPages > 1}">
                 <nav class="d-flex justify-content-center">
-                    <ul class="pagination">
+                    <ul class="pagination mb-0">
                         <li class="page-item" th:classappend="${products.first} ? 'disabled'">
                             <a class="page-link"
                                th:href="@{/admin/products(page=${products.number - 1}, size=${products.size}, categoryId=${selectedCategoryId})}">
@@ -147,10 +161,8 @@
                     </ul>
                 </nav>
             </div>
-        </div>
-    </main>
+        </section>
+<!--    </main>-->
 </div>
 
-<script th:src="@{/admin/bootstrap/js/bootstrap.js}"></script>
-</body>
 </html>

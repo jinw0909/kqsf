@@ -59,4 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
             observer.observe(target);
         });
     }
+
+    const ua = navigator.userAgent;
+    const isKakaoInApp = /KAKAOTALK/i.test(ua);
+
+    if (isKakaoInApp) {
+        document.documentElement.classList.add("is-kakao-inapp");
+    }
+
+
 });
