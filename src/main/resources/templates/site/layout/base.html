@@ -22,24 +22,55 @@
 </head>
 
 <body>
+<!--<header th:fragment="header" class="site-header" id="siteHeader">-->
+<!--  <div class="site-header__inner">-->
+<!--    <a href="/" class="site-logo" aria-label="KQSF 홈">-->
+<!--      <img src="/site/images/logo/logo.png" alt="KQSF">-->
+<!--&lt;!&ndash;      <span class="site-logo__text">&ndash;&gt;-->
+<!--&lt;!&ndash;            <strong>KQSF</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;            <small>Kyungnam Quick Super Freeze</small>&ndash;&gt;-->
+<!--&lt;!&ndash;      </span>&ndash;&gt;-->
+<!--    </a>-->
+
+<!--    <nav class="site-nav" id="siteNav" aria-label="주요 메뉴">-->
+<!--      <a href="/products" class="site-nav__link">제품</a>-->
+<!--      <a href="/infrastructure" class="site-nav__link">초저온 기술</a>-->
+<!--      <a href="/qsf" class="site-nav__link">QSF</a>-->
+<!--    </nav>-->
+
+<!--    <div class="site-header__actions">-->
+<!--      <a href="/contact" class="site-header__cta">B2B 문의</a>-->
+
+<!--      <button class="site-menu-button" id="siteMenuButton" type="button" aria-label="메뉴 열기">-->
+<!--        <span></span>-->
+<!--        <span></span>-->
+<!--        <span></span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</header>-->
+
 <header th:fragment="header" class="site-header" id="siteHeader">
   <div class="site-header__inner">
     <a href="/" class="site-logo" aria-label="KQSF 홈">
       <img src="/site/images/logo/logo.png" alt="KQSF">
-<!--      <span class="site-logo__text">-->
-<!--            <strong>KQSF</strong>-->
-<!--            <small>Kyungnam Quick Super Freeze</small>-->
-<!--      </span>-->
     </a>
 
     <nav class="site-nav" id="siteNav" aria-label="주요 메뉴">
       <a href="/products" class="site-nav__link">제품</a>
-      <a href="/infrastructure" class="site-nav__link">초저온 기술</a>
-      <a href="/qsf" class="site-nav__link">QSF</a>
+      <a href="/infrastructure" class="site-nav__link">LNG 초저온 기술</a>
+      <a href="/qsf" class="site-nav__link">QSF 시스템</a>
+
+      <!-- 모바일 메뉴 안에서만 노출 -->
+      <div class="site-nav__mobile-actions">
+        <a href="/contact" class="site-nav__mobile-cta">문의하기</a>
+        <a href="/login" class="site-nav__mobile-login">로그인</a>
+      </div>
     </nav>
 
     <div class="site-header__actions">
-      <a href="/contact" class="site-header__cta">B2B 문의</a>
+      <a href="/contact" class="site-header__cta">문의하기</a>
+      <a href="/login" class="site-header__login">로그인</a>
 
       <button class="site-menu-button" id="siteMenuButton" type="button" aria-label="메뉴 열기">
         <span></span>
@@ -58,11 +89,18 @@
       <p>-162°C LNG 냉열 기반 초저온 식품 기술</p>
     </div>
 
+<!--    <div class="site-footer__links">-->
+<!--      <a href="/products">제품</a>-->
+<!--      <a href="/infrastructure">초저온 기술</a>-->
+<!--      <a href="/qsf">QSF</a>-->
+<!--      <a href="/contact">B2B 문의</a>-->
+<!--    </div>-->
     <div class="site-footer__links">
       <a href="/products">제품</a>
-      <a href="/infrastructure">초저온 기술</a>
-      <a href="/qsf">QSF</a>
-      <a href="/contact">B2B 문의</a>
+      <a href="/infrastructure">LNG 초저온 기술</a>
+      <a href="/qsf">QSF 시스템</a>
+      <a href="/contact">문의하기</a>
+      <a href="/login">로그인</a>
     </div>
   </div>
 

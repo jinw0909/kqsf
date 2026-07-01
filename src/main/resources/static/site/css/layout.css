@@ -183,6 +183,52 @@ button {
     transition: box-shadow 0.2s ease, background 0.2s ease;
 }
 
+.site-header__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--color-navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 0 10px 22px rgba(6, 27, 51, 0.16);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.site-header__cta:hover {
+    transform: translateY(-1px);
+    background: var(--color-navy-light);
+    box-shadow: 0 14px 28px rgba(6, 27, 51, 0.20);
+}
+
+.site-header__login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(6, 27, 51, 0.16);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--color-navy);
+    font-size: 14px;
+    font-weight: 800;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-header__login:hover {
+    background: var(--color-bg-soft);
+    border-color: rgba(23, 139, 255, 0.28);
+    color: var(--color-blue);
+}
+
+.site-nav__mobile-actions {
+    display: none;
+}
+
 .site-header.is-scrolled {
     background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 12px 30px rgba(15, 35, 60, 0.08);
@@ -416,8 +462,40 @@ button {
         padding: 14px 16px;
     }
 
-    .site-header__cta {
+    .site-header__cta,
+    .site-header__login {
         display: none;
+    }
+
+    .site-nav__mobile-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+        padding-top: 14px;
+        border-top: 1px solid var(--color-line);
+    }
+
+    .site-nav__mobile-cta,
+    .site-nav__mobile-login {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    .site-nav__mobile-cta {
+        background: var(--color-navy);
+        color: #fff;
+    }
+
+    .site-nav__mobile-login {
+        border: 1px solid rgba(6, 27, 51, 0.16);
+        background: #fff;
+        color: var(--color-navy);
     }
 
     .site-menu-button {

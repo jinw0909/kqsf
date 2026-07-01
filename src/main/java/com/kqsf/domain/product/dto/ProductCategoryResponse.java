@@ -8,7 +8,7 @@ public record ProductCategoryResponse(
         String nameEn,
         String description,
         String descriptionEn,
-        String thumbnailUrl,
+        String bannerUrl,
         Integer sortOrder,
         Boolean active
 ) {

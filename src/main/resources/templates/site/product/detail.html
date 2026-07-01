@@ -1,10 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{site/layout/base :: head(${product.name + ' | KQSF 제품'}, '/site/css/product-detail.css')}"></head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
 <body>
-product detail
+<header th:replace="~{site/layout/base :: header}"></header>
+<main class="product-detail-page">
+
+    <!-- Product Detail Hero -->
+    <section class="product-detail-hero">
+        <div class="product-detail-hero__bg"></div>
+
+        <div class="container product-detail-hero__inner">
+            <div class="product-detail-hero__content">
+                <p class="section-eyebrow" th:text="${product.categoryName}">
+                    수산물
+                </p>
+
+                <h1 th:text="${product.name}">
+                    초저온 연안 참다랑어
+                </h1>
+
+                <p class="product-detail-hero__lead" th:text="${product.shortDescription}">
+                    -60°C 초저온 기준으로 관리되는 B2B 납품형 참다랑어 제품입니다.
+                </p>
+
+                <div class="product-detail-hero__meta">
+          <span th:text="${product.nameEn != null ? product.nameEn : product.code}">
+            East Sea Bluefin Tuna
+          </span>
+                    <span>QSF Managed Product</span>
+                </div>
+
+                <div class="product-detail-hero__actions">
+                    <a th:if="${product.inquiryEnabled}"
+                       th:href="@{/contact(productCode=${product.code})}"
+                       class="button button--primary">
+                        이 제품 문의하기
+                    </a>
+
+                    <a th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(product.categoryCode)})}"
+                       class="button button--outline">
+                        카테고리로 돌아가기
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-detail-hero__media">
+                <img th:if="${product.mainImageUrl != null}"
+                     th:src="${product.mainImageUrl}"
+                     th:alt="${product.name}">
+
+                <div th:unless="${product.mainImageUrl != null}" class="product-detail-hero__placeholder">
+                    <span>KQSF</span>
+                    <strong th:text="${product.name}">제품명</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Description -->
+    <section class="product-description-section section">
+        <div class="container">
+            <div class="product-description-layout">
+                <aside class="product-summary-panel">
+                    <p class="card-eyebrow">Product Summary</p>
+
+                    <dl>
+                        <div>
+                            <dt>카테고리</dt>
+                            <dd th:text="${product.categoryName}">수산물</dd>
+                        </div>
+
+                        <div>
+                            <dt>제품 코드</dt>
+                            <dd th:text="${product.code}">EAST_SEA_BLUEFIN_TUNA</dd>
+                        </div>
+
+                        <div>
+                            <dt>관리 기준</dt>
+                            <dd>초저온 보관 · QSF 기준 관리</dd>
+                        </div>
+
+                        <div>
+                            <dt>문의 가능 여부</dt>
+                            <dd th:text="${product.inquiryEnabled ? '문의 가능' : '문의 준비 중'}">문의 가능</dd>
+                        </div>
+                    </dl>
+                </aside>
+
+                <div class="product-description-content">
+                    <p class="section-eyebrow">Overview</p>
+                    <h2>제품 소개</h2>
+
+                    <div class="product-rich-text"
+                         th:utext="${product.description}">
+                        상세 설명이 들어갑니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processing Options -->
+    <section class="processing-option-section section section--ice"
+             th:if="${product.processingOptions != null and !product.processingOptions.isEmpty()}">
+        <div class="container">
+            <div class="section-heading section-heading--between">
+                <div>
+                    <p class="section-eyebrow">Processing Option</p>
+                    <h2>제공 가능한 가공 옵션</h2>
+                    <p>
+                        상품별 공급 형태, 가공 방식, OEM/PB 상담 가능 여부를 확인할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Swiper 써도 되는 영역 -->
+            <div class="swiper processing-swiper">
+                <div class="swiper-wrapper">
+                    <article class="swiper-slide processing-card"
+                             th:each="option : ${product.processingOptions}"
+                             th:if="${option.active}">
+                        <div class="processing-card__media">
+                            <img th:if="${option.imageUrl != null}"
+                                 th:src="${option.imageUrl}"
+                                 th:alt="${option.title}">
+
+                            <div th:unless="${option.imageUrl != null}" class="processing-card__placeholder">
+                                <span>QSF</span>
+                            </div>
+                        </div>
+
+                        <div class="processing-card__body">
+                            <p class="card-eyebrow" th:text="${option.titleEn != null ? option.titleEn : 'Processing'}">
+                                Processing
+                            </p>
+
+                            <h3 th:text="${option.title}">
+                                참치 로인
+                            </h3>
+
+                            <p th:text="${option.summary}">
+                                초저온 기준으로 관리되는 가공 옵션입니다.
+                            </p>
+
+                            <div class="processing-card__description"
+                                 th:if="${option.description != null}"
+                                 th:utext="${option.description}">
+                                옵션 상세 설명
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="processing-swiper__controls">
+                    <button class="processing-swiper-button processing-swiper-button-prev" type="button" aria-label="이전 옵션">
+                        ‹
+                    </button>
+
+                    <div class="processing-swiper-pagination"></div>
+
+                    <button class="processing-swiper-button processing-swiper-button-next" type="button" aria-label="다음 옵션">
+                        ›
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products-section section"
+             th:if="${relatedProducts != null and !relatedProducts.isEmpty()}">
+        <div class="container">
+            <div class="section-heading section-heading--between">
+                <div>
+                    <p class="section-eyebrow">Related Products</p>
+                    <h2>같은 카테고리의 다른 제품</h2>
+                </div>
+
+                <a th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(product.categoryCode)})}"
+                   class="button button--outline">
+                    전체 보기
+                </a>
+            </div>
+
+            <div class="related-product-grid">
+                <article class="product-card" th:each="related : ${relatedProducts}">
+                    <a th:href="@{/products/{categoryCode}/{productCode}(
+                categoryCode=${#strings.toLowerCase(related.categoryCode)},
+                productCode=${#strings.toLowerCase(related.code)}
+              )}">
+                        <div class="product-card__media">
+                            <img th:if="${related.thumbnailUrl != null}"
+                                 th:src="${related.thumbnailUrl}"
+                                 th:alt="${related.name}">
+
+                            <div th:unless="${related.thumbnailUrl != null}" class="product-card__placeholder">
+                                <span>KQSF</span>
+                            </div>
+                        </div>
+
+                        <div class="product-card__body">
+                            <p class="card-eyebrow" th:text="${related.nameEn != null ? related.nameEn : related.code}">
+                                Product
+                            </p>
+                            <h3 th:text="${related.name}">관련 제품</h3>
+                            <p th:text="${related.shortDescription}">관련 제품 설명</p>
+                            <span class="card-link">제품 보기</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Contact CTA -->
+    <section class="product-contact-section section">
+        <div class="container">
+            <div class="product-contact-cta">
+                <p class="section-eyebrow">B2B Contact</p>
+                <h2>
+                    <span th:text="${product.name}">제품</span>
+                    <span>납품 상담이 필요하신가요?</span>
+                </h2>
+                <p>
+                    제품 공급, 가공 옵션, OEM/PB, 유통 협력에 대해 문의할 수 있습니다.
+                </p>
+
+                <a th:if="${product.inquiryEnabled}"
+                   th:href="@{/contact(productCode=${product.code})}"
+                   class="button button--primary">
+                    이 제품 문의하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="~{site/layout/base :: footer}"></footer>
+<th:block th:replace="~{site/layout/base :: scripts}"></th:block>
+<script src="/site/js/product-detail.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

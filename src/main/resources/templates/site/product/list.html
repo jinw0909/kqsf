@@ -1,10 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{site/layout/base :: head('KQSF | 제품', '/site/css/products.css')}"></head>
+
 <body>
-product list
+<header th:replace="~{site/layout/base :: header}"></header>
+
+<main class="products-page">
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+        <div class="products-hero__bg"></div>
+
+        <div class="container products-hero__inner">
+            <div class="products-hero__content">
+                <p class="section-eyebrow">Products</p>
+                <h1>초저온 기술로 관리되는<br>식품 라인업</h1>
+                <p>
+                    KQSF는 초저온 연안 참다랑어를 시작으로 수산물, 축산물, 농산물,
+                    HMR, OEM/PB 제품으로 확장합니다.
+                </p>
+            </div>
+
+            <div class="products-hero__visual">
+                <span>KQSF Product Line</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Links -->
+    <section class="product-categories section">
+        <div class="container">
+            <div class="section-heading section-heading--between">
+                <div>
+                    <p class="section-eyebrow">Category</p>
+                    <h2>제품 카테고리</h2>
+                    <p>공급 가능한 제품군을 카테고리별로 확인할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="category-link-grid">
+                <a href="/products" class="category-link-card is-active">
+                    <span>All</span>
+                    <strong>전체 제품</strong>
+                    <p>현재 노출 중인 모든 제품을 확인합니다.</p>
+                </a>
+
+                <a th:each="category : ${categories}"
+                   th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(category.code)})}"
+                   class="category-link-card">
+                    <span th:text="${category.nameEn != null ? category.nameEn : category.code}">SEAFOOD</span>
+                    <strong th:text="${category.name}">수산물</strong>
+                    <p th:text="${category.description}">카테고리 설명</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product List -->
+    <section class="product-list-section section">
+        <div class="container">
+            <div class="section-heading section-heading--between">
+                <div>
+                    <p class="section-eyebrow">Lineup</p>
+                    <h2>전체 제품</h2>
+                    <p>초저온 기준으로 관리되는 KQSF 제품입니다.</p>
+                </div>
+            </div>
+
+            <div class="product-grid" th:if="${products != null and products.hasContent()}">
+                <article class="product-card" th:each="product : ${products.content}">
+                    <a th:href="@{/products/{categoryCode}/{productCode}(
+                categoryCode=${#strings.toLowerCase(product.categoryCode)},
+                productCode=${#strings.toLowerCase(product.code)}
+              )}">
+                        <div class="product-card__media">
+                            <img th:if="${product.thumbnailUrl != null}"
+                                 th:src="${product.thumbnailUrl}"
+                                 th:alt="${product.name}">
+
+                            <div th:unless="${product.thumbnailUrl != null}" class="product-card__placeholder">
+                                <span>KQSF</span>
+                            </div>
+
+                            <span class="product-card__category" th:text="${product.categoryName}">수산물</span>
+                        </div>
+
+                        <div class="product-card__body">
+                            <p class="card-eyebrow" th:text="${product.nameEn != null ? product.nameEn : product.code}">
+                                East Sea Bluefin Tuna
+                            </p>
+
+                            <h3 th:text="${product.name}">초저온 연안 참다랑어</h3>
+
+                            <p th:text="${product.shortDescription}">
+                                -60°C 초저온 기준으로 관리되는 B2B 납품형 참다랑어 제품입니다.
+                            </p>
+
+                            <span class="card-link">제품 자세히 보기</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <div class="empty-state" th:unless="${products != null and products.hasContent()}">
+                <strong>등록된 제품이 없습니다.</strong>
+                <p>현재 노출 중인 제품이 없습니다.</p>
+            </div>
+
+            <!-- Simple Paging -->
+            <div class="simple-pagination" th:if="${products != null and products.totalPages > 1}">
+                <a th:if="${products.hasPrevious()}"
+                   th:href="@{/products(page=${products.number - 1})}"
+                   class="page-button">
+                    이전
+                </a>
+
+                <span>
+          <strong th:text="${products.number + 1}">1</strong>
+          /
+          <span th:text="${products.totalPages}">3</span>
+        </span>
+
+                <a th:if="${products.hasNext()}"
+                   th:href="@{/products(page=${products.number + 1})}"
+                   class="page-button">
+                    다음
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="~{site/layout/base :: footer}"></footer>
+<th:block th:replace="~{site/layout/base :: scripts}"></th:block>
 </body>
 </html>

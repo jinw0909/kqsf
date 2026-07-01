@@ -60,41 +60,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // const ua = navigator.userAgent;
-    // const isKakaoInApp = /KAKAOTALK/i.test(ua);
-    //
-    // if (isKakaoInApp) {
-    //     document.documentElement.classList.add("is-kakao-inapp");
-    // }
+    const infraSlider = document.querySelector("[data-infra-slider]");
 
-    const ua = navigator.userAgent;
+    if (infraSlider) {
+        const track = infraSlider.querySelector(".infra-slider__track");
+        const slides = Array.from(infraSlider.querySelectorAll(".infra-slide"));
+        const prevButton = infraSlider.querySelector(".infra-slider__arrow--prev");
+        const nextButton = infraSlider.querySelector(".infra-slider__arrow--next");
 
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+        let currentIndex = 0;
 
-    // iOS Safari
-    const isMobileSafari =
-        /iPhone|iPad|iPod/i.test(ua) &&
-        /Safari/i.test(ua) &&
-        !/CriOS|FxiOS|EdgiOS|Whale|KAKAOTALK/i.test(ua);
+        const updateSlider = () => {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // Android Chrome 또는 iOS Chrome
-    const isMobileChrome =
-        isMobile &&
-        (
-            /Chrome/i.test(ua) ||
-            /CriOS/i.test(ua)
-        ) &&
-        !/SamsungBrowser|Whale|EdgA|EdgiOS|KAKAOTALK/i.test(ua);
+            slides.forEach((slide, index) => {
+                slide.classList.toggle("is-active", index === currentIndex);
+            });
 
-    // 모바일인데 Chrome/Safari가 아니면 absolute
-    const isOtherMobile = isMobile && !isMobileChrome && !isMobileSafari;
+            prevButton.classList.toggle("is-hidden", currentIndex === 0);
+            nextButton.classList.toggle("is-hidden", currentIndex === slides.length - 1);
+        };
 
-    if (isMobileSafari) {
-        document.documentElement.classList.add("is-mobile-safari");
-    } else if (isMobileChrome) {
-        document.documentElement.classList.add("is-mobile-chrome");
-    } else if (isOtherMobile) {
-        document.documentElement.classList.add("is-mobile-absolute-bg");
+        prevButton.addEventListener("click", () => {
+            if (currentIndex === 0) return;
+            currentIndex -= 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener("click", () => {
+            if (currentIndex === slides.length - 1) return;
+            currentIndex += 1;
+            updateSlider();
+        });
+
+        updateSlider();
     }
 
 });
