@@ -11,7 +11,8 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="stylesheet" href="/site/css/layout.css">
+  <link rel="stylesheet" th:href="@{/site/css/layout.css}">
+  <link rel="stylesheet" th:href="@{/vendor/swiper/swiper-bundle.min.css}">
 
   <!-- Swiper: 당장 안 써도, 필요한 페이지에서만 pageCss나 별도 fragment로 추가 가능 -->
   <!--
@@ -110,7 +111,8 @@
 </footer>
 
 <th:block th:fragment="scripts">
-  <script src="/site/js/site.js"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/site/js/site.js}"></script>
 
   <!-- Swiper 필요 페이지에서만 활성화 추천 -->
   <!--

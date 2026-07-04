@@ -7,319 +7,376 @@
 
 <main class="home-page">
 
-  <!-- Hero -->
+  <!-- 0. Ethereum-like top illustration -->
+  <section class="hero-art" aria-label="KQSF visual introduction">
+  </section>
+
+  <!-- 1. Hero -->
   <section class="home-hero">
-    <div class="home-hero__bg"></div>
+    <div class="eth-container home-hero__inner">
+      <p class="section-eyebrow">KQSF · Korea Quick Super Freeze</p>
+      <h1>좋은 식품을 더 많은 사람에게.</h1>
+      <p class="home-hero__lead">
+        KQSF는 LNG 냉열 기반 초저온 기술과 QSF 인증 시스템으로<br class="pc-only">
+        더 좋은 품질의 식품을 더 합리적인 조건으로 공급하는 구조를 만듭니다.
+      </p>
+      <div class="home-hero__actions">
+        <a href="/products" class="button button--primary">제품 보기</a>
+        <a href="/contact" class="button button--outline">문의하기</a>
+      </div>
+    </div>
+  </section>
 
-    <div class="container home-hero__inner">
-      <div class="home-hero__content">
-        <p class="section-eyebrow">KQSF · Korea Quick Super Freeze</p>
-
-        <h1>
-          좋은 식품을<br>
-          더 많은<br>
-          사람에게.
-        </h1>
-
-        <p class="home-hero__lead">
-          KQSF는 기존 공랭식 IQF 방식과 다른 LNG 냉열 기반 초저온 기술로
-          제품, 보관, 유통, 인증까지 연결되는 QSF 시스템을 만듭니다.
+  <!-- 2. Numbers / Pillars -->
+  <section class="home-metrics eth-section">
+    <div class="eth-container home-metrics__inner">
+      <div class="home-metrics__copy">
+        <p class="section-eyebrow">KQSF Core Numbers</p>
+        <h2>초저온 기술은<br>품질과 비용 구조를 바꿉니다.</h2>
+        <p>
+          KQSF는 LNG가 가진 -162°C 냉열을 활용해 -60°C 초저온 동결·보관,
+          QSF 인증, B2B 공급 구조를 하나로 연결합니다.
         </p>
-
-        <div class="home-hero__actions">
-          <a href="/products" class="button button--primary">제품 보기</a>
-          <a href="/infrastructure" class="button button--outline">초저온 기술 보기</a>
-        </div>
       </div>
 
-      <div class="home-hero__visual">
-        <div class="hero-visual-card hero-visual-card--main">
-          <span>-162°C</span>
-          <strong>LNG Cold Energy</strong>
-          <p>LNG 냉열에서 시작해 -60°C 초저온을 운영합니다.</p>
-        </div>
-
-        <div class="hero-visual-card">
-          <span>-60°C</span>
-          <strong>Ultra Low Temperature</strong>
-          <p>대량 동결, 장기 보관, 콜드체인에 적합한 구조를 지향합니다.</p>
-        </div>
-
-        <div class="hero-visual-card">
-          <span>QSF</span>
-          <strong>Certified System</strong>
-          <p>생산부터 유통까지 초저온 기준으로 관리합니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products Preview -->
-  <section class="home-products section">
-    <div class="container">
-      <div class="section-heading section-heading--between">
-        <div>
-          <p class="section-eyebrow">Products</p>
-          <h2>첫 번째 제품은 초저온 연안 참다랑어입니다.</h2>
-          <p>
-            KQSF의 초저온 기술과 QSF 시스템을 실제로 구현한 첫 번째 제품입니다.
-          </p>
-        </div>
-        <a href="/products" class="button button--outline all-product-btn">전체 제품 보기</a>
-      </div>
-
-      <div class="product-preview">
-        <article class="product-main-card">
-          <div class="product-main-card__media">
-<!--            <span>이미지 영역</span>-->
-          </div>
-          <div class="product-main-card__body">
-            <p class="card-eyebrow">First Product</p>
-            <h3>초저온 연안 참다랑어</h3>
-            <p>
-              -60°C 초저온 보관 기준으로 관리되는 B2B 납품형 참다랑어 제품입니다.
-              외식업, 유통업, 프랜차이즈, OEM/PB 상담이 가능합니다.
-            </p>
-            <a href="/products/tuna" class="card-link">참다랑어 보기</a>
-          </div>
+      <div class="metrics-side">
+        <article class="metric-line">
+          <strong>-162°C</strong>
+          <span>LNG Cold Energy</span>
         </article>
-
-        <div class="product-category-list">
-          <a href="/products/seafood"><span>수산물</span></a>
-          <a href="/products/meat"><span>축산물</span></a>
-          <a href="/products/agriculture"><span>농산물</span></a>
-          <a href="/products/oem-pb"><span>OEM / PB</span></a>
-        </div>
+        <article class="metric-line">
+          <strong>-60°C</strong>
+          <span>Ultra Low Temperature</span>
+        </article>
+        <!--        <article class="metric-line">-->
+        <!--          <strong>QSF</strong>-->
+        <!--          <span>Certified System</span>-->
+        <!--        </article>-->
       </div>
     </div>
   </section>
 
-  <!-- QSF Preview -->
-  <!-- QSF Preview -->
-  <section class="home-qsf section section--navy">
-    <div class="container">
-      <div class="qsf-layout">
+  <!-- 3. Explore KQSF : full section swiper -->
+  <!-- 3. Explore KQSF : Ethereum-like swiper -->
+  <section class="home-explore eth-section">
+    <div class="swiper kqsf-explore-swiper">
+      <div class="swiper-wrapper">
 
-        <div class="qsf-panel__content">
-          <p class="section-eyebrow">QSF Certified System</p>
-          <h2>QSF인증은 KQSF의 핵심 시스템입니다.</h2>
-          <p>
-            QSF 인증은 단순한 마크가 아닙니다.
-            원물 선별부터 초저온 동결, 보관·가공, 출고·유통까지
-            초저온 기준으로 관리된 식품에 적용되는 시스템입니다.
-          </p>
-          <a href="/qsf" class="button button--light">QSF 시스템 보기</a>
-        </div>
+        <!-- Slide 1: Products -->
+        <div class="swiper-slide kqsf-explore-slide">
+          <div class="eth-container kqsf-explore-slide__inner">
 
-        <div class="qsf-hologram">
-          <img src="/site/images/home/qsf-hologram.png" alt="QSF Quick Super Freeze 인증 마크">
-        </div>
-
-        <div class="qsf-process">
-          <div class="qsf-step">
-            <span>01</span>
-            <strong>원물 선별</strong>
-            <p>QSF 기준에 맞는 원물을 선별합니다.</p>
-          </div>
-
-          <div class="qsf-step">
-            <span>02</span>
-            <strong>초저온 동결</strong>
-            <p>-60°C 초저온 기준으로 동결합니다.</p>
-          </div>
-
-          <div class="qsf-step">
-            <span>03</span>
-            <strong>보관 · 가공</strong>
-            <p>초저온 보관 기준을 유지하며 제품화합니다.</p>
-          </div>
-
-          <div class="qsf-step">
-            <span>04</span>
-            <strong>출고 · 유통</strong>
-            <p>LOT 기준에 따라 출고하고 유통합니다.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-<!--  &lt;!&ndash; Infrastructure Focus &ndash;&gt;-->
-<!--  <section class="home-infra section section&#45;&#45;ice">-->
-<!--    <div class="fixed-bg-wrap">-->
-<!--      <div class="fixed-bg"></div>-->
-<!--    </div>-->
-<!--    <div class="container">-->
-<!--      <div class="split-section">-->
-<!--        <div class="split-section__content">-->
-<!--          <p class="section-eyebrow">LNG Cold Energy</p>-->
-<!--          <h2>-162°C에서 시작하는 초저온 기술</h2>-->
-<!--          <p class="section-description">-->
-<!--            기존 공랭식 IQF는 목표 온도까지 온도를 낮추는 방식입니다.-->
-<!--            KQSF는 -162°C LNG 냉열을 활용해 -60°C 초저온을 안정적으로 운영하는 구조를 지향합니다.-->
-<!--          </p>-->
-
-<!--          <ul class="check-list">-->
-<!--            <li>대량 초저온 동결에 적합한 구조</li>-->
-<!--            <li>장기 보관과 콜드체인 운영에 유리한 방향</li>-->
-<!--            <li>수산물, 축산물, 농산물, HMR까지 확장 가능한 초저온 기술</li>-->
-<!--          </ul>-->
-
-<!--          <a href="/infrastructure/lng-cold-energy" class="text-link">LNG 초저온 기술 자세히 보기</a>-->
-<!--        </div>-->
-
-<!--        <div class="infra-visual">-->
-<!--          <img src="/site/images/home/tank.png" alt="LNG 초저온 탱크 이미지">-->
-<!--          <div class="infra-visual__caption">-->
-<!--            <strong>LNG Cold Energy</strong>-->
-<!--            <span>-162°C에서 시작되는 초저온 운영 구조</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
-  <!-- Infrastructure Focus -->
-  <section class="home-infra section section--ice">
-    <div class="home-infra__bg"></div>
-
-    <div class="container">
-      <div class="split-section">
-        <div class="split-section__content">
-          <p class="section-eyebrow">LNG Cold Energy</p>
-          <h2>-162°C에서 시작하는 초저온 기술</h2>
-          <p class="section-description">
-            기존 공랭식 IQF는 목표 온도까지 온도를 낮추는 방식입니다.
-            KQSF는 -162°C LNG 냉열을 활용해 -60°C 초저온을 안정적으로 운영하는 구조를 지향합니다.
-          </p>
-
-          <ul class="check-list">
-            <li>대량 초저온 동결에 적합한 구조</li>
-            <li>장기 보관과 콜드체인 운영에 유리한 방향</li>
-            <li>수산물, 축산물, 농산물, HMR까지 확장 가능한 초저온 기술</li>
-          </ul>
-
-          <a href="/infrastructure/lng-cold-energy" class="text-link">
-            LNG 초저온 기술 자세히 보기
-          </a>
-        </div>
-
-        <div class="infra-slider" data-infra-slider>
-          <button class="infra-slider__arrow infra-slider__arrow--prev" type="button" aria-label="이전 이미지">
-          </button>
-
-          <div class="infra-slider__viewport">
-            <div class="infra-slider__track">
-              <div class="infra-slide is-active">
-                <img src="/site/images/home/animated.png" alt="LNG 초저온 탱크 이미지">
-                <div class="infra-slide__caption">
-                  <strong>LNG Cold Energy</strong>
-                  <span>-162°C에서 시작되는 초저온 운영 구조</span>
-                </div>
+            <div class="kqsf-explore-slide__visual">
+              <div class="kqsf-visual-frame visual-frame--product">
+                <!--                <img src="/site/images/home/explore/explore-product.png" alt="KQSF 초저온 식품 제품">-->
               </div>
 
-              <div class="infra-slide">
-                <img src="/site/images/home/animated-2.png" alt="LNG 냉열 설비 이미지">
-                <div class="infra-slide__caption">
-                  <strong>Ultra Low Temperature</strong>
-                  <span>대량 동결과 장기 보관에 적합한 초저온 구조</span>
-                </div>
+            </div>
+
+            <div class="kqsf-explore-slide__copy">
+              <p class="section-eyebrow">Products</p>
+              <h2>초저온 식품 제품</h2>
+              <p>
+                KQSF는 초저온 연안 참다랑어를 시작으로 수산물, 축산물, 농산물,
+                HMR, OEM/PB 제품으로 확장합니다.
+              </p>
+              <a href="/products" class="text-link">제품 보기</a>
+            </div>
+            <div class="kqsf-explore-cards">
+              <div class="kqsf-info-card kqsf-info-card--white">
+                <span>First Product</span>
+                <strong>초저온 연안 참다랑어</strong>
               </div>
 
-              <div class="infra-slide">
-                <img src="/site/images/home/animated-3.png" alt="초저온 콜드체인 이미지">
-                <div class="infra-slide__caption">
-                  <strong>Cold Chain System</strong>
-                  <span>보관, 가공, 출고까지 이어지는 초저온 운영</span>
-                </div>
+              <div class="kqsf-info-card kqsf-info-card--primary">
+                <span>KQSF Products</span>
+                <strong>-60°C 초저온 식품</strong>
               </div>
             </div>
-          </div>
 
-          <button class="infra-slider__arrow infra-slider__arrow--next" type="button" aria-label="다음 이미지">
-          </button>
+          </div>
+        </div>
+
+        <!-- Slide 2: LNG Cold Energy -->
+        <div class="swiper-slide kqsf-explore-slide">
+          <div class="eth-container kqsf-explore-slide__inner">
+
+            <div class="kqsf-explore-slide__visual">
+              <div class="kqsf-visual-frame visual-frame--lng">
+                <!--                <img src="/site/images/home/explore/menu_second.png" alt="LNG 냉열 기반 초저온 기술">-->
+              </div>
+
+            </div>
+
+            <div class="kqsf-explore-slide__copy">
+              <p class="section-eyebrow">LNG Cold Energy</p>
+              <h2>-162°C 냉열로<br>초저온을 구현하기</h2>
+              <p>
+                LNG가 가진 -162°C 냉열을 활용해 -60°C 초저온 동결·보관을 구현하고,
+                대량 식품 처리에 적합한 운영 구조를 제안합니다.
+              </p>
+              <a href="/infrastructure" class="text-link">LNG 초저온 기술 보기</a>
+
+            </div>
+
+            <div class="kqsf-explore-cards">
+              <div class="kqsf-info-card kqsf-info-card--white">
+                <span>Conventional Freezing</span>
+                <strong>전력 기반 냉동</strong>
+              </div>
+
+              <div class="kqsf-info-card kqsf-info-card--primary">
+                <span>LNG Cold Energy</span>
+                <strong>-162°C 냉열 활용</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide 3: QSF System -->
+        <div class="swiper-slide kqsf-explore-slide">
+          <div class="eth-container kqsf-explore-slide__inner">
+
+            <div class="kqsf-explore-slide__visual">
+              <div class="kqsf-visual-frame visual-frame--qsf">
+<!--                <img src="/site/images/home/explore/explore-qsf.png" alt="QSF 초저온 품질 인증 시스템">-->
+              </div>
+
+            </div>
+
+            <div class="kqsf-explore-slide__copy">
+              <p class="section-eyebrow">QSF System</p>
+              <h2>초저온 품질을<br>인증하고 추적하기</h2>
+              <p>
+                원물 선별부터 동결, 보관, 출고, 유통까지 초저온 기준으로 관리하고
+                LOT/SN 기반 추적 구조로 품질을 확인합니다.
+              </p>
+              <a href="/qsf" class="text-link">QSF 시스템 보기</a>
+            </div>
+            <div class="kqsf-explore-cards">
+              <div class="kqsf-info-card kqsf-info-card--white">
+                <span>General Product</span>
+                <strong>품질 확인 어려움</strong>
+              </div>
+
+              <div class="kqsf-info-card kqsf-info-card--primary">
+                <span>QSF Certified</span>
+                <strong>LOT/SN 기반 추적</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="kqsf-explore-controls">
+        <button class="kqsf-explore-button kqsf-explore-button--prev" type="button" aria-label="이전 슬라이드">
+          ‹
+        </button>
+
+        <div class="kqsf-explore-pagination swiper-pagination"></div>
+
+        <button class="kqsf-explore-button kqsf-explore-button--next" type="button" aria-label="다음 슬라이드">
+          ›
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. First Product -->
+  <section class="home-product-story eth-section">
+    <div class="eth-container product-story__inner">
+      <div class="product-story__visual">
+        <div class="product-visual-card">
+<!--          <span>Ultra Low Temperature Tuna</span>-->
         </div>
       </div>
-    </div>
-  </section>
 
-
-  <!-- Three Pillars -->
-  <section class="home-pillars section">
-    <div class="container">
-      <div class="section-heading">
-        <p class="section-eyebrow">KQSF Structure</p>
-        <h2>제품, 초저온 기술, QSF로 이어지는 구조</h2>
+      <div class="product-story__content">
+        <p class="section-eyebrow">First Product</p>
+        <h2>초저온 연안 참다랑어로<br>첫 번째 제품을 시작합니다.</h2>
         <p>
-          KQSF는 단순히 냉동식품을 판매하는 회사가 아니라,
-          LNG 초저온 기술을 기반으로 제품과 인증 시스템을 함께 확장합니다.
+          KQSF는 초저온 기술을 가장 먼저 연안 참다랑어에 적용합니다.
+          -60°C 초저온 보관 기준으로 품질 편차를 줄이고,
+          외식업·유통업·프랜차이즈·OEM/PB 납품에 적합한 제품 구조를 제안합니다.
         </p>
-      </div>
-
-      <div class="pillar-grid">
-        <a href="/products" class="pillar-card">
-          <div class="pillar-card__media pillar-card__media--products">
-            <span>PRODUCTS</span>
-          </div>
-          <div class="pillar-card__body">
-            <p class="card-eyebrow">제품</p>
-            <h3>지금 공급 가능한 초저온 식품</h3>
-            <p>
-              초저온 연안 참다랑어를 시작으로 수산물, 축산물, 농산물,
-              HMR, OEM/PB 제품으로 확장합니다.
-            </p>
-            <span class="card-link">제품 보기</span>
-          </div>
-        </a>
-
-        <a href="/infrastructure" class="pillar-card">
-          <div class="pillar-card__media pillar-card__media--infra">
-            <span>LNG COLD ENERGY</span>
-          </div>
-          <div class="pillar-card__body">
-            <p class="card-eyebrow">초저온 기술</p>
-            <h3>기존 IQF와 다른 LNG 초저온 방식</h3>
-            <p>
-              -162°C LNG 냉열에서 시작해 -60°C 초저온을 운영하는
-              대량 동결·보관·유통 시스템을 구축합니다.
-            </p>
-            <span class="card-link">초저온 기술 보기</span>
-          </div>
-        </a>
-
-        <a href="/qsf" class="pillar-card">
-          <div class="pillar-card__media pillar-card__media--qsf">
-            <span>QSF SYSTEM</span>
-          </div>
-          <div class="pillar-card__body">
-            <p class="card-eyebrow">QSF</p>
-            <h3>생산부터 유통까지 이어지는 인증 시스템</h3>
-            <p>
-              원물 선별, 가공, 동결, 보관, 출고, 유통까지
-              초저온 기준으로 관리된 제품에 QSF 인증을 적용합니다.
-            </p>
-            <span class="card-link">QSF 보기</span>
-          </div>
-        </a>
+        <div class="product-mini-grid">
+          <div><strong>-60°C</strong><span>초저온 보관 기준</span></div>
+          <div><strong>B2B</strong><span>외식·유통 납품형</span></div>
+          <div><strong>QSF</strong><span>인증 기반 품질 관리</span></div>
+          <div><strong>OEM/PB</strong><span>파트너 제품 확장</span></div>
+        </div>
+        <a href="/products/seafood/east-sea-bluefin" class="text-link">참다랑어 제품 보기</a>
       </div>
     </div>
   </section>
 
-  <!-- Contact CTA -->
-  <section class="home-contact section">
-    <div class="container">
-      <div class="contact-cta">
-        <p class="section-eyebrow">B2B Contact</p>
-        <h2>제품 납품, 유통, OEM/PB 상담이 필요하신가요?</h2>
+  <!-- 5. QSF Certified System -->
+  <section class="home-qsf eth-section">
+    <div class="eth-container qsf-browser">
+      <div class="section-heading section-heading--center qsf-browser__heading">
+        <p class="section-eyebrow">QSF Certified System</p>
+        <h2>QSF 인증으로<br>초저온 품질을 확인합니다.</h2>
         <p>
-          초저온 제품 공급, 유통 협력, QSF 적용 제품 개발에 대해 문의할 수 있습니다.
+          원물 선별부터 초저온 동결, 보관·가공, 출고·유통까지
+          QSF 기준으로 연결해 품질을 확인하는 시스템입니다.
         </p>
-        <a href="/contact" class="button button--primary">B2B 문의하기</a>
+      </div>
+
+      <div class="qsf-browser__body">
+        <div class="qsf-browser__copy">
+          <p class="section-eyebrow">Quality Passport</p>
+          <h3>인증 홀로그램으로<br>제품의 기준을 보여줍니다</h3>
+          <p>
+            QSF 인증은 단순한 마크가 아니라 LOT/SN 기반 추적,
+            초저온 관리 기준, 출고 이력을 함께 보여주는 품질 확인 구조입니다.
+          </p>
+
+          <ul class="qsf-browser__list" aria-label="QSF 인증 핵심 기준">
+            <li>원물 선별 기준</li>
+            <li>-60°C 초저온 관리</li>
+            <li>LOT/SN 출고·유통 추적</li>
+          </ul>
+        </div>
+
+        <div class="qsf-browser__visual" aria-label="QSF 인증 홀로그램 미리보기">
+          <div class="qsf-cert-device">
+          <img src="/site/images/home/qsf-hologram.png" alt="QSF Quick Super Freeze 인증 홀로그램">
+          </div>
+        </div>
+      </div>
+      <div class="qsf-text-link">
+        <a href="/qsf" class="text-link">QSF 시스템 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. LNG Difference -->
+  <section class="lng-difference eth-section">
+    <div class="eth-container">
+      <div class="section-heading section-heading--center">
+        <p class="section-eyebrow">LNG Cold Energy</p>
+        <h2>-162°C LNG 초저온의<br>차별점</h2>
+        <p>
+          KQSF가 말하는 초저온 기술의 핵심은 단순히 더 낮은 온도가 아닙니다.
+          더 높은 품질을 유지하면서, 더 합리적인 비용 구조로 공급하는 것입니다.
+        </p>
+      </div>
+
+      <div class="difference-grid">
+        <article class="difference-card difference-card--primary">
+          <div>
+            <p class="card-eyebrow">Quality Up</p>
+            <h3>품질은 더 오래갑니다.</h3>
+            <p>-60°C 초저온 동결·보관은 드립로스, 산화, 조직 손상을 줄이고 납품 시점의 품질 편차를 낮추는 방향으로 작동합니다.</p>
+          </div>
+          <div class="difference-metric"><strong>-60°C</strong><span>Ultra Low Temperature</span></div>
+        </article>
+
+        <article class="difference-card difference-card--secondary">
+          <p class="card-eyebrow">Cost Down</p>
+          <h3>비용은 더 낮아집니다.</h3>
+          <p>LNG가 가진 -162°C 냉열을 활용해 기존 공랭식 IQF 대비 대량 초저온 운영의 비용 부담을 낮추는 구조를 지향합니다.</p>
+        </article>
+
+        <article class="difference-card">
+          <p class="card-eyebrow">Different System</p>
+          <h3>전기가 아닌 냉열을 활용하는 방식</h3>
+          <p>기존 공랭식 IQF는 목표 온도까지 전력으로 온도를 낮추는 방식입니다. KQSF는 LNG의 초저온 냉열을 동결·보관에 연결합니다.</p>
+        </article>
+
+        <article class="difference-card">
+          <p class="card-eyebrow">Scale</p>
+          <h3>대량 식품 처리에 적합</h3>
+          <p>참치와 수산물을 시작으로 축산물, 농산물, HMR까지 확장 가능한 초저온 동결·보관 구조를 목표로 합니다.</p>
+        </article>
+
+        <article class="difference-card">
+          <p class="card-eyebrow">System</p>
+          <h3>기술에서 공급 시스템으로</h3>
+          <p>LNG 초저온 기술은 제품 품질 유지에 그치지 않고, QSF 인증, LOT/SN 추적, B2B 납품 구조와 연결됩니다.</p>
+        </article>
+      </div>
+
+      <div class="difference-cta">
+        <a href="/infrastructure/lng-cold-energy" class="button button--primary">LNG 초저온 기술 자세히 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. News -->
+  <section class="home-news eth-section">
+    <div class="eth-container">
+      <div class="section-heading section-heading--between">
+        <div>
+          <p class="section-eyebrow">Latest Updates</p>
+          <h2>KQSF 최근 소식</h2>
+          <p>KQSF의 언론 보도, 제품 출시, 기술 개발, 파트너십 소식을 전합니다.</p>
+        </div>
+        <a href="/news" class="button button--outline">전체 소식 보기</a>
+      </div>
+
+      <div class="news-list">
+        <a href="/news" class="news-row">
+          <span>2026.07</span>
+          <strong>KQSF 초저온 기술 소개</strong>
+          <p>LNG 냉열 기반 초저온 식품 기술과 QSF 시스템 소개</p>
+        </a>
+        <a href="/news" class="news-row">
+          <span>2026.07</span>
+          <strong>초저온 연안 참다랑어 제품 준비</strong>
+          <p>-60°C 초저온 보관 기준을 적용한 첫 번째 B2B 제품</p>
+        </a>
+        <a href="/news" class="news-row">
+          <span>2026.07</span>
+          <strong>QSF 인증 시스템 구축</strong>
+          <p>원물 선별부터 출고·유통까지 연결되는 품질 관리 구조</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Start / Contact -->
+  <section class="home-start eth-section">
+    <div class="eth-container">
+      <div class="section-heading section-heading--center">
+        <p class="section-eyebrow">Start with KQSF</p>
+        <h2>KQSF와 함께 시작하기</h2>
+        <p>제품 납품, 거래처 상담, 원물 공급까지 목적에 맞는 경로로 문의하세요.</p>
+      </div>
+
+      <div class="start-grid">
+        <article class="start-card">
+          <div class="start-card__media"></div>
+          <p class="card-eyebrow">General Contact</p>
+          <h3>비회원 문의</h3>
+          <p>제품, 기술, QSF 인증, 납품 가능 여부에 대해 회원가입 없이 간단히 문의할 수 있습니다.</p>
+          <a href="/contact" class="button button--primary">문의하기</a>
+        </article>
+
+        <article class="start-card">
+          <div class="start-card__media"></div>
+          <p class="card-eyebrow">Buyer / Partner</p>
+          <h3>거래처 상담</h3>
+          <p>식당, 오마카세, 프랜차이즈, 유통사, OEM/PB 바이어를 위한 납품 단가와 공급 조건을 상담할 수 있습니다.</p>
+          <a href="/contact" class="button button--primary">거래처 상담하기</a>
+        </article>
+
+        <article class="start-card">
+          <div class="start-card__media"></div>
+          <p class="card-eyebrow">Supplier</p>
+          <h3>공급처 제안</h3>
+          <p>어선, 산지, 수산물 유통사, 원물 공급사는 KQSF의 초저온·QSF 시스템과 함께 제품화 가능성을 논의할 수 있습니다.</p>
+          <a href="/contact" class="button button--primary">공급 제안하기</a>
+        </article>
       </div>
     </div>
   </section>
 
 </main>
+
 <footer th:replace="~{site/layout/base :: footer}"></footer>
 <th:block th:replace="~{site/layout/base :: scripts}"></th:block>
 </body>

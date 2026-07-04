@@ -60,40 +60,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const infraSlider = document.querySelector("[data-infra-slider]");
+    console.log('site.js loaded');
 
-    if (infraSlider) {
-        const track = infraSlider.querySelector(".infra-slider__track");
-        const slides = Array.from(infraSlider.querySelectorAll(".infra-slide"));
-        const prevButton = infraSlider.querySelector(".infra-slider__arrow--prev");
-        const nextButton = infraSlider.querySelector(".infra-slider__arrow--next");
+    const exploreSwiperEl = document.querySelector('.kqsf-explore-swiper');
+    console.log('exploreSwiperEl:', exploreSwiperEl);
+    console.log('Swiper:', typeof Swiper);
 
-        let currentIndex = 0;
+    if (exploreSwiperEl && typeof Swiper !== 'undefined') {
+        new Swiper(exploreSwiperEl, {
+            loop: false,
+            speed: 650,
+            slidesPerView: 1,
+            spaceBetween: 0,
 
-        const updateSlider = () => {
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            allowTouchMove: true,
+            simulateTouch: true,
 
-            slides.forEach((slide, index) => {
-                slide.classList.toggle("is-active", index === currentIndex);
-            });
+            pagination: {
+                el: '.kqsf-explore-pagination',
+                clickable: true
+            },
 
-            prevButton.classList.toggle("is-hidden", currentIndex === 0);
-            nextButton.classList.toggle("is-hidden", currentIndex === slides.length - 1);
-        };
+            navigation: {
+                nextEl: '.kqsf-explore-button--next',
+                prevEl: '.kqsf-explore-button--prev'
+            },
 
-        prevButton.addEventListener("click", () => {
-            if (currentIndex === 0) return;
-            currentIndex -= 1;
-            updateSlider();
+            keyboard: {
+                enabled: true
+            }
         });
 
-        nextButton.addEventListener("click", () => {
-            if (currentIndex === slides.length - 1) return;
-            currentIndex += 1;
-            updateSlider();
-        });
-
-        updateSlider();
+        console.log('KQSF explore swiper initialized');
     }
+
 
 });
