@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const header = document.getElementById("siteHeader");
     const menuButton = document.getElementById("siteMenuButton");
-    const siteNav = document.getElementById("siteNav");
+    const mobileNav = document.getElementById("mobileNav");
 
     const handleHeaderScroll = () => {
         if (!header) return;
@@ -107,59 +107,40 @@ document.addEventListener("DOMContentLoaded", () => {
     handleHeaderScroll();
     window.addEventListener("scroll", handleHeaderScroll, { passive: true });
 
-    if (menuButton && siteNav) {
-        const navItems = siteNav.querySelectorAll(".site-nav__item.has-dropdown");
-
-        const isMobileNav = () => window.matchMedia("(max-width: 900px)").matches;
-
-        const closeAllDropdowns = () => {
-            navItems.forEach((item) => {
-                item.classList.remove("is-open");
-            });
-        };
+    if (menuButton && mobileNav) {
+        const mobileItems = mobileNav.querySelectorAll(".mobile-nav__item");
 
         const closeMobileNav = () => {
-            siteNav.classList.remove("is-open");
+            mobileNav.classList.remove("is-open");
             menuButton.classList.remove("is-open");
             menuButton.setAttribute("aria-label", "메뉴 열기");
-            closeAllDropdowns();
+
+            mobileItems.forEach((item) => {
+                item.classList.remove("is-open");
+            });
+
+            document.documentElement.classList.remove("is-nav-open");
+            document.body.classList.remove("is-nav-open");
         };
 
         menuButton.addEventListener("click", () => {
-            siteNav.classList.add("is-drawer-animated");
+            const willOpen = !mobileNav.classList.contains("is-open");
 
-            const willOpen = !siteNav.classList.contains("is-open");
-
-            siteNav.classList.toggle("is-open", willOpen);
+            mobileNav.classList.toggle("is-open", willOpen);
             menuButton.classList.toggle("is-open", willOpen);
             menuButton.setAttribute("aria-label", willOpen ? "메뉴 닫기" : "메뉴 열기");
+
+            document.documentElement.classList.toggle("is-nav-open", willOpen);
+            document.body.classList.toggle("is-nav-open", willOpen);
         });
 
-        navItems.forEach((item) => {
-            const trigger = item.querySelector(".site-nav__link");
+        mobileItems.forEach((item) => {
+            const trigger = item.querySelector(".mobile-nav__trigger");
 
-            item.addEventListener("mouseenter", () => {
-                if (isMobileNav()) return;
-
-                navItems.forEach((navItem) => {
-                    navItem.classList.remove("is-click-closed");
-                    navItem.classList.remove("is-open");
-                });
-            });
-            if (!trigger) return;
-
-            trigger.addEventListener("click", (event) => {
-                event.preventDefault();
-
-                if (!isMobileNav()) {
-                    item.classList.add("is-click-closed");
-                    trigger.blur();
-                    return;
-                }
-
+            trigger.addEventListener("click", () => {
                 const isOpen = item.classList.contains("is-open");
 
-                navItems.forEach((navItem) => {
+                mobileItems.forEach((navItem) => {
                     navItem.classList.remove("is-open");
                 });
 
@@ -167,29 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        siteNav.querySelectorAll(".site-dropdown__link").forEach((link) => {
-            link.addEventListener("click", () => {
-                closeMobileNav();
-            });
-        });
-
-        document.addEventListener("click", (event) => {
-            if (!siteNav.contains(event.target) && !menuButton.contains(event.target)) {
-                closeAllDropdowns();
-            }
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeMobileNav();
-            }
-        });
-
-        window.addEventListener("resize", () => {
-            siteNav.classList.remove("is-open");
-            siteNav.classList.remove("is-drawer-animated");
-            menuButton.classList.remove("is-open");
-            closeAllDropdowns();
+        mobileNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMobileNav);
         });
     }
 
