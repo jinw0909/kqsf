@@ -549,7 +549,10 @@ button {
     }
 
     .site-header__inner {
-        width: min(100% - 28px, var(--container));
+        width: auto;
+        max-width: var(--container);
+        margin-left: 14px;
+        margin-right: 14px;
         justify-content: space-between;
     }
 
@@ -723,9 +726,6 @@ button {
         padding: 76px 0;
     }
 
-    .site-header__inner {
-        width: min(100% - 28px, var(--container));
-    }
 
     .site-logo {
         min-width: auto;
@@ -805,11 +805,68 @@ body {
     }
 }
 
-html.is-nav-open,
-body.is-nav-open {
+html.is-nav-open {
     overflow: hidden;
 }
 
 body.is-nav-open {
     touch-action: none;
+}
+
+
+@media (max-width: 900px) {
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1300;
+    }
+
+    .site-menu-button {
+        position: relative;
+        z-index: 1400;
+    }
+
+    .mobile-nav {
+        position: fixed;
+
+        /* 헤더를 덮지 말고, 헤더 아래에서 시작 */
+        top: var(--header-height);
+        right: 0;
+        left: auto;
+
+        width: min(86vw, 360px);
+        max-width: 360px;
+        height: calc(100dvh - var(--header-height));
+
+        z-index: 1200;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        /* 이제 top에서 이미 헤더 높이만큼 내려왔으니까 padding에서 header-height 제거 */
+        padding: 20px 18px 24px;
+
+        background: rgba(255, 255, 255, 0.98);
+        border-left: 1px solid var(--color-line);
+
+        /* 닫혔을 때 완전히 밖으로 */
+        transform: translate3d(calc(100% + 64px), 0, 0);
+        transition: transform 0.25s ease;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+
+        /* 닫혔을 때 그림자 안 보이게 */
+        box-shadow: none;
+    }
+
+    .mobile-nav.is-open {
+        transform: translate3d(0, 0, 0);
+
+        /* 열렸을 때만 그림자 */
+        box-shadow: -24px 0 50px rgba(15, 35, 60, 0.14);
+    }
 }
