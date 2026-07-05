@@ -8,6 +8,7 @@ import com.kqsf.domain.product.entity.ProductProcessingOption;
 import com.kqsf.domain.product.repository.ProductCategoryRepository;
 import com.kqsf.domain.product.repository.ProductProcessingOptionRepository;
 import com.kqsf.domain.product.repository.ProductRepository;
+import com.kqsf.global.exception.PageNotReadyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,7 +49,9 @@ public class ProductQueryService {
 
     public ProductResponse findProductDetail(String categoryCode, String productCode) {
         Product product = productRepository.findDetail(categoryCode, productCode)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
+                .orElseThrow(() -> new PageNotReadyException(
+                        "/products/" + categoryCode + "/" + productCode
+                ));
 
         List<ProductProcessingOption> options =
                 optionRepository.findByProduct_IdAndActiveTrueOrderBySortOrderAsc(product.getId());
@@ -89,9 +92,10 @@ public class ProductQueryService {
 
     public ProductCategoryResponse findCategoryByCode(String categoryCode) {
         ProductCategory category = productCategoryRepository.findByCodeAndActiveTrue(categoryCode)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품 분류입니다."));
+                .orElseThrow(() -> new PageNotReadyException(
+                        "/products/" + categoryCode
+                ));
 
         return ProductCategoryResponse.from(category);
-
     }
 }

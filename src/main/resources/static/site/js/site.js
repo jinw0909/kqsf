@@ -95,4 +95,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
+    // 여기부터 추가
+    const temperatureCounters = document.querySelectorAll(".count-temperature");
+
+    const animateTemperature = (counter) => {
+        const target = Number(counter.dataset.target);
+        const duration = 2800;
+        const startTime = performance.now();
+
+        const update = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // 부드럽게 감속
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+            const currentValue = Math.round(target * easedProgress);
+            counter.textContent = `${currentValue}°C`;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                counter.textContent = `${target}°C`;
+            }
+        };
+
+        requestAnimationFrame(update);
+    };
+
+    if (temperatureCounters.length && "IntersectionObserver" in window) {
+        const temperatureObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                temperatureCounters.forEach((counter) => {
+                    animateTemperature(counter);
+                });
+
+                temperatureObserver.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.35
+        });
+
+        const metricsSection = document.querySelector(".home-metrics");
+
+        if (metricsSection) {
+            temperatureObserver.observe(metricsSection);
+        }
+    }
+
+
 });

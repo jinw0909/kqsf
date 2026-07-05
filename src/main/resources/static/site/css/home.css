@@ -104,7 +104,7 @@
 ========================= */
 
 .hero-art {
-  height: 50vh;
+  height: 40svh;
   position: relative;
   padding: 56px 0 10px;
   background-image: url("/site/images/home/banner_new.png");
@@ -307,31 +307,59 @@
 }
 
 .metrics-side {
-  display: grid;
-  gap: 0;
-  border-left: 1px solid rgba(6, 27, 51, 0.12);
+  display: flex;
+  flex-direction: column;
+  /*gap: 20px;*/
+  padding-left: 6rem;
+  border-left: 1px solid #e2e8f0;
 }
 
 .metric-line {
-  padding: 30px 0;
-  padding-left: 6rem;
-  /*border-bottom: 1px solid rgba(6, 27, 51, 0.12);*/
+  display: grid;
+  grid-template-columns: 28px auto;
+  column-gap: 16px;
+  row-gap: 8px;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.metric-icon {
+  grid-column: 1;
+  grid-row: 1;
+
+  width: 28px;
+  height: 28px;
+}
+
+.metric-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 .metric-line strong {
-  display: block;
-  font-size: clamp(42px, 5vw, 68px);
+  grid-column: 2;
+  grid-row: 1;
+
+  font-size: 48px;
   line-height: 1;
-  letter-spacing: -0.07em;
-  color: var(--color-navy);
+  font-weight: 700;
 }
 
 .metric-line span {
-  display: block;
-  margin-top: 10px;
-  font-size: 17px;
-  font-weight: 900;
-  color: var(--color-blue);
+  grid-column: 2;
+  grid-row: 2;
+
+  font-size: 18px;
+  line-height: 1.4;
+  color: #178bff;
+}
+
+.count-temperature {
+  display: inline-block;
+  min-width: 4.8em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* =========================================================
@@ -457,8 +485,8 @@
 .kqsf-explore-cards {
   position: absolute;
   z-index: 4;
-  right: 110px;
-  bottom: 86px;
+  right: 140px;
+  bottom: 56px;
   width: 430px;
   pointer-events: none;
 }
@@ -487,7 +515,7 @@
 .kqsf-info-card--white {
   width: 360px;
   margin-left: 28px;
-  padding: 26px 32px;
+  padding: 16px;
   background: #fff;
   color: #111;
 }
@@ -499,8 +527,8 @@
 .kqsf-info-card--primary {
   width: 390px;
   margin-top: 18px;
-  padding: 28px 34px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  padding: 16px;
+  background: linear-gradient(180deg, #1e3a8a, #2563eb);
   color: #fff;
   box-shadow: 0 18px 36px rgba(37, 99, 235, 0.24);
 }
@@ -576,7 +604,7 @@
 
   .kqsf-visual-frame {
     width: min(100%, 540px);
-    height: 470px;
+    /*height: 470px;*/
   }
 
   .kqsf-explore-cards {
@@ -650,7 +678,7 @@
   .visual-frame--qsf {
     background: url("/site/images/home/explore/explore-qsf.png");
     background-size: cover;
-    background-position: center 40%;
+    background-position: center 35%;
     background-repeat: no-repeat;
   }
 
@@ -1120,11 +1148,15 @@
 
   .qsf-browser__heading p:not(.section-eyebrow),
   .qsf-browser__copy p:not(.section-eyebrow) {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .qsf-browser__list li {
+    font-size: 14px;
   }
 
   .qsf-browser__body {
-    gap: 38px;
+    gap: 24px;
   }
 
   .qsf-browser__copy {
@@ -1215,22 +1247,35 @@
   justify-content: space-between;
 }
 
-.difference-card::before {
-  content: "";
+.difference-card img {
   position: absolute;
-  bottom: -20%;
-  right: -15%;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 66%;
+  object-fit: cover;
+  z-index: 0;
+  transform: translate(20%, 20%);
+  opacity: 0.25;
+}
+
+.difference-card::before {
+  /*content: "";*/
+  position: absolute;
+  bottom: 0;
+  right: 0;
   height: 75%;
   aspect-ratio: 1 / 1;
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
   opacity: 0.25;
+  transform: translate(20%, 20%);
+  z-index: 1;
 }
 
 .difference-card--primary::before {
-  background-image: url("/site/images/home/difference/frozen_tuna.png");
-  right: -10%;
+  background-image: url("/site/images/home/difference/frozen_tuna_new.png");
 }
 
 
@@ -1243,18 +1288,17 @@
 }
 
 .difference-card--secondary::before {
-  background-image: url("/site/images/home/difference/frozen_lng.png");
+  background-image: url("/site/images/home/difference/frozen_lng_new.png");
   opacity: 0.5;
-  right: -10%;
 }
 
 .difference-card:nth-child(3)::before {
-  background-image: url("/site/images/home/difference/frozen_something.png");
+  background-image: url("/site/images/home/difference/frozen_something_new.png");
   opacity: 0.5;
 }
 
 .difference-card:nth-child(4)::before {
-  background-image: url("/site/images/home/difference/frozen_cube.png");
+  background-image: url("/site/images/home/difference/frozen_cube_new.png");
   opacity: 0.5;
 }
 
@@ -1287,6 +1331,8 @@
   line-height: 1.72;
   color: #5a7083;
   word-break: keep-all;
+  position: relative;
+  z-index: 10;
 }
 
 .difference-card--primary p:not(.card-eyebrow) {
@@ -1431,11 +1477,15 @@
   .explore-layout,
   .product-story__inner {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 32px;
   }
 
   .metrics-side {
     border-left: none;
+    padding-left: 0;
+  }
+  .metric-line {
+    padding: 12px 0;
   }
 
   .explore-copy {
@@ -1459,6 +1509,12 @@
 
   .qsf-floating-card {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .kqsf-explore-slide__inner {
+    padding-bottom: 0;
   }
 }
 
@@ -1486,9 +1542,7 @@
     background-position: center 75%;
   }
 
-  .kqsf-explore-slide__inner {
-    padding-bottom: 0;
-  }
+
 
   .qsf-browser__body {
     padding: 0;
@@ -1510,7 +1564,8 @@
 
   .section-heading,
   .section-heading--center {
-    text-align: left;
+    /*text-align: left;*/
+    text-align: center;
     margin-bottom: 38px;
   }
 
@@ -1603,7 +1658,8 @@
   }
 
   .metric-line {
-    padding: 24px 0;
+    /*padding: 24px 0;*/
+    /*padding: 0;*/
   }
 
   .metric-line strong {
@@ -1655,6 +1711,18 @@
 
   .qsf-browser__body {
     flex-direction: column;
+  }
+
+  .qsf-browser__copy {
+    padding-top: 0;
+  }
+
+  .qsf-browser__copy h3 {
+    font-size: 24px;
+  }
+
+  .qsf-browser__copy p:not(.section-eyebrow) {
+    font-size: 14px;
   }
 
   .qsf-phone-wrap {

@@ -1,0 +1,100 @@
+.system-page {
+    min-height: calc(var(--stable-vh, 100vh) - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 24px 96px;
+    background:
+            radial-gradient(circle at 20% 20%, rgba(23, 139, 255, 0.14), transparent 34%),
+            radial-gradient(circle at 80% 70%, rgba(111, 184, 255, 0.16), transparent 32%),
+            linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+}
+
+.system-card {
+    position: relative;
+    width: min(760px, 100%);
+    padding: clamp(44px, 7vw, 76px) clamp(24px, 6vw, 64px);
+    text-align: center;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(23, 139, 255, 0.16);
+    box-shadow: 0 28px 80px rgba(6, 27, 51, 0.12);
+    overflow: hidden;
+    backdrop-filter: blur(18px);
+}
+
+.system-card::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(23, 139, 255, 0.12);
+    pointer-events: none;
+}
+
+.system-card::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -80px;
+    top: -80px;
+    border-radius: 50%;
+    background: rgba(23, 139, 255, 0.12);
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.system-card .section-eyebrow {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 14px;
+}
+
+.system-card h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.06em;
+    color: #061b33;
+}
+
+.system-card p:not(.section-eyebrow) {
+    position: relative;
+    z-index: 1;
+    margin: 22px auto 0;
+    max-width: 560px;
+    color: #5c7088;
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.75;
+}
+
+.system-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .system-page {
+        padding: 120px 18px 72px;
+    }
+
+    .system-card {
+        border-radius: 24px;
+    }
+
+    .system-actions {
+        flex-direction: column;
+    }
+
+    .system-actions .button {
+        width: 100%;
+    }
+}
