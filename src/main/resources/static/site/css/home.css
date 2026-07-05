@@ -103,8 +103,17 @@
    0. Hero Art
 ========================= */
 
+/*.hero-art {*/
+/*  height: 40svh;*/
+/*  position: relative;*/
+/*  padding: 56px 0 10px;*/
+/*  background-image: url("/site/images/home/banner_new.png");*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
 .hero-art {
-  height: 40svh;
+  height: var(--hero-art-height, 240px);
   position: relative;
   padding: 56px 0 10px;
   background-image: url("/site/images/home/banner_new.png");
@@ -112,135 +121,12 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.hero-art__canvas {
-  position: relative;
-  width: min(calc(100% - 48px), 1180px);
-  height: clamp(280px, 34vw, 440px);
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 38px;
-  background:
-          radial-gradient(circle at 50% 52%, rgba(112, 200, 255, 0.26), transparent 28%),
-          linear-gradient(135deg, #f6fbff 0%, #ffffff 54%, #eef8ff 100%);
-  border: 1px solid rgba(6, 27, 51, 0.08);
-  box-shadow: 0 30px 90px rgba(6, 27, 51, 0.08);
-}
-
-.hero-art__grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-          linear-gradient(rgba(6, 27, 51, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(6, 27, 51, 0.04) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 74%);
-}
-
-.hero-art__sun {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 190px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background:
-          radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.9), transparent 24%),
-          linear-gradient(135deg, #061b33, #0d3e70);
-  box-shadow:
-          0 34px 90px rgba(6, 27, 51, 0.18),
-          0 0 0 22px rgba(112, 200, 255, 0.08),
-          0 0 0 48px rgba(112, 200, 255, 0.045);
-}
-
-.hero-art__ring {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
-  border: 1px solid rgba(6, 27, 51, 0.08);
-  transform: translate(-50%, -50%);
-}
-
-.hero-art__ring--one {
-  width: 380px;
-  height: 380px;
-}
-
-.hero-art__ring--two {
-  width: 620px;
-  height: 620px;
-}
-
-.hero-art__mark {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 3;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-size: 34px;
-  font-weight: 900;
-  letter-spacing: -0.06em;
-}
-
-.hero-art__ice {
-  position: absolute;
-  width: 108px;
-  height: 108px;
-  border-radius: 30px;
-  background:
-          radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.92), transparent 24%),
-          linear-gradient(135deg, rgba(157, 234, 255, 0.78), rgba(255, 255, 255, 0.54));
-  border: 1px solid rgba(6, 27, 51, 0.08);
-  box-shadow: 0 24px 60px rgba(6, 27, 51, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.hero-art__ice--one {
-  left: 17%;
-  top: 18%;
-  transform: rotate(-13deg);
-}
-
-.hero-art__ice--two {
-  right: 17%;
-  top: 22%;
-  transform: rotate(12deg);
-}
-
-.hero-art__ice--three {
-  right: 28%;
-  bottom: 13%;
-  width: 82px;
-  height: 82px;
-  border-radius: 24px;
-  transform: rotate(-8deg);
-}
-
-.hero-art__line {
-  position: absolute;
-  top: 50%;
-  width: 210px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(23, 139, 255, 0.5), transparent);
-}
-
-.hero-art__line--left {
-  right: calc(50% + 120px);
-}
-
-.hero-art__line--right {
-  left: calc(50% + 120px);
-}
-
 /* =========================
    1. Hero
 ========================= */
 
 .home-hero {
-  padding: 48px 0 104px;
+  padding: 48px 0;
   background: #ffffff;
   text-align: center;
 }
@@ -279,7 +165,12 @@
 ========================= */
 
 .home-metrics {
-  background: #f7fbff;
+  background: linear-gradient(
+          to bottom,
+          #ffffff 0%,
+          #fbfdff 45%,
+          #f7fbff 100%
+  );
 }
 
 .home-metrics__inner {
@@ -327,8 +218,8 @@
   grid-column: 1;
   grid-row: 1;
 
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .metric-icon img {
@@ -351,7 +242,7 @@
   grid-column: 2;
   grid-row: 2;
 
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
   color: #178bff;
 }
@@ -578,7 +469,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding-top: 4px;
+  /*padding-top: 4px;*/
 }
 
 .kqsf-explore-pagination .swiper-pagination-bullet {
@@ -1246,6 +1137,26 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.white-logo {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  border-radius: 12px;
+  background-color: white;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.white-logo::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background-image: url("/site/images/logo/icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 5;
+}
 
 .difference-card img {
   position: absolute;
@@ -1378,6 +1289,13 @@
   display: grid;
   gap: 0;
   border-top: 1px solid rgba(6, 27, 51, 0.12);
+}
+
+.news-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .news-row {
@@ -1624,7 +1542,7 @@
   }
 
   .home-hero {
-    padding: 42px 0 76px;
+    padding: 36px 0;
   }
 
   .home-hero h1 {
@@ -1663,7 +1581,7 @@
   }
 
   .metric-line strong {
-    font-size: 42px;
+    font-size: 36px;
   }
 
   .explore-card {

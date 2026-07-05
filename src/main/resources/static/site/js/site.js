@@ -1,11 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // const setStableViewportHeight = () => {
+    //     const header = document.getElementById("siteHeader");
+    //     const homeHero = document.querySelector(".home-hero");
+    //
+    //     const viewportHeight = window.innerHeight;
+    //
+    //     const headerHeight = header ? header.offsetHeight : 0;
+    //     const homeHeroHeight = homeHero ? homeHero.offsetHeight : 0;
+    //
+    //     const calculatedHeroArtHeight =
+    //         viewportHeight - headerHeight - homeHeroHeight;
+    //
+    //     const stable40vh = viewportHeight * 0.4;
+    //
+    //     const heroArtHeight = Math.max(
+    //         calculatedHeroArtHeight,
+    //         stable40vh
+    //     );
+    //
+    //     document.documentElement.style.setProperty(
+    //         "--hero-art-height",
+    //         `${Math.round(heroArtHeight)}px`
+    //     );
+    //
+    //     document.documentElement.style.setProperty(
+    //         "--stable-40vh",
+    //         `${Math.round(stable40vh)}px`
+    //     );
+    // };
+
+    const getViewportHeight = () => {
+        return Math.min(
+            window.visualViewport?.height || window.innerHeight,
+            document.documentElement.clientHeight,
+            window.innerHeight
+        );
+    };
+
+    const getHeaderHeight = () => {
+        const value = getComputedStyle(document.documentElement)
+            .getPropertyValue("--header-height")
+            .trim();
+
+        return parseFloat(value) || 0;
+    };
+
     const setStableViewportHeight = () => {
-        const vh = window.innerHeight;
-        document.documentElement.style.setProperty("--stable-vh", `${vh}px`);
+        const homeHero = document.querySelector(".home-hero");
+
+        const viewportHeight = getViewportHeight();
+        const headerHeight = getHeaderHeight();
+        const homeHeroHeight = homeHero ? homeHero.offsetHeight : 0;
+
+        const calculatedHeroArtHeight =
+            viewportHeight - headerHeight - homeHeroHeight;
+
+        const stable40vh = viewportHeight * 0.4;
+
+        const heroArtHeight = Math.max(
+            calculatedHeroArtHeight,
+            stable40vh
+        );
+
+        document.documentElement.style.setProperty(
+            "--hero-art-height",
+            `${Math.round(heroArtHeight)}px`
+        );
+
+        document.documentElement.style.setProperty(
+            "--stable-40vh",
+            `${Math.round(stable40vh)}px`
+        );
+
+        console.log({
+            innerHeight: window.innerHeight,
+            visualViewportHeight: window.visualViewport?.height,
+            clientHeight: document.documentElement.clientHeight,
+            viewportHeight,
+            headerHeight,
+            homeHeroHeight,
+            calculatedHeroArtHeight,
+            stable40vh,
+            heroArtHeight
+        });
     };
 
     setStableViewportHeight();
+    window.addEventListener("load", setStableViewportHeight);
+
 
     const header = document.getElementById("siteHeader");
     const menuButton = document.getElementById("siteMenuButton");
@@ -25,16 +108,88 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", handleHeaderScroll, { passive: true });
 
     if (menuButton && siteNav) {
+        const navItems = siteNav.querySelectorAll(".site-nav__item.has-dropdown");
+
+        const isMobileNav = () => window.matchMedia("(max-width: 900px)").matches;
+
+        const closeAllDropdowns = () => {
+            navItems.forEach((item) => {
+                item.classList.remove("is-open");
+            });
+        };
+
+        const closeMobileNav = () => {
+            siteNav.classList.remove("is-open");
+            menuButton.classList.remove("is-open");
+            menuButton.setAttribute("aria-label", "메뉴 열기");
+            closeAllDropdowns();
+        };
+
         menuButton.addEventListener("click", () => {
-            siteNav.classList.toggle("is-open");
-            menuButton.classList.toggle("is-open");
+            siteNav.classList.add("is-drawer-animated");
+
+            const willOpen = !siteNav.classList.contains("is-open");
+
+            siteNav.classList.toggle("is-open", willOpen);
+            menuButton.classList.toggle("is-open", willOpen);
+            menuButton.setAttribute("aria-label", willOpen ? "메뉴 닫기" : "메뉴 열기");
         });
 
-        siteNav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                siteNav.classList.remove("is-open");
-                menuButton.classList.remove("is-open");
+        navItems.forEach((item) => {
+            const trigger = item.querySelector(".site-nav__link");
+
+            item.addEventListener("mouseenter", () => {
+                if (isMobileNav()) return;
+
+                navItems.forEach((navItem) => {
+                    navItem.classList.remove("is-click-closed");
+                    navItem.classList.remove("is-open");
+                });
             });
+            if (!trigger) return;
+
+            trigger.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                if (!isMobileNav()) {
+                    item.classList.add("is-click-closed");
+                    trigger.blur();
+                    return;
+                }
+
+                const isOpen = item.classList.contains("is-open");
+
+                navItems.forEach((navItem) => {
+                    navItem.classList.remove("is-open");
+                });
+
+                item.classList.toggle("is-open", !isOpen);
+            });
+        });
+
+        siteNav.querySelectorAll(".site-dropdown__link").forEach((link) => {
+            link.addEventListener("click", () => {
+                closeMobileNav();
+            });
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!siteNav.contains(event.target) && !menuButton.contains(event.target)) {
+                closeAllDropdowns();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMobileNav();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            siteNav.classList.remove("is-open");
+            siteNav.classList.remove("is-drawer-animated");
+            menuButton.classList.remove("is-open");
+            closeAllDropdowns();
         });
     }
 
