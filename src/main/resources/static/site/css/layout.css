@@ -225,22 +225,100 @@ button {
    DESKTOP NAV
    ========================= */
 
+/*.desktop-nav {*/
+/*    height: 100%;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 0;*/
+/*    margin-left: 24px;*/
+/*}*/
+
+/*.desktop-nav__item {*/
+/*    height: 100%;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding: 0 4px;*/
+/*}*/
+
+/*.desktop-nav__link {*/
+/*    appearance: none;*/
+/*    -webkit-appearance: none;*/
+/*    border: 0;*/
+/*    background: transparent;*/
+/*    cursor: pointer;*/
+
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+
+/*    height: 44px;*/
+/*    padding: 0 16px;*/
+/*    border-radius: 10px;*/
+
+/*    font-size: 15px;*/
+/*    font-weight: 800;*/
+/*    color: var(--color-navy);*/
+
+/*    transition: background 0.18s ease, color 0.18s ease;*/
+/*}*/
+
 .desktop-nav {
+    position: relative;
+
     height: 100%;
     display: flex;
     align-items: center;
     gap: 0;
     margin-left: 24px;
+
+    /* 움직이는 강조 배경의 위치와 크기 */
+    --nav-highlight-left: 0px;
+    --nav-highlight-width: 0px;
+}
+
+/* 메뉴 사이를 이동하는 공통 강조 배경 */
+.desktop-nav::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    width: var(--nav-highlight-width);
+    height: 44px;
+
+    border-radius: 10px;
+    background: var(--color-bg-soft);
+
+    transform:
+            translateX(var(--nav-highlight-left))
+            translateY(-50%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+            transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+            width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.16s ease;
+}
+
+/* 활성 메뉴가 있을 때 강조 배경 표시 */
+.desktop-nav.has-active-item::before {
+    opacity: 1;
 }
 
 .desktop-nav__item {
+    position: relative;
+
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 4px;
 }
 
 .desktop-nav__link {
+    position: relative;
+    z-index: 1;
+
     appearance: none;
     -webkit-appearance: none;
     border: 0;
@@ -252,21 +330,79 @@ button {
     justify-content: center;
 
     height: 44px;
-    padding: 0 16px;
+    padding: 0 20px;
     border-radius: 10px;
 
     font-size: 15px;
     font-weight: 800;
     color: var(--color-navy);
 
-    transition: background 0.18s ease, color 0.18s ease;
+    transition: color 0.18s ease;
 }
 
-.desktop-nav__item:hover > .desktop-nav__link {
-    background: var(--color-bg-soft);
+/* 배경은 desktop-nav::before가 담당하고 글자색만 변경 */
+.desktop-nav__item.is-active > .desktop-nav__link {
     color: var(--color-blue);
 }
 
+/*.desktop-nav__item:hover > .desktop-nav__link {*/
+/*    background: var(--color-bg-soft);*/
+/*    color: var(--color-blue);*/
+/*}*/
+
+/*.desktop-dropdown {*/
+/*    position: fixed;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    top: calc(var(--header-height) - 1px);*/
+/*    z-index: 990;*/
+
+/*    display: none;*/
+
+/*    background: rgba(255, 255, 255, 0.98);*/
+/*    border-top: 1px solid rgba(15, 35, 60, 0.08);*/
+/*    border-bottom: 1px solid rgba(15, 35, 60, 0.12);*/
+/*    box-shadow: 0 18px 36px rgba(15, 35, 60, 0.08);*/
+/*}*/
+/*.desktop-dropdown {*/
+/*    position: fixed;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    top: calc(var(--header-height) - 1px);*/
+/*    z-index: 990;*/
+
+/*    display: block;*/
+
+/*    background: rgba(255, 255, 255, 0.98);*/
+/*    border-top: 1px solid rgba(15, 35, 60, 0.08);*/
+/*    border-bottom: 1px solid rgba(15, 35, 60, 0.12);*/
+/*    box-shadow: 0 18px 36px rgba(15, 35, 60, 0.08);*/
+
+/*    opacity: 0;*/
+/*    visibility: hidden;*/
+/*    pointer-events: none;*/
+
+/*    transform: translateY(-8px);*/
+
+/*    transition:*/
+/*            opacity 0.18s ease,*/
+/*            transform 0.22s ease,*/
+/*            visibility 0s linear 0.22s;*/
+/*}*/
+
+/*!* JS가 활성화한 메뉴만 드롭다운 표시 *!*/
+/*.desktop-nav__item.is-active .desktop-dropdown {*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*    pointer-events: auto;*/
+
+/*    transform: translateY(0);*/
+
+/*    transition:*/
+/*            opacity 0.18s ease,*/
+/*            transform 0.22s ease,*/
+/*            visibility 0s;*/
+/*}*/
 .desktop-dropdown {
     position: fixed;
     left: 0;
@@ -280,11 +416,20 @@ button {
     border-top: 1px solid rgba(15, 35, 60, 0.08);
     border-bottom: 1px solid rgba(15, 35, 60, 0.12);
     box-shadow: 0 18px 36px rgba(15, 35, 60, 0.08);
+
+    /* 상세 메뉴에는 어떠한 전환 효과도 적용하지 않음 */
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
 }
 
-.desktop-nav__item:hover .desktop-dropdown {
+.desktop-nav__item.is-active > .desktop-dropdown {
     display: block;
 }
+/*.desktop-nav__item:hover .desktop-dropdown {*/
+/*    display: block;*/
+/*}*/
 
 .desktop-dropdown__inner {
     width: min(100% - 40px, var(--container));
@@ -868,5 +1013,21 @@ body.is-nav-open {
 
         /* 열렸을 때만 그림자 */
         box-shadow: -24px 0 50px rgba(15, 35, 60, 0.14);
+    }
+}
+
+@media (min-width: 901px) {
+    .desktop-dropdown {
+        display: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .desktop-nav__item.is-active > .desktop-dropdown {
+        display: block !important;
     }
 }
