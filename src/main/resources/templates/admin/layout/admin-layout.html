@@ -1,3 +1,36 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      th:fragment="layout(title, activeMenu, content, pageCss)">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <meta name="_csrf" th:content="${_csrf != null ? _csrf.token : ''}">-->
+<!--  <meta name="_csrf_header" th:content="${_csrf != null ? _csrf.headerName : ''}">-->
+
+<!--  <title th:text="${title}">KQSF Admin</title>-->
+
+<!--  <link rel="stylesheet" th:href="@{/vendor/bootstrap/bootstrap.css}">-->
+<!--  <link rel="stylesheet" th:href="@{/admin/css/admin.css}">-->
+
+<!--  <link rel="stylesheet"-->
+<!--        th:if="${pageCss != null}"-->
+<!--        th:href="@{${pageCss}}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="admin-layout">-->
+<!--  <div th:replace="~{admin/fragments/sidebar :: sidebar(${activeMenu})}"></div>-->
+
+<!--  <main class="content">-->
+<!--    <div th:replace="${content}"></div>-->
+<!--  </main>-->
+<!--</div>-->
+
+<!--<script th:src="@{/vendor/bootstrap/bootstrap.js}"></script>-->
+<!--<script th:src="@{/admin/js/upload.js}"></script>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
@@ -5,28 +38,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="_csrf" th:content="${_csrf != null ? _csrf.token : ''}">
-  <meta name="_csrf_header" th:content="${_csrf != null ? _csrf.headerName : ''}">
+
+  <meta name="_csrf"
+        th:content="${_csrf != null ? _csrf.token : ''}">
+
+  <meta name="_csrf_header"
+        th:content="${_csrf != null ? _csrf.headerName : ''}">
 
   <title th:text="${title}">KQSF Admin</title>
 
-  <link rel="stylesheet" th:href="@{/vendor/bootstrap/bootstrap.css}">
-  <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
+  <link rel="stylesheet"
+        th:href="@{/vendor/bootstrap/bootstrap.css}">
 
   <link rel="stylesheet"
-        th:if="${pageCss != null}"
-        th:href="@{${pageCss}}">
+        th:href="@{/admin/css/admin.css}">
+
+  <link rel="stylesheet"
+        th:if="${pageCss != null and !#strings.isEmpty(pageCss)}"
+        th:href="${pageCss}">
 </head>
+
 <body>
 <div class="admin-layout">
+
   <div th:replace="~{admin/fragments/sidebar :: sidebar(${activeMenu})}"></div>
 
   <main class="content">
-    <div th:replace="${content}"></div>
+    <th:block th:replace="${content}"></th:block>
   </main>
+
 </div>
 
-<script th:src="@{/vendor/bootstrap/bootstrap.js}"></script>
+<script th:src="@{/vendor/bootstrap/bootstrap.bundle.js}"></script>
+<script th:src="@{/admin/js/admin.js}"></script>
 <script th:src="@{/admin/js/upload.js}"></script>
 </body>
 </html>

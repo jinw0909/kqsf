@@ -7,124 +7,400 @@
 
 <main class="products-page">
 
-    <!-- Products Hero -->
+    <!-- =========================================================
+         Hero
+    ========================================================== -->
     <section class="products-hero">
-        <div class="products-hero__bg"></div>
+        <div class="products-hero__background"></div>
 
-        <div class="container products-hero__inner">
+        <div class="products-container products-hero__inner">
             <div class="products-hero__content">
-                <p class="section-eyebrow">Products</p>
-                <h1>초저온 기술로 관리되는<br>식품 라인업</h1>
+                <p class="products-eyebrow">KQSF Products</p>
+
+                <h1>
+                    초저온 기술로 관리되는<br>
+                    식품 라인업
+                </h1>
+
+                <p class="products-hero__description">
+                    KQSF는 초저온 연안 참다랑어를 시작으로 수산물, 축산물,
+                    농산물과 OEM·PB 제품까지 새로운 식품 유통 기준을 확장합니다.
+                </p>
+
+                <div class="products-hero__actions">
+                    <a href="#product-categories"
+                       class="products-button products-button--primary">
+                        제품 살펴보기
+                    </a>
+
+                    <a href="/start/inquiry"
+                       class="products-button products-button--secondary">
+                        제품 문의하기
+                    </a>
+                </div>
+            </div>
+
+            <div class="products-hero__visual" aria-hidden="true">
+                <div class="products-hero__orb products-hero__orb--one"></div>
+                <div class="products-hero__orb products-hero__orb--two"></div>
+
+                <div class="products-hero__ice-card">
+                    <div class="products-hero__ice-line"></div>
+
+                    <div class="products-hero__temperature">
+                        <span>ULT</span>
+                        <strong>-60°C</strong>
+                    </div>
+
+                    <div class="products-hero__visual-footer">
+                        <span>KQSF Product Line</span>
+                        <small>Quick Super Freeze</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         Why KQSF
+    ========================================================== -->
+    <section class="products-why products-section">
+        <div class="products-container">
+            <div class="products-section-heading products-section-heading--center">
+                <span class="products-heading-line"></span>
+
+                <p class="products-eyebrow">Why KQSF</p>
+
+                <h2>왜 KQSF 제품을 선택해야 하나요?</h2>
+
                 <p>
-                    KQSF는 초저온 연안 참다랑어를 시작으로 수산물, 축산물, 농산물,
-                    HMR, OEM/PB 제품으로 확장합니다.
+                    원물의 품질부터 보관과 유통까지, KQSF는 식품이 고객에게
+                    전달되는 전 과정을 초저온 기준으로 관리합니다.
                 </p>
             </div>
 
-            <div class="products-hero__visual">
-                <span>KQSF Product Line</span>
+            <div class="products-reason-grid">
+                <article class="products-reason-card">
+                    <div class="products-reason-card__icon">
+                        <span class="products-reason-card__snowflake">✦</span>
+                    </div>
+
+                    <h3>신선함을 오래 유지합니다</h3>
+
+                    <p>
+                        식품의 품질 저하가 빠르게 진행되는 온도 구간을 신속히 통과시켜
+                        원물의 식감과 품질을 안정적으로 보존합니다.
+                    </p>
+                </article>
+
+                <article class="products-reason-card">
+                    <div class="products-reason-card__icon">
+                        <span class="products-reason-card__chain">∞</span>
+                    </div>
+
+                    <h3>유통 과정까지 관리합니다</h3>
+
+                    <p>
+                        냉동 이후의 보관과 운송까지 기준화하여 생산지에서 고객에게
+                        전달되는 과정의 품질 편차를 줄입니다.
+                    </p>
+                </article>
+
+                <article class="products-reason-card">
+                    <div class="products-reason-card__icon">
+                        <span class="products-reason-card__check">✓</span>
+                    </div>
+
+                    <h3>확인 가능한 기준을 제공합니다</h3>
+
+                    <p>
+                        QSF 품질 기준과 LOT·시리얼 추적 시스템을 통해 제품의 생산과
+                        유통 정보를 체계적으로 관리합니다.
+                    </p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Category Links -->
-    <section class="product-categories section">
-        <div class="container">
-            <div class="section-heading section-heading--between">
+
+    <!-- =========================================================
+         Categories
+    ========================================================== -->
+    <section id="product-categories"
+             class="products-categories products-section">
+
+        <div class="products-container">
+            <div class="products-category-heading">
                 <div>
-                    <p class="section-eyebrow">Category</p>
-                    <h2>제품 카테고리</h2>
-                    <p>공급 가능한 제품군을 카테고리별로 확인할 수 있습니다.</p>
+                    <p class="products-eyebrow">Product Categories</p>
+                    <h2>어떤 제품을 찾고 있나요?</h2>
+
+                    <p>
+                        KQSF의 초저온 기준으로 관리되는 제품군을
+                        카테고리별로 확인해 보세요.
+                    </p>
+                </div>
+
+                <div class="products-category-decoration" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
 
-            <div class="category-link-grid">
-                <a href="/products" class="category-link-card is-active">
-                    <span>All</span>
-                    <strong>전체 제품</strong>
-                    <p>현재 노출 중인 모든 제품을 확인합니다.</p>
-                </a>
+            <!--
+                백엔드에서 수산물 / 축산물 / 농산물 / OEM·PB
+                4개의 카테고리를 내려준다는 기준
+            -->
+            <div class="products-category-grid"
+                 th:if="${categories != null and !categories.isEmpty()}">
 
-                <a th:each="category : ${categories}"
-                   th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(category.code)})}"
-                   class="category-link-card">
-                    <span th:text="${category.nameEn != null ? category.nameEn : category.code}">SEAFOOD</span>
-                    <strong th:text="${category.name}">수산물</strong>
-                    <p th:text="${category.description}">카테고리 설명</p>
+                <a th:each="category, categoryStatus : ${categories}"
+                   th:href="@{/products/{categoryCode}(
+                        categoryCode=${#strings.toLowerCase(category.code)}
+                   )}"
+                   class="products-category-card">
+
+<!--                    <div class="products-category-card__visual"-->
+<!--                         th:classappend="' products-category-card__visual&#45;&#45;' + ${categoryStatus.index + 1}">-->
+
+<!--                        <span class="products-category-card__number"-->
+<!--                              th:text="${#numbers.formatInteger(categoryStatus.index + 1, 2)}">-->
+<!--                            01-->
+<!--                        </span>-->
+
+<!--                        <div class="products-category-card__symbol">-->
+<!--                            <span th:switch="${categoryStatus.index}">-->
+<!--                                <span th:case="0">◈</span>-->
+<!--                                <span th:case="1">◇</span>-->
+<!--                                <span th:case="2">✦</span>-->
+<!--                                <span th:case="*">□</span>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="products-category-card__visual"
+                         th:classappend="' products-category-card__visual--' + ${categoryStatus.index + 1}">
+
+                        <span class="products-category-card__number"
+                              th:text="${#numbers.formatInteger(categoryStatus.index + 1, 2)}">
+                            01
+                        </span>
+
+                        <img th:if="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"
+                             class="products-category-card__image"
+                             th:src="${category.bannerUrl}"
+                             th:alt="${category.name}">
+
+                        <div th:unless="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"
+                             class="products-category-card__fallback">
+                            <span th:switch="${categoryStatus.index}">
+                                <span th:case="0">◈</span>
+                                <span th:case="1">◇</span>
+                                <span th:case="2">✦</span>
+                                <span th:case="*">□</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="products-category-card__body">
+                        <p class="products-card-eyebrow"
+                           th:text="${category.nameEn != null
+                               ? category.nameEn
+                               : category.code}">
+                            SEA FOOD
+                        </p>
+
+                        <h3 th:text="${category.name}">
+                            수산물
+                        </h3>
+
+                        <p th:text="${category.description}">
+                            초저온 기준으로 관리되는 수산물 제품을 확인합니다.
+                        </p>
+
+                        <span class="products-text-link">
+                            제품 살펴보기
+                            <i aria-hidden="true">→</i>
+                        </span>
+                    </div>
                 </a>
+            </div>
+
+            <div class="products-empty-state"
+                 th:unless="${categories != null and !categories.isEmpty()}">
+                <strong>등록된 제품 카테고리가 없습니다.</strong>
+                <p>제품 카테고리가 준비되면 이곳에 표시됩니다.</p>
             </div>
         </div>
     </section>
 
-    <!-- Product List -->
-    <section class="product-list-section section">
-        <div class="container">
-            <div class="section-heading section-heading--between">
-                <div>
-                    <p class="section-eyebrow">Lineup</p>
-                    <h2>전체 제품</h2>
-                    <p>초저온 기준으로 관리되는 KQSF 제품입니다.</p>
-                </div>
+
+    <!-- =========================================================
+         Featured Products
+    ========================================================== -->
+    <section class="products-featured products-section">
+        <div class="products-container">
+            <div class="products-section-heading">
+                <p class="products-eyebrow">Featured Products</p>
+                <h2>KQSF 대표 제품</h2>
+
+                <p>
+                    초저온 기술을 적용해 원물의 품질과 식감을 안정적으로
+                    보존한 주요 제품을 소개합니다.
+                </p>
             </div>
 
-            <div class="product-grid" th:if="${products != null and products.hasContent()}">
-                <article class="product-card" th:each="product : ${products.content}">
+            <!--
+                현재는 백엔드에서 products를 최대 3개 내려주는 구조.
+                나중에는 featuredProducts 전용 변수로 변경 가능.
+            -->
+            <div class="products-featured-list"
+                 th:if="${products != null and products.hasContent()}">
+
+                <article th:each="product, productStatus : ${products.content}"
+                         th:if="${productStatus.index < 3}"
+                         class="products-featured-item"
+                         th:classappend="${productStatus.odd}
+                             ? ' products-featured-item--reverse'
+                             : ''">
+
                     <a th:href="@{/products/{categoryCode}/{productCode}(
-                categoryCode=${#strings.toLowerCase(product.categoryCode)},
-                productCode=${#strings.toLowerCase(product.code)}
-              )}">
-                        <div class="product-card__media">
-                            <img th:if="${product.thumbnailUrl != null}"
-                                 th:src="${product.thumbnailUrl}"
-                                 th:alt="${product.name}">
+                            categoryCode=${#strings.toLowerCase(product.categoryCode)},
+                            productCode=${#strings.toLowerCase(product.code)}
+                       )}"
+                       class="products-featured-item__visual">
 
-                            <div th:unless="${product.thumbnailUrl != null}" class="product-card__placeholder">
-                                <span>KQSF</span>
-                            </div>
+                        <img th:if="${product.thumbnailUrl != null}"
+                             th:src="${product.thumbnailUrl}"
+                             th:alt="${product.name}">
 
-                            <span class="product-card__category" th:text="${product.categoryName}">수산물</span>
+                        <div th:unless="${product.thumbnailUrl != null}"
+                             class="products-featured-item__placeholder">
+                            <span>KQSF</span>
+                            <strong th:text="${product.name}">
+                                KQSF Product
+                            </strong>
                         </div>
 
-                        <div class="product-card__body">
-                            <p class="card-eyebrow" th:text="${product.nameEn != null ? product.nameEn : product.code}">
-                                East Sea Bluefin Tuna
-                            </p>
-
-                            <h3 th:text="${product.name}">초저온 연안 참다랑어</h3>
-
-                            <p th:text="${product.shortDescription}">
-                                -60°C 초저온 기준으로 관리되는 B2B 납품형 참다랑어 제품입니다.
-                            </p>
-
-                            <span class="card-link">제품 자세히 보기</span>
+                        <div class="products-featured-item__badge">
+                            <span th:text="${product.categoryName}">
+                                수산물
+                            </span>
                         </div>
                     </a>
+
+                    <div class="products-featured-item__content">
+                        <p class="products-card-eyebrow"
+                           th:text="${product.nameEn != null
+                               ? product.nameEn
+                               : product.code}">
+                            East Sea Bluefin Tuna
+                        </p>
+
+                        <h3 th:text="${product.name}">
+                            동해 연안 참다랑어
+                        </h3>
+
+                        <p th:text="${product.shortDescription}">
+                            초저온 기술을 적용해 원물의 식감과 품질을
+                            안정적으로 보존한 KQSF 대표 제품입니다.
+                        </p>
+
+                        <a th:href="@{/products/{categoryCode}/{productCode}(
+                                categoryCode=${#strings.toLowerCase(product.categoryCode)},
+                                productCode=${#strings.toLowerCase(product.code)}
+                           )}"
+                           class="products-button products-button--primary">
+                            제품 자세히 보기
+                        </a>
+                    </div>
                 </article>
             </div>
 
-            <div class="empty-state" th:unless="${products != null and products.hasContent()}">
-                <strong>등록된 제품이 없습니다.</strong>
-                <p>현재 노출 중인 제품이 없습니다.</p>
+            <div class="products-empty-state"
+                 th:unless="${products != null and products.hasContent()}">
+                <strong>등록된 대표 제품이 없습니다.</strong>
+                <p>대표 제품이 준비되면 이곳에 표시됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+    <section class="products-actions products-section">
+        <div class="products-container">
+            <div class="products-section-heading">
+                <p class="products-eyebrow">Get Started</p>
+                <h2>KQSF를 더 자세히 만나보세요</h2>
+
+                <p>
+                    제품 공급과 납품을 문의하거나, KQSF의 품질 관리 시스템을
+                    자세히 확인할 수 있습니다.
+                </p>
             </div>
 
-            <!-- Simple Paging -->
-            <div class="simple-pagination" th:if="${products != null and products.totalPages > 1}">
-                <a th:if="${products.hasPrevious()}"
-                   th:href="@{/products(page=${products.number - 1})}"
-                   class="page-button">
-                    이전
+            <div class="products-action-grid">
+
+                <!-- 왼쪽: 문의하기 -->
+                <a href="/start/inquiry"
+                   class="products-action-card products-action-card--inquiry">
+
+                    <div class="products-action-card__visual">
+                        <div class="products-action-card__box products-action-card__box--back"></div>
+                        <div class="products-action-card__box products-action-card__box--front">
+                            <span>KQSF</span>
+                        </div>
+
+                        <div class="products-action-card__snow products-action-card__snow--one">✦</div>
+                        <div class="products-action-card__snow products-action-card__snow--two">✦</div>
+                        <div class="products-action-card__snow products-action-card__snow--three">✦</div>
+                    </div>
+
+                    <div class="products-action-card__body">
+                        <p class="products-card-eyebrow">Product Inquiry</p>
+                        <h3>제품 구매 및 납품 문의</h3>
+
+                        <p>
+                            제품 가격, 포장 단위, 최소 주문 수량과 납품 가능 일정을
+                            담당자에게 문의해 보세요.
+                        </p>
+
+                        <span class="products-button products-button--primary">
+                            문의하기
+                        </span>
+                    </div>
                 </a>
 
-                <span>
-          <strong th:text="${products.number + 1}">1</strong>
-          /
-          <span th:text="${products.totalPages}">3</span>
-        </span>
+                <!-- 오른쪽: QSF 소개 -->
+                <a href="/qsf"
+                   class="products-action-card products-action-card--qsf">
 
-                <a th:if="${products.hasNext()}"
-                   th:href="@{/products(page=${products.number + 1})}"
-                   class="page-button">
-                    다음
+                    <div class="products-action-card__visual">
+                        <div class="products-action-card__rings">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                            <strong>QSF</strong>
+                        </div>
+                    </div>
+
+                    <div class="products-action-card__body">
+                        <p class="products-card-eyebrow">QSF System</p>
+                        <h3>QSF 품질 시스템 알아보기</h3>
+
+                        <p>
+                            초저온 냉동부터 보관, 운송과 이력 관리까지 이어지는
+                            QSF의 통합 품질 관리 기준을 확인해 보세요.
+                        </p>
+
+                        <span class="products-button products-button--primary">
+                            QSF 소개 보기
+                        </span>
+                    </div>
                 </a>
             </div>
         </div>
