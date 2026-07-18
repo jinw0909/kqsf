@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
-       VIEWPORT HEIGHT
-       ========================================================= */
+   VIEWPORT HEIGHT
+   주소창 변화는 무시하고 폭 변경 시에만 재계산
+   ========================================================= */
 
     const getViewportHeight = () => {
         return Math.min(
@@ -48,17 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     };
 
+    let previousViewportWidth = window.innerWidth;
+
     setStableViewportHeight();
 
-    window.addEventListener("load", setStableViewportHeight);
+    window.addEventListener("resize", () => {
+        const currentViewportWidth = window.innerWidth;
 
-    window.addEventListener("resize", setStableViewportHeight);
+        // 주소창 표시·숨김처럼 높이만 변한 경우는 무시
+        if (currentViewportWidth === previousViewportWidth) {
+            return;
+        }
 
-    window.visualViewport?.addEventListener(
-        "resize",
-        setStableViewportHeight
-    );
-
+        previousViewportWidth = currentViewportWidth;
+        setStableViewportHeight();
+    });
 
     /* =========================================================
        HEADER SCROLL
@@ -530,11 +535,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       TEMPERATURE COUNTER
-       ========================================================= */
+   TEMPERATURE COUNTER
+   아래로 스크롤하며 진입할 때만 다시 실행
+   ========================================================= */
 
     const temperatureCounters = document.querySelectorAll(
         ".count-temperature"
+    );
+
+    const metricsSection = document.querySelector(
+        ".home-metrics"
     );
 
     const animateTemperature = (counter) => {
@@ -588,31 +598,51 @@ document.addEventListener("DOMContentLoaded", () => {
             requestAnimationFrame(update);
     };
 
-    const metricsSection = document.querySelector(
-        ".home-metrics"
-    );
-
     if (
         metricsSection &&
         temperatureCounters.length &&
         "IntersectionObserver" in window
     ) {
+        let previousScrollY = window.scrollY;
+        let scrollDirection = "down";
         let wasVisible = false;
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                const currentScrollY = window.scrollY;
+
+                if (currentScrollY > previousScrollY) {
+                    scrollDirection = "down";
+                } else if (currentScrollY < previousScrollY) {
+                    scrollDirection = "up";
+                }
+
+                previousScrollY = currentScrollY;
+            },
+            { passive: true }
+        );
 
         const temperatureObserver =
             new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
-                        if (
-                            entry.isIntersecting &&
-                            !wasVisible
-                        ) {
-                            temperatureCounters.forEach(
-                                animateTemperature
-                            );
+                        if (entry.isIntersecting) {
+                            /*
+                             * 아래로 스크롤하면서 섹션이 화면에 들어온 경우만 실행.
+                             * 위로 스크롤해 다시 들어온 경우에는 실행하지 않는다.
+                             */
+                            if (
+                                !wasVisible &&
+                                scrollDirection === "down"
+                            ) {
+                                temperatureCounters.forEach(
+                                    animateTemperature
+                                );
+                            }
 
                             wasVisible = true;
-                        } else if (!entry.isIntersecting) {
+                        } else {
                             wasVisible = false;
                         }
                     });

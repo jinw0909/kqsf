@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{site/layout/base :: head('KQSF | LNG 초저온 식품 기술', '/site/css/home.css')}"></head>
 
-<body>
+<body id="top">
 <header th:replace="~{site/layout/base :: header}"></header>
 
 <main class="home-page">
@@ -350,45 +350,162 @@
     </div>
   </section>
 
+<!--  &lt;!&ndash; 8. Start / Contact &ndash;&gt;-->
+<!--  <section class="home-start eth-section">-->
+<!--    <div class="eth-container">-->
+<!--      <div class="section-heading section-heading&#45;&#45;center">-->
+<!--        <p class="section-eyebrow">Start with KQSF</p>-->
+<!--        <h2>KQSF와 함께 시작하기</h2>-->
+<!--        <p>제품 문의부터 파트너 협력까지, 필요한 방식으로 KQSF와 연결해 보세요.</p>-->
+<!--      </div>-->
+
+<!--      <div class="start-grid">-->
+<!--        <article class="start-card">-->
+<!--          <div>-->
+<!--            <div class="start-card__media"></div>-->
+<!--            <p class="card-eyebrow">Contact</p>-->
+<!--            <h3>궁금한 점을 문의해 주세요.</h3>-->
+<!--            <p>제품, 초저온 기술, 가공 및 공급에 관한 궁금한 내용을 남겨주시면 안내해 드립니다.</p>-->
+<!--          </div>-->
+<!--          <a href="/contact" class="button button&#45;&#45;primary">문의 남기기</a>-->
+<!--        </article>-->
+
+<!--        <article class="start-card">-->
+<!--          <div>-->
+<!--            <div class="start-card__media"></div>-->
+<!--            <p class="card-eyebrow">MEMBER</p>-->
+<!--            <h3>KQSF 서비스를 계속 이용하세요.</h3>-->
+<!--            <p>로그인하고 문의 내역과 신청 현황 등 회원 전용 서비스를 확인해 보세요.</p>-->
+<!--          </div>-->
+<!--          <a href="/contact" class="button button&#45;&#45;primary">로그인</a>-->
+<!--        </article>-->
+
+<!--        <article class="start-card">-->
+<!--          <div>-->
+<!--            <div class="start-card__media"></div>-->
+<!--            <p class="card-eyebrow">PARTNERSHIP</p>-->
+<!--            <h3>새로운 가능성을 함께 만들어가세요.</h3>-->
+<!--            <p>생산, 가공, 유통 등 다양한 분야의 기업과 지속 가능한 협력을 만들어갑니다.</p>-->
+<!--          </div>-->
+<!--          <a href="/contact" class="button button&#45;&#45;primary">파트너 신청</a>-->
+<!--        </article>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
   <!-- 8. Start / Contact -->
   <section class="home-start eth-section">
     <div class="eth-container">
       <div class="section-heading section-heading--center">
         <p class="section-eyebrow">Start with KQSF</p>
         <h2>KQSF와 함께 시작하기</h2>
-        <p>제품 문의부터 파트너 협력까지, 필요한 방식으로 KQSF와 연결해 보세요.</p>
+        <p>
+          제품 문의부터 파트너 협력까지, 필요한 방식으로 KQSF와 연결해 보세요.
+        </p>
       </div>
 
       <div class="start-grid">
+
+        <!-- 문의 -->
         <article class="start-card">
           <div>
             <div class="start-card__media"></div>
-            <p class="card-eyebrow">Contact</p>
-            <h3>궁금한 점을 문의해 주세요.</h3>
-            <p>제품, 초저온 기술, 가공 및 공급에 관한 궁금한 내용을 남겨주시면 안내해 드립니다.</p>
+
+            <div class="start-card__title">
+            <span class="start-card__icon start-card__icon--contact">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 5.5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-13a1 1 0 0 1 1-1Z"/>
+                <path d="M8 9h8M8 12h5"/>
+              </svg>
+            </span>
+
+              <h3>제품·기술 문의</h3>
+            </div>
+
+            <p>
+              제품, 초저온 기술, 가공 및 공급에 관한 궁금한 내용을 남겨주시면 안내해 드립니다.
+            </p>
+
+            <ul class="start-card__list">
+              <li>제품 및 납품 조건 문의</li>
+              <li>LNG 초저온 기술 상담</li>
+              <li>가공·OEM/PB 협의</li>
+            </ul>
           </div>
-          <a href="/contact" class="button button--primary">문의 남기기</a>
+
+          <a href="/contact" class="button button--primary start-card__button">
+            문의 남기기
+            <span>›</span>
+          </a>
         </article>
 
+        <!-- 회원 -->
         <article class="start-card">
           <div>
             <div class="start-card__media"></div>
-            <p class="card-eyebrow">MEMBER</p>
-            <h3>KQSF 서비스를 계속 이용하세요.</h3>
-            <p>로그인하고 문의 내역과 신청 현황 등 회원 전용 서비스를 확인해 보세요.</p>
+
+            <div class="start-card__title">
+            <span class="start-card__icon start-card__icon--member">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.5"/>
+                <path d="M5 20c.6-4 3.3-6 7-6s6.4 2 7 6"/>
+              </svg>
+            </span>
+
+              <h3>회원 서비스</h3>
+            </div>
+
+            <p>
+              로그인하고 문의 내역과 신청 현황 등 회원 전용 서비스를 확인해 보세요.
+            </p>
+
+            <ul class="start-card__list">
+              <li>문의 내역 확인</li>
+              <li>신청 및 진행 현황 조회</li>
+              <li>회원 전용 자료 이용</li>
+            </ul>
           </div>
-          <a href="/contact" class="button button--primary">로그인</a>
+
+          <a href="/login" class="button button--primary start-card__button">
+            로그인
+            <span>›</span>
+          </a>
         </article>
 
+        <!-- 파트너십 -->
         <article class="start-card">
           <div>
             <div class="start-card__media"></div>
-            <p class="card-eyebrow">PARTNERSHIP</p>
-            <h3>새로운 가능성을 함께 만들어가세요.</h3>
-            <p>생산, 가공, 유통 등 다양한 분야의 기업과 지속 가능한 협력을 만들어갑니다.</p>
+
+            <div class="start-card__title">
+            <span class="start-card__icon start-card__icon--partner">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m8.5 12 2.2 2.2a1.8 1.8 0 0 0 2.6 0l3.7-3.7"/>
+                <path d="m3 9 3.5-3.5 4 1.4 1.5 1.5"/>
+                <path d="m21 9-3.5-3.5-4 1.4-4.6 4.6a1.8 1.8 0 0 0 2.6 2.6l2-2"/>
+                <path d="m5 9-2 2 5.5 5.5a1.6 1.6 0 0 0 2.3 0l.4-.4"/>
+              </svg>
+            </span>
+
+              <h3>파트너십</h3>
+            </div>
+
+            <p>
+              생산, 가공, 유통 등 다양한 분야의 기업과 지속 가능한 협력을 만들어갑니다.
+            </p>
+
+            <ul class="start-card__list">
+              <li>생산·가공 기업 협력</li>
+              <li>유통·프랜차이즈 공급</li>
+              <li>공동 사업 및 기술 제휴</li>
+            </ul>
           </div>
-          <a href="/contact" class="button button--primary">파트너 신청</a>
+
+          <a href="/contact" class="button button--primary start-card__button">
+            파트너 신청
+            <span>›</span>
+          </a>
         </article>
+
       </div>
     </div>
   </section>

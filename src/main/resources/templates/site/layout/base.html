@@ -169,25 +169,168 @@
   </div>
 </nav>
 </th:block>
+<!--<footer th:fragment="footer" class="site-footer">-->
+<!--  <div class="site-footer__inner">-->
+<!--    <div class="site-footer__brand">-->
+<!--      <strong>KQSF</strong>-->
+<!--      <p>Korea Quick Super Freeze</p>-->
+<!--      <p>-162°C LNG 냉열 기반 초저온 식품 기술</p>-->
+<!--    </div>-->
+<!--    <div class="site-footer__links">-->
+<!--      <a href="/products">제품</a>-->
+<!--      <a href="/infrastructure">LNG 초저온 기술</a>-->
+<!--      <a href="/qsf">QSF 시스템</a>-->
+<!--      <a href="/contact">문의하기</a>-->
+<!--      <a href="/login">로그인</a>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="site-footer__bottom">-->
+<!--    <p>© KQSF. All rights reserved.</p>-->
+<!--  </div>-->
+<!--</footer>-->
 <footer th:fragment="footer" class="site-footer">
-  <div class="site-footer__inner">
-    <div class="site-footer__brand">
-      <strong>KQSF</strong>
-      <p>Korea Quick Super Freeze</p>
-      <p>-162°C LNG 냉열 기반 초저온 식품 기술</p>
+
+  <div class="site-footer__top">
+    <p class="site-footer__updated">
+      웹사이트 마지막 업데이트:
+      <strong>2026년 7월 18일</strong>
+    </p>
+
+    <a href="#top" class="site-footer__top-button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m7 14 5-5 5 5"/>
+      </svg>
+      맨 위로 이동
+    </a>
+  </div>
+
+  <div class="site-footer__main">
+
+    <div class="site-footer__identity">
+      <a href="/" class="site-footer__logo" aria-label="KQSF 홈">
+        <img src="/site/images/logo/logo.png" alt="KQSF">
+      </a>
+
+      <p>
+        LNG 냉열 기반 초저온 기술과<br>
+        QSF 인증 시스템으로 식품 유통의<br>
+        새로운 기준을 만듭니다.
+      </p>
     </div>
-    <div class="site-footer__links">
-      <a href="/products">제품</a>
-      <a href="/infrastructure">LNG 초저온 기술</a>
-      <a href="/qsf">QSF 시스템</a>
-      <a href="/contact">문의하기</a>
-      <a href="/login">로그인</a>
+
+    <div class="site-footer__navigation">
+
+      <section class="site-footer__column">
+        <h2>제품</h2>
+
+        <ul>
+          <li><a href="/products">모든 제품</a></li>
+          <li><a href="/products/seafood">수산물</a></li>
+          <li><a href="/products/agriculture">농산물</a></li>
+          <li><a href="/products/meat">축산물</a></li>
+          <li><a href="/products/oem-pb">OEM / PB</a></li>
+          <li>
+            <a href="/products/seafood/east-sea-bluefin">
+              연안 참다랑어
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column">
+        <h2>LNG 초저온 기술</h2>
+
+        <ul>
+          <li><a href="/technology/quality">초저온 품질</a></li>
+          <li><a href="/technology/cost">운영 비용 구조</a></li>
+          <li>
+            <a href="/technology/lng-cold-energy">
+              LNG 냉열 기술
+            </a>
+          </li>
+          <li><a href="/technology/process">동결·보관 처리</a></li>
+          <li><a href="/infrastructure">기술 인프라</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column">
+        <h2>QSF 시스템</h2>
+
+        <ul>
+          <li><a href="/qsf">QSF 소개</a></li>
+          <li><a href="/qsf/ceo-message">CEO 메시지</a></li>
+          <li>
+            <a href="/qsf/certification">
+              QSF 인증 시스템
+            </a>
+          </li>
+          <li><a href="/qsf">LOT / SN 추적</a></li>
+          <li><a href="/qsf">품질 관리 기준</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column">
+        <h2>시작하기</h2>
+
+        <ul>
+          <li><a href="/contact">제품·기술 문의</a></li>
+          <li><a href="/login">회원 로그인</a></li>
+          <li><a href="/partner">파트너 신청</a></li>
+          <li><a href="/contact">납품 상담</a></li>
+          <li><a href="/contact">OEM / PB 상담</a></li>
+        </ul>
+      </section>
+
+      <section class="site-footer__column">
+        <h2>KQSF</h2>
+
+        <ul>
+          <li><a href="/news">최근 소식</a></li>
+          <li><a href="/contact">문의하기</a></li>
+          <li><a href="/partner">파트너십</a></li>
+          <li><a href="/privacy">개인정보처리방침</a></li>
+          <li><a href="/terms">이용약관</a></li>
+        </ul>
+      </section>
+
     </div>
   </div>
 
-  <div class="site-footer__bottom">
+  <div class="site-footer__social">
+    <a href="#" aria-label="KQSF 유튜브">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 12s0-3.5-.45-5.2a2.8 2.8 0 0 0-1.95-1.95C16.9 4.4 12 4.4 12 4.4s-4.9 0-6.6.45A2.8 2.8 0 0 0 3.45 6.8C3 8.5 3 12 3 12s0 3.5.45 5.2a2.8 2.8 0 0 0 1.95 1.95c1.7.45 6.6.45 6.6.45s4.9 0 6.6-.45a2.8 2.8 0 0 0 1.95-1.95C21 15.5 21 12 21 12Z"/>
+        <path d="m10 9 5 3-5 3Z"/>
+      </svg>
+    </a>
+
+    <a href="#" aria-label="KQSF 인스타그램">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.3" cy="6.8" r="1"/>
+      </svg>
+    </a>
+
+    <a href="#" aria-label="KQSF X">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 4 19 20M19 4 5 20"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="site-footer__legal">
+    <div class="site-footer__legal-links">
+      <a href="/about">KQSF 소개</a>
+      <a href="/privacy">개인정보처리방침</a>
+      <a href="/terms">이용약관</a>
+      <a href="/contact">문의하기</a>
+    </div>
+
     <p>© KQSF. All rights reserved.</p>
   </div>
+
 </footer>
 
 <th:block th:fragment="scripts">

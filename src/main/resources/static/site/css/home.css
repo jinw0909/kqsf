@@ -1372,7 +1372,7 @@
 
 .start-card {
   overflow: hidden;
-  padding: 0 30px 32px;
+  padding: 1.5rem;
   border-radius: 34px;
   background: #ffffff;
   border: 1px solid rgba(6, 27, 51, 0.08);
@@ -1385,11 +1385,16 @@
 
 .start-card__media {
   height: 190px;
-  margin: 0 -32px;
+  /*margin: 0 -32px;*/
   background:
           radial-gradient(circle at 78% 18%, rgba(112, 200, 255, 0.28), transparent 32%),
           linear-gradient(135deg, #eef8ff, #ffffff);
   border-bottom: 1px solid rgba(6, 27, 51, 0.06);
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 300 / 200;
+  position: relative;
+  z-index: 1;
 }
 
 .start-card:nth-child(1) .start-card__media {
@@ -1411,25 +1416,142 @@
   background-repeat: no-repeat;
 }
 
-.start-card .card-eyebrow {
-  margin-top: 16px;
+/*.start-card .card-eyebrow {*/
+/*  margin-top: 16px;*/
+/*}*/
+
+/*.start-card h3 {*/
+/*  margin: 0;*/
+/*  font-size: 24px;*/
+/*  line-height: 1.24;*/
+/*  letter-spacing: -0.045em;*/
+/*  color: var(--color-navy);*/
+/*}*/
+
+/*.start-card p:not(.card-eyebrow) {*/
+/*  min-height: 116px;*/
+/*  margin: 16px 0 0;*/
+/*  font-size: 16px;*/
+/*  line-height: 1.72;*/
+/*  color: var(--color-muted);*/
+/*  word-break: keep-all;*/
+/*}*/
+.start-card {
+  min-height: 575px;
 }
 
-.start-card h3 {
+.start-card__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.start-card__title h3 {
   margin: 0;
-  font-size: 30px;
-  line-height: 1.24;
+  font-size: 25px;
+  line-height: 1.25;
   letter-spacing: -0.045em;
   color: var(--color-navy);
 }
 
-.start-card p:not(.card-eyebrow) {
-  min-height: 116px;
-  margin: 16px 0 0;
+.start-card__icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.start-card__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.start-card__icon--contact {
+  color: #1688ff;
+  background: #eaf4ff;
+}
+
+.start-card__icon--member {
+  color: #7554f6;
+  background: #f0ebff;
+}
+
+.start-card__icon--partner {
+  color: #00a878;
+  background: #e6faf4;
+}
+
+.start-card p {
+  min-height: auto;
+  margin: 18px 0 0;
   font-size: 16px;
   line-height: 1.72;
   color: var(--color-muted);
   word-break: keep-all;
+}
+
+.start-card__list {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.start-card__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #53687f;
+}
+
+.start-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.7em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1688ff;
+  transform: translateY(-50%);
+}
+
+.start-card:nth-child(2) .start-card__list li::before {
+  background: #7554f6;
+}
+
+.start-card:nth-child(3) .start-card__list li::before {
+  background: #00a878;
+}
+
+.start-card__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.start-card__button span {
+  font-size: 26px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.start-card__button:hover span {
+  transform: translateX(4px);
 }
 
 .start-card .button {
@@ -1539,6 +1661,7 @@
     /*text-align: left;*/
     text-align: center;
     margin-bottom: 38px;
+    margin-top: 5rem;
   }
 
   .section-heading--between {
@@ -1737,13 +1860,43 @@
   }
 
   .start-card {
-    padding: 0 24px 26px;
+    /*padding: 0 24px 26px;*/
     border-radius: 26px;
   }
-
   .start-card__media {
-    height: 150px;
-    margin: 0 -24px 24px;
+    /*height: 150px;*/
+    margin: 0 0 22px;
+    aspect-ratio: 250 / 200;
+  }
+
+  .start-card {
+    min-height: auto;
+  }
+
+  .start-card__title {
+    margin-top: 0;
+  }
+
+  .start-card__title h3 {
+    font-size: 22px;
+  }
+
+  .start-card__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .start-card__icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .start-card__list {
+    gap: 10px;
+  }
+
+  .start-card__list li {
+    font-size: 14px;
   }
 
   .start-card p:not(.card-eyebrow) {
