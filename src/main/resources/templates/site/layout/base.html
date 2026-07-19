@@ -20,7 +20,7 @@
 <th:block th:fragment="header">
 <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
-      <a href="/" class="site-logo" aria-label="KQSF 홈">
+      <a href="/" class="site-logo" aria-label="KQSF 홈" onclick="if (window.location.pathname === '/') event.preventDefault();">
         <img src="/site/images/logo/logo.png" alt="KQSF">
       </a>
 
@@ -208,7 +208,7 @@
   <div class="site-footer__main">
 
     <div class="site-footer__identity">
-      <a href="/" class="site-footer__logo" aria-label="KQSF 홈">
+      <a href="/" class="site-footer__logo" aria-label="KQSF 홈" onclick="if (window.location.pathname === '/') event.preventDefault();">
         <img src="/site/images/logo/logo.png" alt="KQSF">
       </a>
 
@@ -298,14 +298,14 @@
   </div>
 
   <div class="site-footer__social">
-    <a href="#" aria-label="KQSF 유튜브">
+    <a href="javascript:void(0)" aria-label="KQSF 유튜브">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M21 12s0-3.5-.45-5.2a2.8 2.8 0 0 0-1.95-1.95C16.9 4.4 12 4.4 12 4.4s-4.9 0-6.6.45A2.8 2.8 0 0 0 3.45 6.8C3 8.5 3 12 3 12s0 3.5.45 5.2a2.8 2.8 0 0 0 1.95 1.95c1.7.45 6.6.45 6.6.45s4.9 0 6.6-.45a2.8 2.8 0 0 0 1.95-1.95C21 15.5 21 12 21 12Z"/>
         <path d="m10 9 5 3-5 3Z"/>
       </svg>
     </a>
 
-    <a href="#" aria-label="KQSF 인스타그램">
+    <a href="javascript:void(0)" aria-label="KQSF 인스타그램">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3.5" y="3.5" width="17" height="17" rx="4"/>
         <circle cx="12" cy="12" r="4"/>
@@ -313,9 +313,20 @@
       </svg>
     </a>
 
-    <a href="#" aria-label="KQSF X">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5 4 19 20M19 4 5 20"/>
+
+    <a href="javascript:void(0)"
+       class="footer-social-link"
+       aria-label="X">
+      <svg
+              class="footer-social-icon footer-social-icon--x"
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26
+             8.502 11.24h-6.657l-5.214-6.817
+             -5.967 6.817H1.68l7.73-8.835
+             L1.254 2.25H8.08l4.713 6.231
+             5.45-6.231Zm-1.161 17.52h1.833
+             L7.084 4.126H5.117L17.083 19.77Z"/>
       </svg>
     </a>
   </div>

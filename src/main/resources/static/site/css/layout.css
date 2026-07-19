@@ -724,6 +724,17 @@ button {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+.site-footer__social .footer-social-icon--x {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    stroke: none;
+    stroke-width: 0;
+}
+.site-footer__social a:first-child svg path:first-child {
+    fill: currentColor;
+    stroke: none;
+}
 
 /* 메인 영역 */
 
@@ -986,6 +997,10 @@ button {
     .site-footer__social svg {
         width: 25px;
         height: 25px;
+    }
+    .site-footer__social .footer-social-icon--x {
+        width: 18px;
+        height: 18px;
     }
 
     .site-footer__legal {

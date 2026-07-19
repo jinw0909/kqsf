@@ -26,18 +26,6 @@
                     KQSF는 초저온 연안 참다랑어를 시작으로 수산물, 축산물,
                     농산물과 OEM·PB 제품까지 새로운 식품 유통 기준을 확장합니다.
                 </p>
-
-                <div class="products-hero__actions">
-                    <a href="#product-categories"
-                       class="products-button products-button--primary">
-                        제품 살펴보기
-                    </a>
-
-                    <a href="/start/inquiry"
-                       class="products-button products-button--secondary">
-                        제품 문의하기
-                    </a>
-                </div>
             </div>
 
             <div class="products-hero__visual" aria-hidden="true">
@@ -73,11 +61,6 @@
                 <p class="products-eyebrow">Why KQSF</p>
 
                 <h2>왜 KQSF 제품을 선택해야 하나요?</h2>
-
-                <p>
-                    원물의 품질부터 보관과 유통까지, KQSF는 식품이 고객에게
-                    전달되는 전 과정을 초저온 기준으로 관리합니다.
-                </p>
             </div>
 
             <div class="products-reason-grid">
@@ -162,23 +145,6 @@
                    )}"
                    class="products-category-card">
 
-<!--                    <div class="products-category-card__visual"-->
-<!--                         th:classappend="' products-category-card__visual&#45;&#45;' + ${categoryStatus.index + 1}">-->
-
-<!--                        <span class="products-category-card__number"-->
-<!--                              th:text="${#numbers.formatInteger(categoryStatus.index + 1, 2)}">-->
-<!--                            01-->
-<!--                        </span>-->
-
-<!--                        <div class="products-category-card__symbol">-->
-<!--                            <span th:switch="${categoryStatus.index}">-->
-<!--                                <span th:case="0">◈</span>-->
-<!--                                <span th:case="1">◇</span>-->
-<!--                                <span th:case="2">✦</span>-->
-<!--                                <span th:case="*">□</span>-->
-<!--                            </span>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="products-category-card__visual"
                          th:classappend="' products-category-card__visual--' + ${categoryStatus.index + 1}">
 
@@ -306,14 +272,20 @@
                             초저온 기술을 적용해 원물의 식감과 품질을
                             안정적으로 보존한 KQSF 대표 제품입니다.
                         </p>
+                        <div class="products-featured-item__actions">
+                            <a th:href="@{/products/{categoryCode}/{productCode}(
+                                    categoryCode=${#strings.toLowerCase(product.categoryCode)},
+                                    productCode=${#strings.toLowerCase(product.code)}
+                               )}"
+                               class="products-button products-button--primary">
+                                제품 자세히 보기
+                            </a>
 
-                        <a th:href="@{/products/{categoryCode}/{productCode}(
-                                categoryCode=${#strings.toLowerCase(product.categoryCode)},
-                                productCode=${#strings.toLowerCase(product.code)}
-                           )}"
-                           class="products-button products-button--primary">
-                            제품 자세히 보기
-                        </a>
+                            <a href="/start/inquiry"
+                               class="products-button products-button--secondary">
+                                제품 문의하기
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -328,8 +300,8 @@
 
 
     <!-- =========================================================
-         CTA
-    ========================================================== -->
+     CTA
+========================================================== -->
     <section class="products-actions products-section">
         <div class="products-container">
             <div class="products-section-heading">
@@ -344,23 +316,28 @@
 
             <div class="products-action-grid">
 
-                <!-- 왼쪽: 문의하기 -->
+                <!-- 제품 문의 -->
                 <a href="/start/inquiry"
                    class="products-action-card products-action-card--inquiry">
 
-                    <div class="products-action-card__visual">
-                        <div class="products-action-card__box products-action-card__box--back"></div>
-                        <div class="products-action-card__box products-action-card__box--front">
-                            <span>KQSF</span>
-                        </div>
+                    <div class="products-action-card__floating-visual"
+                         aria-hidden="true">
 
-                        <div class="products-action-card__snow products-action-card__snow--one">✦</div>
-                        <div class="products-action-card__snow products-action-card__snow--two">✦</div>
-                        <div class="products-action-card__snow products-action-card__snow--three">✦</div>
+                        <!-- 나중에 이미지 넣을 영역 -->
+                        <div class="products-action-card__floating-visual-inner">
+                            <img
+                                src="/site/images/products/inquiry.png"
+                                alt=""
+                                class="products-action-card__floating-image"
+                            >
+                        </div>
                     </div>
 
                     <div class="products-action-card__body">
-                        <p class="products-card-eyebrow">Product Inquiry</p>
+                        <p class="products-card-eyebrow">
+                            Product Inquiry
+                        </p>
+
                         <h3>제품 구매 및 납품 문의</h3>
 
                         <p>
@@ -369,27 +346,33 @@
                         </p>
 
                         <span class="products-button products-button--primary">
-                            문의하기
-                        </span>
+                        문의하기
+                    </span>
                     </div>
                 </a>
 
-                <!-- 오른쪽: QSF 소개 -->
+                <!-- QSF 시스템 -->
                 <a href="/qsf"
                    class="products-action-card products-action-card--qsf">
 
-                    <div class="products-action-card__visual">
-                        <div class="products-action-card__rings">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                    <div class="products-action-card__floating-visual"
+                         aria-hidden="true">
 
-                            <strong>QSF</strong>
+                        <!-- 나중에 이미지 넣을 영역 -->
+                        <div class="products-action-card__floating-visual-inner">
+                            <img
+                                src="/site/images/products/qsf.png"
+                                alt=""
+                                class="products-action-card__floating-image"
+                            >
                         </div>
                     </div>
 
                     <div class="products-action-card__body">
-                        <p class="products-card-eyebrow">QSF System</p>
+                        <p class="products-card-eyebrow">
+                            QSF System
+                        </p>
+
                         <h3>QSF 품질 시스템 알아보기</h3>
 
                         <p>
@@ -398,10 +381,11 @@
                         </p>
 
                         <span class="products-button products-button--primary">
-                            QSF 소개 보기
-                        </span>
+                        QSF 소개 보기
+                    </span>
                     </div>
                 </a>
+
             </div>
         </div>
     </section>
