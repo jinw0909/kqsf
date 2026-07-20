@@ -1,3 +1,191 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      th:replace="~{admin/layout/admin-layout :: layout(-->
+<!--        '상품 분류 수정',-->
+<!--        'categories',-->
+<!--        ~{::content},-->
+<!--        '/admin/css/product/product.css'-->
+<!--      )}">-->
+
+<!--<section th:fragment="content">-->
+
+<!--  <div class="mb-4">-->
+<!--    <h1 class="admin-page-title">상품 분류 수정</h1>-->
+<!--    <p class="admin-page-subtitle">-->
+<!--      상품 분류 정보를 수정합니다.-->
+<!--    </p>-->
+<!--  </div>-->
+
+<!--  <div class="admin-card">-->
+<!--    <div class="admin-card-body">-->
+
+<!--      <form th:object="${form}"-->
+<!--            th:action="@{/admin/products/categories/{id}/edit(id=${categoryId})}"-->
+<!--            method="post">-->
+
+<!--        <input type="hidden"-->
+<!--               th:if="${_csrf != null}"-->
+<!--               th:name="${_csrf.parameterName}"-->
+<!--               th:value="${_csrf.token}">-->
+
+<!--        <div class="row g-3">-->
+
+<!--          <div class="col-md-6">-->
+<!--            <label for="code" class="form-label">코드</label>-->
+
+<!--            <input type="text"-->
+<!--                   id="code"-->
+<!--                   th:field="*{code}"-->
+<!--                   class="form-control">-->
+<!--          </div>-->
+
+<!--          <div class="col-md-6">-->
+<!--            <label for="sortOrder" class="form-label">정렬 순서</label>-->
+
+<!--            <input type="number"-->
+<!--                   id="sortOrder"-->
+<!--                   th:field="*{sortOrder}"-->
+<!--                   class="form-control">-->
+<!--          </div>-->
+
+<!--          <div class="col-md-6">-->
+<!--            <label for="name" class="form-label">이름</label>-->
+
+<!--            <input type="text"-->
+<!--                   id="name"-->
+<!--                   th:field="*{name}"-->
+<!--                   class="form-control">-->
+<!--          </div>-->
+
+<!--          <div class="col-md-6">-->
+<!--            <label for="nameEn" class="form-label">영문명</label>-->
+
+<!--            <input type="text"-->
+<!--                   id="nameEn"-->
+<!--                   th:field="*{nameEn}"-->
+<!--                   class="form-control">-->
+<!--          </div>-->
+
+<!--          <div class="col-12">-->
+<!--            <label for="description" class="form-label">설명</label>-->
+
+<!--            <textarea id="description"-->
+<!--                      th:field="*{description}"-->
+<!--                      class="form-control"></textarea>-->
+<!--          </div>-->
+
+<!--          <div class="col-12">-->
+<!--            <label for="descriptionEn" class="form-label">영문 설명</label>-->
+
+<!--            <textarea id="descriptionEn"-->
+<!--                      th:field="*{descriptionEn}"-->
+<!--                      class="form-control"></textarea>-->
+<!--          </div>-->
+
+<!--          <div class="col-12">-->
+<!--            <label class="form-label">배너 이미지</label>-->
+
+<!--            <div class="image-uploader"-->
+<!--                 data-upload-dir="products/category/banner"-->
+<!--                 data-input-id="bannerUrl"-->
+<!--                 data-file-id="bannerFile"-->
+<!--                 data-preview-id="bannerPreview"-->
+<!--                 data-placeholder-id="bannerPlaceholder"-->
+<!--                 data-reset-id="bannerReset">-->
+
+<!--              <input type="hidden"-->
+<!--                     th:field="*{bannerUrl}"-->
+<!--                     id="bannerUrl"-->
+<!--                     th:attr="data-original-value=*{bannerUrl}">-->
+
+<!--              <input type="file"-->
+<!--                     id="bannerFile"-->
+<!--                     class="image-uploader__file"-->
+<!--                     accept="image/*">-->
+
+<!--              <div class="image-uploader__dropzone">-->
+
+<!--                <img id="bannerPreview"-->
+<!--                     class="image-uploader__preview"-->
+<!--                     th:if="*{bannerUrl != null and !#strings.isEmpty(bannerUrl)}"-->
+<!--                     th:src="*{bannerUrl}"-->
+<!--                     alt="상품 분류 배너 미리보기">-->
+
+<!--                <img id="bannerPreview"-->
+<!--                     class="image-uploader__preview d-none"-->
+<!--                     th:unless="*{bannerUrl != null and !#strings.isEmpty(bannerUrl)}"-->
+<!--                     alt="상품 분류 배너 미리보기">-->
+
+<!--                <div id="bannerPlaceholder"-->
+<!--                     class="image-uploader__placeholder"-->
+<!--                     th:classappend="*{bannerUrl != null and !#strings.isEmpty(bannerUrl)} ? ' d-none'">-->
+
+<!--                  <div class="image-uploader__icon">＋</div>-->
+
+<!--                  <div class="image-uploader__text">-->
+<!--                    배너 이미지를 클릭하거나 드래그해서 업로드-->
+<!--                  </div>-->
+
+<!--                  <div class="image-uploader__hint">-->
+<!--                    JPG, PNG, WEBP / 최대 20MB-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                <div class="image-uploader__loading d-none">-->
+<!--                  업로드 중...-->
+<!--                </div>-->
+
+<!--              </div>-->
+
+<!--              <div class="image-uploader__actions">-->
+<!--                <button type="button"-->
+<!--                        id="bannerReset"-->
+<!--                        class="btn btn-sm btn-outline-secondary image-uploader__reset">-->
+<!--                  리셋-->
+<!--                </button>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-12">-->
+<!--            <div class="form-check">-->
+
+<!--              <input type="checkbox"-->
+<!--                     th:field="*{active}"-->
+<!--                     class="form-check-input">-->
+
+<!--              <label th:for="${#ids.prev('active')}"-->
+<!--                     class="form-check-label">-->
+<!--                노출-->
+<!--              </label>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+
+<!--        <div class="d-flex gap-2 mt-4">-->
+<!--          <button type="submit"-->
+<!--                  class="btn btn-primary">-->
+<!--            수정 저장-->
+<!--          </button>-->
+
+<!--          <a th:href="@{/admin/products/categories}"-->
+<!--             class="btn btn-outline-secondary">-->
+<!--            취소-->
+<!--          </a>-->
+<!--        </div>-->
+
+<!--      </form>-->
+
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</section>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
@@ -83,6 +271,7 @@
                       class="form-control"></textarea>
           </div>
 
+          <!-- 배너 이미지 -->
           <div class="col-12">
             <label class="form-label">배너 이미지</label>
 
@@ -141,6 +330,77 @@
               <div class="image-uploader__actions">
                 <button type="button"
                         id="bannerReset"
+                        class="btn btn-sm btn-outline-secondary image-uploader__reset">
+                  리셋
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 메인 이미지 -->
+          <div class="col-12">
+            <label class="form-label">메인 이미지</label>
+
+            <div class="admin-form-help mb-2">
+              상품 분류 상세 페이지 상단에 표시되는 대표 이미지입니다.
+            </div>
+
+            <div class="image-uploader"
+                 data-upload-dir="products/category/main"
+                 data-input-id="mainImageUrl"
+                 data-file-id="mainImageFile"
+                 data-preview-id="mainImagePreview"
+                 data-placeholder-id="mainImagePlaceholder"
+                 data-reset-id="mainImageReset">
+
+              <input type="hidden"
+                     th:field="*{mainImageUrl}"
+                     id="mainImageUrl"
+                     th:attr="data-original-value=*{mainImageUrl}">
+
+              <input type="file"
+                     id="mainImageFile"
+                     class="image-uploader__file"
+                     accept="image/*">
+
+              <div class="image-uploader__dropzone">
+
+                <img id="mainImagePreview"
+                     class="image-uploader__preview"
+                     th:if="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)}"
+                     th:src="*{mainImageUrl}"
+                     alt="상품 분류 메인 이미지 미리보기">
+
+                <img id="mainImagePreview"
+                     class="image-uploader__preview d-none"
+                     th:unless="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)}"
+                     alt="상품 분류 메인 이미지 미리보기">
+
+                <div id="mainImagePlaceholder"
+                     class="image-uploader__placeholder"
+                     th:classappend="*{mainImageUrl != null and !#strings.isEmpty(mainImageUrl)} ? ' d-none'">
+
+                  <div class="image-uploader__icon">＋</div>
+
+                  <div class="image-uploader__text">
+                    메인 이미지를 클릭하거나 드래그해서 업로드
+                  </div>
+
+                  <div class="image-uploader__hint">
+                    투명 PNG, WEBP 권장 / 최대 20MB
+                  </div>
+                </div>
+
+                <div class="image-uploader__loading d-none">
+                  업로드 중...
+                </div>
+
+              </div>
+
+              <div class="image-uploader__actions">
+                <button type="button"
+                        id="mainImageReset"
                         class="btn btn-sm btn-outline-secondary image-uploader__reset">
                   리셋
                 </button>

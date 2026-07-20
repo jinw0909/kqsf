@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductCategory {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_category_id")
     private Long id;
 
@@ -28,10 +29,11 @@ public class ProductCategory {
 
     private String bannerUrl;
 
+    private String mainImageUrl;
+
     private Integer sortOrder;
 
     private Boolean active = true;
-
 
     public void update(
             String code,
@@ -39,7 +41,8 @@ public class ProductCategory {
             String nameEn,
             String description,
             String descriptionEn,
-            String thumbnailUrl,
+            String bannerUrl,
+            String mainImageUrl,
             Integer sortOrder,
             Boolean active
     ) {
@@ -48,10 +51,9 @@ public class ProductCategory {
         this.nameEn = nameEn;
         this.description = description;
         this.descriptionEn = descriptionEn;
-        this.bannerUrl = thumbnailUrl;
+        this.bannerUrl = bannerUrl;
+        this.mainImageUrl = mainImageUrl;
         this.sortOrder = sortOrder;
         this.active = active;
     }
-
-
 }

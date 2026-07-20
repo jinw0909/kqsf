@@ -1,3 +1,124 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      th:replace="~{admin/layout/admin-layout :: layout(-->
+<!--        '상품 분류 관리',-->
+<!--        'categories',-->
+<!--        ~{::content},-->
+<!--        '/admin/css/product/product.css'-->
+<!--      )}">-->
+
+<!--<section th:fragment="content">-->
+
+<!--  <div class="d-flex justify-content-between align-items-end mb-4">-->
+<!--    <div>-->
+<!--      <h1 class="admin-page-title">상품 분류 관리</h1>-->
+<!--      <p class="admin-page-subtitle">-->
+<!--        수산물, 축산물, 농산물 등 상품 대분류를 관리합니다.-->
+<!--      </p>-->
+<!--    </div>-->
+
+<!--    <a th:href="@{/admin/products/categories/new}"-->
+<!--       class="btn btn-primary">-->
+<!--      분류 등록-->
+<!--    </a>-->
+<!--  </div>-->
+
+<!--  <div class="admin-card">-->
+
+<!--    <div class="admin-card-header d-flex justify-content-between align-items-center">-->
+<!--      <strong>분류 목록</strong>-->
+
+<!--      <a th:href="@{/admin/products}"-->
+<!--         class="btn btn-sm btn-outline-secondary">-->
+<!--        상품 목록으로-->
+<!--      </a>-->
+<!--    </div>-->
+
+<!--    <div class="table-responsive">-->
+<!--      <table class="table table-hover admin-table">-->
+
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>코드</th>-->
+<!--          <th>이름</th>-->
+<!--          <th>영문명</th>-->
+<!--          <th>정렬</th>-->
+<!--          <th>노출</th>-->
+<!--          <th>배너</th>-->
+<!--          <th>관리</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+
+<!--        <tbody>-->
+<!--        <tr th:each="category : ${categories}">-->
+<!--          <td th:text="${category.id}">1</td>-->
+
+<!--          <td>-->
+<!--            <code th:text="${category.code}">seafood</code>-->
+<!--          </td>-->
+
+<!--          <td class="fw-semibold"-->
+<!--              th:text="${category.name}">-->
+<!--            수산물-->
+<!--          </td>-->
+
+<!--          <td th:text="${category.nameEn}">-->
+<!--            Seafood-->
+<!--          </td>-->
+
+<!--          <td th:text="${category.sortOrder}">-->
+<!--            1-->
+<!--          </td>-->
+
+<!--          <td>-->
+<!--            <span th:if="${category.active}"-->
+<!--                  class="badge text-bg-success">-->
+<!--              노출-->
+<!--            </span>-->
+
+<!--            <span th:unless="${category.active}"-->
+<!--                  class="badge text-bg-secondary">-->
+<!--              숨김-->
+<!--            </span>-->
+<!--          </td>-->
+
+<!--          <td>-->
+<!--            <img th:if="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"-->
+<!--                 th:src="${category.bannerUrl}"-->
+<!--                 class="admin-image-preview"-->
+<!--                 style="width: 80px; height: 48px; object-fit: cover;"-->
+<!--                 alt="분류 배너">-->
+
+<!--            <span th:unless="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"-->
+<!--                  class="text-muted">-->
+<!--              없음-->
+<!--            </span>-->
+<!--          </td>-->
+
+<!--          <td>-->
+<!--            <a th:href="@{/admin/products/categories/{id}/edit(id=${category.id})}"-->
+<!--               class="btn btn-sm btn-outline-primary">-->
+<!--              수정-->
+<!--            </a>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+
+<!--      </table>-->
+<!--    </div>-->
+
+<!--    <div th:if="${#lists.isEmpty(categories)}"-->
+<!--         class="admin-empty">-->
+<!--      등록된 상품 분류가 없습니다.-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--</section>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
@@ -46,7 +167,8 @@
           <th>영문명</th>
           <th>정렬</th>
           <th>노출</th>
-          <th>배너</th>
+          <th>배너 이미지</th>
+          <th>메인 이미지</th>
           <th>관리</th>
         </tr>
         </thead>
@@ -92,6 +214,19 @@
                  alt="분류 배너">
 
             <span th:unless="${category.bannerUrl != null and !#strings.isEmpty(category.bannerUrl)}"
+                  class="text-muted">
+              없음
+            </span>
+          </td>
+
+          <td>
+            <img th:if="${category.mainImageUrl != null and !#strings.isEmpty(category.mainImageUrl)}"
+                 th:src="${category.mainImageUrl}"
+                 class="admin-image-preview"
+                 style="width: 80px; height: 48px; object-fit: contain;"
+                 alt="분류 메인 이미지">
+
+            <span th:unless="${category.mainImageUrl != null and !#strings.isEmpty(category.mainImageUrl)}"
                   class="text-muted">
               없음
             </span>

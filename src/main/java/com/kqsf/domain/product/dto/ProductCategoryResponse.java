@@ -9,6 +9,7 @@ public record ProductCategoryResponse(
         String description,
         String descriptionEn,
         String bannerUrl,
+        String mainImageUrl,
         Integer sortOrder,
         Boolean active
 ) {
@@ -21,6 +22,7 @@ public record ProductCategoryResponse(
                 category.getDescription(),
                 category.getDescriptionEn(),
                 category.getBannerUrl(),
+                category.getMainImageUrl(),
                 category.getSortOrder(),
                 category.getActive()
         );
