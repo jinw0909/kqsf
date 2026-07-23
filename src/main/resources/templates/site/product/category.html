@@ -1,136 +1,639 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{site/layout/base :: head(${currentCategory.name + ' | KQSF 제품'}, '/site/css/products.css')}"></head>
+
+<head th:replace="~{site/layout/base :: head(
+    ${currentCategory.name + ' | KQSF 제품'},
+    '/site/css/category.css'
+)}"></head>
 
 <body>
+
 <header th:replace="~{site/layout/base :: header}"></header>
 
-<main class="products-page">
+<main class="category-document-page">
 
-    <!-- Category Hero -->
-    <section class="category-hero">
-        <div class="category-hero__bg"></div>
+    <!-- =====================================================
+         Category Hero
+    ====================================================== -->
+    <section class="category-document-hero">
 
-        <div class="container category-hero__inner">
-            <div class="category-hero__content">
-                <p class="section-eyebrow" th:text="${currentCategory.nameEn != null ? currentCategory.nameEn : currentCategory.code}">
-                    Seafood
+        <div class="category-document-hero__background"></div>
+
+        <div class="category-container category-document-hero__inner">
+
+            <div class="category-document-hero__content">
+
+                <p class="category-eyebrow"
+                   th:text="${currentCategory.nameEn != null
+                       ? currentCategory.nameEn
+                       : currentCategory.code}">
+                    SEAFOOD
                 </p>
 
-                <h1 th:text="${currentCategory.name}">수산물</h1>
+                <h1 th:text="${currentCategory.name}">
+                    수산물
+                </h1>
 
                 <p th:text="${currentCategory.description}">
                     초저온 기준으로 관리되는 수산물 제품군입니다.
                 </p>
+
             </div>
 
-            <div class="category-hero__media"
-                 th:style="${currentCategory.bannerUrl != null ? 'background-image: url(' + currentCategory.bannerUrl + ')' : ''}">
-                <span th:text="${currentCategory.name}">수산물</span>
+            <div class="category-document-hero__visual">
+
+                <img th:if="${currentCategory.bannerUrl != null}"
+                     th:src="${currentCategory.bannerUrl}"
+                     th:alt="${currentCategory.name}">
+
+                <div th:unless="${currentCategory.bannerUrl != null}"
+                     class="category-document-hero__fallback">
+
+                    <span>KQSF</span>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Category Tabs -->
-    <section class="product-category-tabs">
-        <div class="container">
-            <div class="category-tabs">
-                <a href="/products"
-                   th:classappend="${currentCategory == null} ? 'is-active'">
+
+    <!-- =====================================================
+         Category Tabs
+    ====================================================== -->
+    <nav class="category-document-tabs"
+         aria-label="제품 카테고리">
+
+        <div class="category-container">
+
+            <div class="category-document-tabs__scroll">
+
+                <a href="/products">
                     전체
                 </a>
 
                 <a th:each="category : ${categories}"
-                   th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(category.code)})}"
-                   th:classappend="${category.code == currentCategory.code} ? 'is-active'"
+                   th:href="@{/products/{categoryCode}(
+                       categoryCode=${#strings.toLowerCase(category.code)}
+                   )}"
+                   th:classappend="${category.code == currentCategory.code}
+                       ? ' is-active'"
                    th:text="${category.name}">
                     수산물
                 </a>
+
             </div>
+
         </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         Document Introduction
+    ====================================================== -->
+    <section class="category-document-intro">
+
+        <div class="category-container">
+
+            <div class="category-document-intro__heading">
+
+                <div class="category-document-intro__content">
+
+                    <p class="category-eyebrow">
+                        Product Archive
+                    </p>
+
+                    <h2>
+                        <span th:text="${currentCategory.name}">
+                            수산물
+                        </span>
+                        제품을 살펴보세요
+                    </h2>
+
+                    <p>
+                        KQSF의 초저온 기술로 관리되는 제품과
+                        상품별 가공 및 제공 옵션을 하나의 문서에서 확인할 수 있습니다.
+                    </p>
+
+                </div>
+
+                <div class="category-document-intro__count"
+                     th:if="${products != null}">
+
+                    <strong th:text="${products.totalElements}">
+                        0
+                    </strong>
+
+                    <span>PRODUCTS</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 Mobile Product Table of Contents
+            ================================================== -->
+            <details class="category-mobile-toc"
+                     th:if="${products != null and products.hasContent()}">
+
+                <summary>
+
+                    <span>이 페이지의 제품</span>
+
+                    <svg viewBox="0 0 24 24"
+                         width="20"
+                         height="20"
+                         aria-hidden="true">
+
+                        <path d="M6 9l6 6 6-6"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"/>
+
+                    </svg>
+
+                </summary>
+
+                <div class="category-mobile-toc__body">
+
+                    <a th:each="product, status : ${products.content}"
+                       th:href="${'#product-' + product.id}"
+                       class="js-category-toc-link">
+
+                        <span th:text="${#numbers.formatInteger(status.count, 2)}">
+                            01
+                        </span>
+
+                        <strong th:text="${product.name}">
+                            제품명
+                        </strong>
+
+                    </a>
+
+                </div>
+
+            </details>
+
+        </div>
+
     </section>
 
-    <!-- Product List -->
-    <section class="product-list-section section">
-        <div class="container">
-            <div class="section-heading section-heading--between">
-                <div>
-                    <p class="section-eyebrow">Products</p>
-                    <h2>
-                        <span th:text="${currentCategory.name}">수산물</span>
-                        <span>제품</span>
-                    </h2>
-                    <p>
-                        해당 카테고리에 등록된 KQSF 제품입니다.
-                    </p>
-                </div>
-            </div>
 
-            <div class="product-grid" th:if="${products != null and products.hasContent()}">
-                <article class="product-card" th:each="product : ${products.content}">
-                    <a th:href="@{/products/{categoryCode}/{productCode}(
-                categoryCode=${#strings.toLowerCase(currentCategory.code)},
-                productCode=${#strings.toLowerCase(product.code)}
-              )}">
-                        <div class="product-card__media">
-                            <img th:if="${product.thumbnailUrl != null}"
-                                 th:src="${product.thumbnailUrl}"
-                                 th:alt="${product.name}">
+    <!-- =====================================================
+         Product Document
+    ====================================================== -->
+    <section class="category-document-content"
+             th:if="${products != null and products.hasContent()}">
 
-                            <div th:unless="${product.thumbnailUrl != null}" class="product-card__placeholder">
-                                <span>KQSF</span>
+        <div class="category-container category-document-layout">
+
+
+            <!-- =================================================
+                 Main Product Articles
+            ================================================== -->
+            <div class="category-document-main">
+
+                <article th:each="product, status : ${products.content}"
+                         th:id="${'product-' + product.id}"
+                         class="category-document-item">
+
+
+                    <!-- Product Heading -->
+                    <header class="category-document-item__header">
+
+                        <div class="category-document-item__number">
+
+                            <span th:text="${#numbers.formatInteger(status.count, 2)}">
+                                01
+                            </span>
+
+                        </div>
+
+                        <div class="category-document-item__title">
+
+                            <p class="category-card-eyebrow"
+                               th:text="${product.nameEn != null
+                                   ? product.nameEn
+                                   : product.code}">
+                                PRODUCT
+                            </p>
+
+                            <h2 th:text="${product.name}">
+                                제품명
+                            </h2>
+
+                            <p th:if="${product.shortDescription != null}"
+                               th:text="${product.shortDescription}">
+                                제품 짧은 설명입니다.
+                            </p>
+
+                        </div>
+
+                    </header>
+
+
+                    <!-- Product Image -->
+                    <figure class="category-document-item__media">
+
+                        <img th:if="${product.thumbnailUrl != null}"
+                             th:src="${product.thumbnailUrl}"
+                             th:alt="${product.name}"
+                             loading="lazy">
+
+                        <div th:unless="${product.thumbnailUrl != null}"
+                             class="category-document-item__placeholder">
+
+                            <span>KQSF</span>
+
+                            <strong th:text="${product.name}">
+                                제품명
+                            </strong>
+
+                        </div>
+
+                        <figcaption>
+
+                            <span th:text="${currentCategory.name}">
+                                수산물
+                            </span>
+
+                            <span>
+                                KQSF Ultra-Low Temperature Product
+                            </span>
+
+                        </figcaption>
+
+                    </figure>
+
+
+                    <!-- Product Body -->
+                    <div class="category-document-item__body">
+
+
+                        <!-- Product Description -->
+                        <section class="category-document-copy">
+
+                            <p class="category-document-copy__label">
+                                Product Overview
+                            </p>
+
+                            <h3>
+                                제품 소개
+                            </h3>
+
+                            <!--
+                                description 필드가 HTML을 포함하는 경우.
+                                일반 문자열만 저장한다면 th:text로 변경해도 됨.
+                            -->
+                            <div th:if="${product.description != null}"
+                                 class="category-document-copy__description"
+                                 th:utext="${product.description}">
+                                제품 상세 설명
                             </div>
 
-                            <span class="product-card__category" th:text="${currentCategory.name}">수산물</span>
-                        </div>
-
-                        <div class="product-card__body">
-                            <p class="card-eyebrow" th:text="${product.nameEn != null ? product.nameEn : product.code}">
-                                Product
+                            <p th:unless="${product.description != null}"
+                               class="category-document-copy__description"
+                               th:text="${product.shortDescription}">
+                                제품 설명이 들어갑니다.
                             </p>
 
-                            <h3 th:text="${product.name}">제품명</h3>
+                        </section>
 
-                            <p th:text="${product.shortDescription}">
-                                제품 짧은 설명
-                            </p>
 
-                            <span class="card-link">제품 자세히 보기</span>
-                        </div>
+                        <!-- Processing Options -->
+                        <section class="category-processing-section">
+
+                            <div class="category-processing-section__heading">
+
+                                <div>
+
+                                    <p class="category-document-copy__label">
+                                        Processing Options
+                                    </p>
+
+                                    <h3>
+                                        가공 및 제공 옵션
+                                    </h3>
+
+                                </div>
+
+                                <span th:if="${product.processingOptions != null}"
+                                      th:text="${#lists.size(product.processingOptions) + ' OPTIONS'}">
+                                    3 OPTIONS
+                                </span>
+
+                            </div>
+
+
+                            <div class="category-processing-grid"
+                                 th:if="${product.processingOptions != null
+         and !#lists.isEmpty(product.processingOptions)}">
+
+                                <article class="category-processing-card"
+                                         th:each="option, optionStatus : ${product.processingOptions}">
+
+                                    <div class="category-processing-card__image"
+                                         th:if="${option.imageUrl != null}">
+
+                                        <img th:src="${option.imageUrl}"
+                                             th:alt="${option.title}"
+                                             loading="lazy">
+
+                                    </div>
+
+                                    <div class="category-processing-card__body">
+
+                                        <div class="category-processing-card__index"
+                                             th:text="${#numbers.formatInteger(optionStatus.count, 2)}">
+                                            01
+                                        </div>
+
+                                        <div class="category-processing-card__content">
+
+                                            <p class="category-processing-card__eyebrow"
+                                               th:if="${option.titleEn != null}"
+                                               th:text="${option.titleEn}">
+                                                PROCESSING OPTION
+                                            </p>
+
+                                            <h4 th:text="${option.title}">
+                                                가공 옵션명
+                                            </h4>
+
+                                            <p class="category-processing-card__summary"
+                                               th:if="${option.summary != null}"
+                                               th:text="${option.summary}">
+                                                가공 옵션에 대한 짧은 설명입니다.
+                                            </p>
+
+                                            <div class="category-processing-card__description"
+                                                 th:if="${option.description != null}"
+                                                 th:utext="${option.description}">
+                                                가공 옵션 상세 설명입니다.
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+
+                            <div class="category-processing-empty"
+                                 th:unless="${product.processingOptions != null
+                                     and !#lists.isEmpty(product.processingOptions)}">
+
+                                별도로 등록된 가공 옵션이 없습니다.
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+
+                    <!-- Next Product -->
+                    <a th:if="${!status.last}"
+                       th:href="${'#product-' + products.content[status.index + 1].id}"
+                       class="category-document-next">
+
+                        <span>
+                            다음 제품
+                        </span>
+
+                        <strong th:text="${products.content[status.index + 1].name}">
+                            다음 제품명
+                        </strong>
+
+                        <svg viewBox="0 0 24 24"
+                             width="22"
+                             height="22"
+                             aria-hidden="true">
+
+                            <path d="M12 5v14M6 13l6 6 6-6"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+
+                        </svg>
+
                     </a>
+
                 </article>
+
             </div>
 
-            <div class="empty-state" th:unless="${products != null and products.hasContent()}">
-                <strong>등록된 제품이 없습니다.</strong>
-                <p>이 카테고리에 노출 중인 제품이 없습니다.</p>
+
+            <!-- =================================================
+                 Desktop Sticky Product Navigation
+            ================================================== -->
+            <aside class="category-document-sidebar">
+
+                <div class="category-document-sidebar__sticky">
+
+                    <div class="category-document-sidebar__heading">
+
+                        <p>
+                            이 페이지의 제품
+                        </p>
+
+                        <span th:text="${products.totalElements}">
+                            4
+                        </span>
+
+                    </div>
+
+                    <nav class="category-document-toc"
+                         aria-label="현재 카테고리 제품 목록">
+
+                        <a th:each="product, status : ${products.content}"
+                           th:href="${'#product-' + product.id}"
+                           class="js-category-toc-link"
+                           th:classappend="${status.first} ? ' is-active'">
+
+                            <span th:text="${#numbers.formatInteger(status.count, 2)}">
+                                01
+                            </span>
+
+                            <div>
+
+                                <strong th:text="${product.name}">
+                                    제품명
+                                </strong>
+
+                                <small th:text="${product.nameEn != null
+                                    ? product.nameEn
+                                    : product.code}">
+                                    PRODUCT
+                                </small>
+
+                            </div>
+
+                        </a>
+
+                    </nav>
+
+                    <div class="category-document-sidebar__footer">
+                        KQSF PRODUCT ARCHIVE
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         Empty State
+    ====================================================== -->
+    <section class="category-document-empty"
+             th:unless="${products != null and products.hasContent()}">
+
+        <div class="category-container">
+
+            <div class="category-empty-state">
+
+                <strong>
+                    등록된 제품이 없습니다.
+                </strong>
+
+                <p>
+                    이 카테고리에 노출 중인 제품이 없습니다.
+                </p>
+
             </div>
 
-            <div class="simple-pagination" th:if="${products != null and products.totalPages > 1}">
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         Pagination
+    ====================================================== -->
+    <section class="category-document-pagination"
+             th:if="${products != null and products.totalPages > 1}">
+
+        <div class="category-container">
+
+            <div class="category-document-pagination__inner">
+
                 <a th:if="${products.hasPrevious()}"
-                   th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(currentCategory.code)}, page=${products.number - 1})}"
-                   class="page-button">
+                   th:href="@{/products/{categoryCode}(
+                       categoryCode=${#strings.toLowerCase(currentCategory.code)},
+                       page=${products.number - 1}
+                   )}">
                     이전
                 </a>
 
                 <span>
-          <strong th:text="${products.number + 1}">1</strong>
-          /
-          <span th:text="${products.totalPages}">3</span>
-        </span>
+                    <strong th:text="${products.number + 1}">
+                        1
+                    </strong>
+
+                    /
+
+                    <span th:text="${products.totalPages}">
+                        3
+                    </span>
+                </span>
 
                 <a th:if="${products.hasNext()}"
-                   th:href="@{/products/{categoryCode}(categoryCode=${#strings.toLowerCase(currentCategory.code)}, page=${products.number + 1})}"
-                   class="page-button">
+                   th:href="@{/products/{categoryCode}(
+                       categoryCode=${#strings.toLowerCase(currentCategory.code)},
+                       page=${products.number + 1}
+                   )}">
                     다음
                 </a>
+
             </div>
+
         </div>
+
     </section>
 
 </main>
 
 <footer th:replace="~{site/layout/base :: footer}"></footer>
+
 <th:block th:replace="~{site/layout/base :: scripts}"></th:block>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = [
+            ...document.querySelectorAll(".category-document-item"),
+        ];
+
+        const tocLinks = [
+            ...document.querySelectorAll(".js-category-toc-link"),
+        ];
+
+        if (!sections.length || !tocLinks.length) {
+            return;
+        }
+
+        const setActiveLink = (sectionId) => {
+            tocLinks.forEach((link) => {
+                const target = link.getAttribute("href");
+
+                link.classList.toggle(
+                    "is-active",
+                    target === `#${sectionId}`,
+                );
+            });
+        };
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntries = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort(
+                        (first, second) =>
+                            second.intersectionRatio -
+                            first.intersectionRatio,
+                    );
+
+                if (!visibleEntries.length) {
+                    return;
+                }
+
+                setActiveLink(visibleEntries[0].target.id);
+            },
+            {
+                rootMargin: "-18% 0px -58% 0px",
+                threshold: [0.05, 0.15, 0.3, 0.5],
+            },
+        );
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+
+        tocLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                const mobileToc = link.closest(".category-mobile-toc");
+
+                if (mobileToc) {
+                    mobileToc.removeAttribute("open");
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
