@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let previousViewportWidth = window.innerWidth;
 
-    setStableViewportHeight();
+    // setStableViewportHeight();
 
     window.addEventListener("resize", () => {
         const currentViewportWidth = window.innerWidth;

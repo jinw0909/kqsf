@@ -26,7 +26,46 @@
       </div>
     </div>
   </section>
+  <!-- 첫 화면이 그려지기 전에 히어로 높이 확정 -->
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const homeHero = document.querySelector(".home-hero");
 
+      const viewportHeight = Math.min(
+              window.visualViewport?.height || window.innerHeight,
+              root.clientHeight,
+              window.innerHeight
+      );
+
+      const headerHeightValue = getComputedStyle(root)
+              .getPropertyValue("--header-height")
+              .trim();
+
+      const headerHeight = parseFloat(headerHeightValue) || 0;
+      const homeHeroHeight = homeHero?.offsetHeight || 0;
+
+      const calculatedHeight =
+              viewportHeight - headerHeight - homeHeroHeight;
+
+      const minimumHeight = viewportHeight * 0.4;
+
+      const heroArtHeight = Math.max(
+              calculatedHeight,
+              minimumHeight
+      );
+
+      root.style.setProperty(
+              "--hero-art-height",
+              `${Math.round(heroArtHeight)}px`
+      );
+
+      root.style.setProperty(
+              "--stable-40vh",
+              `${Math.round(minimumHeight)}px`
+      );
+    })();
+  </script>
   <!-- 2. Numbers / Pillars -->
   <section class="home-metrics eth-section">
     <div class="eth-container home-metrics__inner">
@@ -240,28 +279,53 @@
   <!-- 4. First Product -->
   <section class="home-product-story eth-section">
     <div class="eth-container product-story__inner">
+
       <div class="product-story__visual">
         <div class="product-visual-card">
-<!--          <span>Ultra Low Temperature Tuna</span>-->
+
+          <div class="product-floating-card product-floating-card--operation">
+            <strong>-60°C</strong>
+            <span>100% 초저온 가동</span>
+          </div>
+
+          <div class="product-floating-card product-floating-card--qsf">
+            <strong>QSF</strong>
+            <span>인증 기반 품질 관리</span>
+          </div>
+
         </div>
       </div>
 
       <div class="product-story__content">
         <p class="section-eyebrow">First Product</p>
-        <h2>초저온 연안 참다랑어로<br>첫 번째 제품을 시작합니다.</h2>
-        <p>
-          KQSF는 초저온 기술을 가장 먼저 연안 참다랑어에 적용합니다.
-          -60°C 초저온 보관 기준으로 품질 편차를 줄이고,
-          외식업·유통업·프랜차이즈·OEM/PB 납품에 적합한 제품 구조를 제안합니다.
-        </p>
-        <div class="product-mini-grid">
-          <div><strong>-60°C</strong><span>초저온 보관 기준</span></div>
-          <div><strong>B2B</strong><span>외식·유통 납품형</span></div>
-          <div><strong>QSF</strong><span>인증 기반 품질 관리</span></div>
-          <div><strong>OEM/PB</strong><span>파트너 제품 확장</span></div>
+
+        <h2>
+          초저온 연안 참다랑어로<br>
+          첫 번째 제품을 시작합니다.
+        </h2>
+
+        <div class="product-story__description">
+          <p>
+            KQSF는 초저온 기술을 가장 먼저 연안 참다랑어에 적용합니다.
+            -60°C 초저온 보관 기준으로 품질 편차를 줄이고,
+            외식업·유통업·프랜차이즈 납품에 적합한 제품 구조를 제안합니다.
+          </p>
+
+          <p>
+            원물 선별부터 동결, 보관, 출고까지 QSF 기준으로 관리해
+            제품이 공급되는 전 과정의 품질을 확인할 수 있도록 합니다.
+            향후 수산물과 축산물, 농산물, OEM·PB 제품으로 적용 범위를 확장합니다.
+          </p>
         </div>
-        <a href="/products/seafood/east-sea-bluefin" class="text-link">참다랑어 제품 보기</a>
+
+        <a
+                href="/products/seafood/east-sea-bluefin"
+                class="text-link"
+        >
+          참다랑어 제품 보기
+        </a>
       </div>
+
     </div>
   </section>
 

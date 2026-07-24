@@ -726,7 +726,9 @@ html {
 ========================================================= */
 
 .category-document-sidebar {
-    position: relative;
+    /*position: relative;*/
+    position: sticky;
+    top: calc(var(--header-height, 72px) + 92px);
 }
 
 .category-document-sidebar__sticky {
